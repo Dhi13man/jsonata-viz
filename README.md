@@ -1,4 +1,4 @@
-# JSONata Viz
+# Visionata - The JSONata Visualiser
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -19,9 +19,9 @@ An end-to-end **JSONata visualizer** and **no-code editor** that lets you intera
 - **Regression risk** - Changes to one part of an expression can silently break others, with no way to validate correctness before deployment.
 - **High barrier to entry** - Non-developers can't easily create or modify JSONata expressions without learning the syntax.
 
-## What JSONata Viz Does
+## What Visionata Does
 
-JSONata Viz solves all of this with a fully client-side, interactive tool:
+Visionata solves all of this with a fully client-side, interactive tool:
 
 - **Visual Expression Builder** - Drag-and-drop UI for composing JSONata expressions without writing syntax. Nodes represent operations, paths, and transformations.
 - **Interactive Visualizer** - See the AST (Abstract Syntax Tree) of any JSONata expression rendered as a navigable, zoomable graph.

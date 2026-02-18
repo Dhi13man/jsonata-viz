@@ -1,4 +1,4 @@
-# Contributing to JSONata Viz
+# Contributing to Visionata
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Contributors](https://img.shields.io/github/contributors/Dhi13man/jsonata-viz)](https://github.com/Dhi13man/jsonata-viz/graphs/contributors)
@@ -6,7 +6,7 @@
 [![Stars](https://img.shields.io/github/stars/Dhi13man/jsonata-viz)](https://github.com/Dhi13man/jsonata-viz/stargazers)
 [![Last Commit](https://img.shields.io/github/last-commit/Dhi13man/jsonata-viz)](https://github.com/Dhi13man/jsonata-viz/commits/main)
 
-Thank you for your interest in contributing to JSONata Viz! Whether it's a bug fix, new feature, or documentation improvement, contributions are welcome.
+Thank you for your interest in contributing to Visionata! Whether it's a bug fix, new feature, or documentation improvement, contributions are welcome.
 
 ## Getting Started
 
