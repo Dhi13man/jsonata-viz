@@ -24,9 +24,9 @@ test.describe("Smoke tests", () => {
   test("default expression renders nodes on canvas", async ({ page }) => {
     await page.goto("/");
     // Wait for React Flow nodes to appear
-    await expect(
-      page.locator(".react-flow__node").first(),
-    ).toBeVisible({ timeout: 5000 });
+    await expect(page.locator(".react-flow__node").first()).toBeVisible({
+      timeout: 5000,
+    });
   });
 
   test("editing expression updates output", async ({ page }) => {

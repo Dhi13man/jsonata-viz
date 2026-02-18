@@ -1,10 +1,13 @@
 /**
  * FlowStore — React Flow state (nodes, edges, viewport).
  * Derived from AST. Only viewport and manual positions are persisted.
+ * Wrapped with zundo for undo/redo of manual position changes.
  */
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { temporal } from "zundo";
+import { safeLocalStorage } from "@/lib/utils/safe-storage";
 import {
   applyNodeChanges,
   applyEdgeChanges,
@@ -33,96 +36,108 @@ interface FlowActions {
 }
 
 export const useFlowStore = create<FlowState & FlowActions>()(
-  persist(
-    (set, get) => ({
-      nodes: [],
-      edges: [],
-      viewport: { x: 0, y: 0, zoom: 1 },
-      manualPositions: {},
-      selectedNodeId: null,
+  temporal(
+    persist(
+      (set, get) => ({
+        nodes: [],
+        edges: [],
+        viewport: { x: 0, y: 0, zoom: 1 },
+        manualPositions: {},
+        selectedNodeId: null,
 
-      setGraph: (nodes, edges) => {
-        // Apply persisted manual positions to nodes
-        const positions = get().manualPositions;
-        const adjusted = nodes.map((n) => {
-          const manual = positions[n.id];
-          if (manual) {
-            return { ...n, position: manual };
-          }
-          return n;
-        });
-        set({ nodes: adjusted, edges });
-      },
-
-      onNodesChange: (changes) => {
-        set((state) => {
-          const updated = applyNodeChanges(changes, state.nodes);
-
-          // Track manual position changes
-          const newPositions = { ...state.manualPositions };
-          for (const change of changes) {
-            if (
-              change.type === "position" &&
-              change.position &&
-              change.dragging === false
-            ) {
-              newPositions[change.id] = change.position;
+        setGraph: (nodes, edges) => {
+          // Apply persisted manual positions to nodes
+          const positions = get().manualPositions;
+          const adjusted = nodes.map((n) => {
+            const manual = positions[n.id];
+            if (manual) {
+              return { ...n, position: manual };
             }
-          }
+            return n;
+          });
+          set({ nodes: adjusted, edges });
+        },
 
-          // Track selection
-          let selectedNodeId = state.selectedNodeId;
-          for (const change of changes) {
-            if (change.type === "select") {
-              selectedNodeId = change.selected ? change.id : null;
+        onNodesChange: (changes) => {
+          set((state) => {
+            const updated = applyNodeChanges(changes, state.nodes);
+
+            // Track manual position changes
+            const newPositions = { ...state.manualPositions };
+            for (const change of changes) {
+              if (
+                change.type === "position" &&
+                change.position &&
+                change.dragging === false
+              ) {
+                newPositions[change.id] = change.position;
+              }
             }
-          }
 
-          return {
-            nodes: updated,
-            manualPositions: newPositions,
-            selectedNodeId,
-          };
-        });
-      },
+            // Track selection
+            let selectedNodeId = state.selectedNodeId;
+            for (const change of changes) {
+              if (change.type === "select") {
+                selectedNodeId = change.selected ? change.id : null;
+              }
+            }
 
-      onEdgesChange: (changes) => {
-        set((state) => ({
-          edges: applyEdgeChanges(changes, state.edges),
-        }));
-      },
+            return {
+              nodes: updated,
+              manualPositions: newPositions,
+              selectedNodeId,
+            };
+          });
+        },
 
-      setViewport: (viewport) => set({ viewport }),
-      setSelectedNodeId: (selectedNodeId) => set({ selectedNodeId }),
-    }),
-    {
-      name: "visionata-flow",
-      version: 1,
-      partialize: (state) => ({
-        viewport: state.viewport,
-        manualPositions: state.manualPositions,
+        onEdgesChange: (changes) => {
+          set((state) => ({
+            edges: applyEdgeChanges(changes, state.edges),
+          }));
+        },
+
+        setViewport: (viewport) => set({ viewport }),
+        setSelectedNodeId: (selectedNodeId) => set({ selectedNodeId }),
       }),
-      merge: (persisted, current) => {
-        const p = persisted as Partial<FlowState> | undefined;
-        const vp = p?.viewport;
-        const validViewport =
-          vp &&
-          typeof vp.x === "number" &&
-          typeof vp.y === "number" &&
-          typeof vp.zoom === "number"
-            ? vp
-            : current.viewport;
-        const mp = p?.manualPositions;
-        const validPositions =
-          mp && typeof mp === "object" && !Array.isArray(mp)
-            ? mp
-            : current.manualPositions;
-        return {
-          ...current,
-          viewport: validViewport,
-          manualPositions: validPositions,
-        };
+      {
+        name: "visionata-flow",
+        version: 1,
+        storage: safeLocalStorage,
+        partialize: (state) => ({
+          viewport: state.viewport,
+          manualPositions: state.manualPositions,
+        }),
+        merge: (persisted, current) => {
+          const p = persisted as Partial<FlowState> | undefined;
+          const vp = p?.viewport;
+          const validViewport =
+            vp &&
+            typeof vp.x === "number" &&
+            typeof vp.y === "number" &&
+            typeof vp.zoom === "number"
+              ? vp
+              : current.viewport;
+          const mp = p?.manualPositions;
+          const validPositions =
+            mp && typeof mp === "object" && !Array.isArray(mp)
+              ? mp
+              : current.manualPositions;
+          return {
+            ...current,
+            viewport: validViewport,
+            manualPositions: validPositions,
+          };
+        },
       },
+    ),
+    {
+      // Only track manual position changes for undo/redo
+      partialize: (state) => ({
+        manualPositions: state.manualPositions,
+        nodes: state.nodes,
+        edges: state.edges,
+      }),
+      limit: 50,
     },
   ),
 );

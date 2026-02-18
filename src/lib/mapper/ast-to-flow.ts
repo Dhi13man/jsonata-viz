@@ -165,6 +165,7 @@ function addChildren(
 ): void {
   switch (node.type) {
     case "binary":
+    case "apply":
       buildGraph(node.lhs, parentId, nodes, edges, nextId);
       buildGraph(node.rhs, parentId, nodes, edges, nextId);
       break;
@@ -229,7 +230,7 @@ function addChildren(
       buildGraph(node.update, parentId, nodes, edges, nextId);
       if (node.delete) buildGraph(node.delete, parentId, nodes, edges, nextId);
       break;
-    // Leaf nodes: name, string, number, value, variable, wildcard, descendant, parent, regex
+    // Leaf nodes: name, string, number, value, variable, wildcard, descendant, parent, regex, operator
     default:
       break;
   }
@@ -238,6 +239,7 @@ function addChildren(
 function getNodeLabel(node: ExprNode): string {
   switch (node.type) {
     case "binary":
+    case "apply":
       return String(node.value);
     case "unary":
       return `${node.value}(unary)`;

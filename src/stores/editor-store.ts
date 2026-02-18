@@ -7,6 +7,7 @@ import { create } from "zustand";
 import { persist, subscribeWithSelector } from "zustand/middleware";
 import type { ExprNode } from "@/lib/jsonata/types";
 import type { JsonataError } from "@/lib/jsonata/parser";
+import { safeLocalStorage } from "@/lib/utils/safe-storage";
 
 interface EditorState {
   /** Current JSONata expression text */
@@ -86,6 +87,7 @@ export const useEditorStore = create<EditorState & EditorActions>()(
       {
         name: "visionata-editor",
         version: 1,
+        storage: safeLocalStorage,
         partialize: (state) => ({
           expression: state.expression,
           inputJson: state.inputJson,

@@ -16,6 +16,7 @@ import type {
   ExprNode,
   PathNode,
   BinaryNode,
+  ApplyNode,
   UnaryNode,
   NameNode,
   StringNode,
@@ -33,6 +34,7 @@ import type {
   VariableNode,
   LambdaNode,
   PartialNode,
+  OperatorNode,
   TransformNode,
   RegexNode,
 } from "./types";
@@ -54,6 +56,7 @@ const PRECEDENCE: Record<string, number> = {
   ">": 40,
   ">=": 40,
   in: 40,
+  "~>": 40, // apply/chain
   "&": 50, // concat
   "+": 60,
   "-": 60,
@@ -76,57 +79,105 @@ export function serialize(node: ExprNode | null | undefined): string {
   return serializeNode(node);
 }
 
+/**
+ * Main dispatch with generic post-processing for predicates and keepArray.
+ */
 function serializeNode(node: ExprNode): string {
+  let result: string;
+
   switch (node.type) {
     case "path":
-      return serializePath(node);
+      result = serializePath(node);
+      break;
     case "binary":
-      return serializeBinary(node);
+      result = serializeBinary(node);
+      break;
+    case "apply":
+      result = serializeApply(node);
+      break;
     case "unary":
-      return serializeUnary(node);
+      result = serializeUnary(node);
+      break;
     case "name":
-      return serializeName(node);
+      result = serializeName(node);
+      break;
     case "string":
-      return serializeString(node);
+      result = serializeString(node);
+      break;
     case "number":
-      return serializeNumber(node);
+      result = serializeNumber(node);
+      break;
     case "value":
-      return serializeValue(node);
+      result = serializeValue(node);
+      break;
     case "wildcard":
-      return serializeWildcard(node);
+      result = serializeWildcard(node);
+      break;
     case "descendant":
-      return serializeDescendant(node);
+      result = serializeDescendant(node);
+      break;
     case "parent":
-      return serializeParent(node);
+      result = serializeParent(node);
+      break;
     case "filter":
-      return serializeFilter(node);
+      result = serializeFilter(node);
+      break;
     case "sort":
-      return serializeSort(node);
+      result = serializeSort(node);
+      break;
     case "block":
-      return serializeBlock(node);
+      result = serializeBlock(node);
+      break;
     case "bind":
-      return serializeBind(node);
+      result = serializeBind(node);
+      break;
     case "condition":
-      return serializeCondition(node);
+      result = serializeCondition(node);
+      break;
     case "function":
-      return serializeFunction(node);
+      result = serializeFunction(node);
+      break;
     case "variable":
-      return serializeVariable(node);
+      result = serializeVariable(node);
+      break;
     case "lambda":
-      return serializeLambda(node);
+      result = serializeLambda(node);
+      break;
     case "partial":
-      return serializePartial(node);
+      result = serializePartial(node);
+      break;
+    case "operator":
+      result = serializeOperator(node);
+      break;
     case "transform":
-      return serializeTransform(node);
+      result = serializeTransform(node);
+      break;
     case "regex":
-      return serializeRegex(node);
+      result = serializeRegex(node);
+      break;
     default: {
       // Exhaustiveness check — if we reach here, we have an unhandled type.
       const _: never = node;
       console.warn(`[serializer] unhandled node type: ${(_ as ExprNode).type}`);
-      return `/* unsupported: ${(_ as ExprNode).type} */`;
+      result = `/* unsupported: ${(_ as ExprNode).type} */`;
     }
   }
+
+  // Generic predicate handling — filters/sorts attached to any expression
+  if (node.predicate) {
+    for (const pred of node.predicate) {
+      if (pred.type === "filter") result += serializeFilter(pred);
+      else if (pred.type === "sort") result += serializeSort(pred);
+    }
+  }
+
+  // Generic keepArray handling — expr[] flattening
+  // Skip for path nodes: their keepArray is derived from step-level keepArray
+  if (node.keepArray && node.type !== "path") {
+    result += "[]";
+  }
+
+  return result;
 }
 
 function serializePath(node: PathNode): string {
@@ -143,14 +194,27 @@ function serializePath(node: PathNode): string {
       // Sort attaches to previous step: a^(>field)
       parts.push(serializeSort(step));
     } else {
-      const serialized = serializeNode(step);
       if (i > 0 && step.type !== "filter" && step.type !== "sort") {
         parts.push(".");
       }
-      parts.push(serialized);
+      parts.push(serializeNode(step));
     }
   }
-  return parts.join("");
+
+  let result = parts.join("");
+
+  // Object group-by: path{key: value, ...}
+  if (node.group) {
+    const pairs = (node.group.lhs ?? [])
+      .map((pair) => {
+        const [key, val] = pair;
+        return `${serializeNode(key)}: ${serializeNode(val)}`;
+      })
+      .join(", ");
+    result += `{${pairs}}`;
+  }
+
+  return result;
 }
 
 function serializeBinary(node: BinaryNode): string {
@@ -160,12 +224,19 @@ function serializeBinary(node: BinaryNode): string {
   const lhs = serializeBinaryChild(node.lhs, parentPrec, "left");
   const rhs = serializeBinaryChild(node.rhs, parentPrec, "right");
 
-  // Array construction operator (no space)
+  // Array subscript operator (no space)
   if (op === "[") {
     return `${lhs}[${rhs}]`;
   }
 
   return `${lhs} ${op} ${rhs}`;
+}
+
+function serializeApply(node: ApplyNode): string {
+  const parentPrec = getPrecedence("~>");
+  const lhs = serializeBinaryChild(node.lhs, parentPrec, "left");
+  const rhs = serializeBinaryChild(node.rhs, parentPrec, "right");
+  return `${lhs} ~> ${rhs}`;
 }
 
 function serializeBinaryChild(
@@ -175,7 +246,7 @@ function serializeBinaryChild(
 ): string {
   const childStr = serializeNode(child);
 
-  if (child.type === "binary") {
+  if (child.type === "binary" || child.type === "apply") {
     const childPrec = getPrecedence(String(child.value));
     // Parenthesize when child binds less tightly, or when equal precedence
     // on the right side (left-associative operators need parens on right)
@@ -240,13 +311,21 @@ function serializeName(node: NameNode): string {
     }
   }
 
+  // keepArray: name[] flattening — handled by generic serializeNode post-processing
+
   return result;
 }
 
 function serializeString(node: StringNode): string {
   const val = String(node.value);
-  // Use double quotes; escape internal double quotes
-  return `"${val.replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`;
+  // Escape special characters for round-trip safety
+  const escaped = val
+    .replace(/\\/g, "\\\\")
+    .replace(/"/g, '\\"')
+    .replace(/\n/g, "\\n")
+    .replace(/\r/g, "\\r")
+    .replace(/\t/g, "\\t");
+  return `"${escaped}"`;
 }
 
 function serializeNumber(node: NumberNode): string {
@@ -260,8 +339,21 @@ function serializeValue(node: ValueNode): string {
   return String(node.value);
 }
 
-function serializeWildcard(_node: WildcardNode): string {
-  return "*";
+function serializeWildcard(node: WildcardNode): string {
+  let result = "*";
+
+  // Append stages (filter/sort on wildcard in a path)
+  if (node.stages) {
+    for (const stage of node.stages) {
+      if (stage.type === "filter") {
+        result += serializeFilter(stage);
+      } else if (stage.type === "sort") {
+        result += serializeSort(stage);
+      }
+    }
+  }
+
+  return result;
 }
 
 function serializeDescendant(_node: DescendantNode): string {
@@ -283,7 +375,20 @@ function serializeSort(node: SortNode): string {
       return `${dir}${serializeNode(t.expression)}`;
     })
     .join(", ");
-  return `^(${terms})`;
+  let result = `^(${terms})`;
+
+  // Append stages (filter/sort on sort node in a path)
+  if (node.stages) {
+    for (const stage of node.stages) {
+      if (stage.type === "filter") {
+        result += serializeFilter(stage);
+      } else if (stage.type === "sort") {
+        result += serializeSort(stage);
+      }
+    }
+  }
+
+  return result;
 }
 
 function serializeBlock(node: BlockNode): string {
@@ -312,8 +417,25 @@ function serializeFunction(node: FunctionNode): string {
 
 function serializeVariable(node: VariableNode): string {
   // Empty variable name means the root context ($)
-  if (!node.value || node.value === "") return "$";
-  return `$${node.value}`;
+  let result: string;
+  if (!node.value || node.value === "") {
+    result = "$";
+  } else {
+    result = `$${node.value}`;
+  }
+
+  // Object group-by: $variable{key: value, ...}
+  if (node.group) {
+    const pairs = (node.group.lhs ?? [])
+      .map((pair) => {
+        const [key, val] = pair;
+        return `${serializeNode(key)}: ${serializeNode(val)}`;
+      })
+      .join(", ");
+    result += `{${pairs}}`;
+  }
+
+  return result;
 }
 
 function serializeLambda(node: LambdaNode): string {
@@ -323,24 +445,31 @@ function serializeLambda(node: LambdaNode): string {
   }
 
   const params = (node.arguments ?? []).map((a) => serializeNode(a)).join(", ");
+  // Emit type signature if present: function($x, $y)<n-n:n>{body}
+  const sig = node.signature?.definition ?? "";
   // The body may itself be a thunk lambda — unwrap it too
   let body = node.body;
   if (body.type === "lambda" && body.thunk) {
     body = body.body;
   }
   const bodyStr = serializeNode(body);
-  return `function(${params}){${bodyStr}}`;
+  return `function(${params})${sig}{${bodyStr}}`;
 }
 
 function serializePartial(node: PartialNode): string {
   const proc = serializeNode(node.procedure);
   const args = (node.arguments ?? [])
     .map((a) => {
-      if (a.type === "variable" && a.value === "?") return "?";
+      // The ? placeholder has type "operator" in the AST
+      if (a.type === "operator" && a.value === "?") return "?";
       return serializeNode(a);
     })
     .join(", ");
   return `${proc}(${args})`;
+}
+
+function serializeOperator(node: OperatorNode): string {
+  return String(node.value);
 }
 
 function serializeTransform(node: TransformNode): string {

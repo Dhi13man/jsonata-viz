@@ -28,7 +28,9 @@ export type AstNodeType =
   | "lambda"
   | "partial"
   | "transform"
-  | "regex";
+  | "regex"
+  | "apply"
+  | "operator";
 
 /** Base properties shared by all AST nodes */
 interface AstNodeBase {
@@ -36,17 +38,33 @@ interface AstNodeBase {
   value?: unknown;
   position?: number;
   keepArray?: boolean;
+  /** Predicate filters attached to any expression: expr[pred1][pred2] */
+  predicate?: Array<FilterNode | SortNode>;
 }
 
 /** Path expression: a.b.c */
 export interface PathNode extends AstNodeBase {
   type: "path";
   steps: ExprNode[];
+  /** Object group-by: path{key: value, ...} */
+  group?: {
+    lhs: [ExprNode, ExprNode][];
+    position?: number;
+  };
 }
 
 /** Binary operator: a + b, a = b, a and b */
 export interface BinaryNode extends AstNodeBase {
   type: "binary";
+  value: string;
+  lhs: ExprNode;
+  rhs: ExprNode;
+  position: number;
+}
+
+/** Apply (chain) operator: a ~> b */
+export interface ApplyNode extends AstNodeBase {
+  type: "apply";
   value: string;
   lhs: ExprNode;
   rhs: ExprNode;
@@ -105,6 +123,8 @@ export interface ValueNode extends AstNodeBase {
 export interface WildcardNode extends AstNodeBase {
   type: "wildcard";
   position: number;
+  /** Filter/sort operations attached to this wildcard in a path */
+  stages?: Array<FilterNode | SortNode>;
 }
 
 /** Descendant wildcard: ** */
@@ -132,6 +152,8 @@ export interface SortNode extends AstNodeBase {
   expr: ExprNode;
   terms: SortTerm[];
   position: number;
+  /** Stages attached to this sort in a path */
+  stages?: Array<FilterNode | SortNode>;
 }
 
 export interface SortTerm {
@@ -176,6 +198,11 @@ export interface VariableNode extends AstNodeBase {
   type: "variable";
   value: string;
   position: number;
+  /** Object group-by: $var{key: value, ...} */
+  group?: {
+    lhs: [ExprNode, ExprNode][];
+    position?: number;
+  };
 }
 
 /** Lambda: function($x){ $x + 1 } */
@@ -188,6 +215,8 @@ export interface LambdaNode extends AstNodeBase {
 }
 
 export interface LambdaSignature {
+  /** Raw signature definition string: "<n-n:n>" */
+  definition?: string;
   args: Array<{
     type: string;
     regex?: string;
@@ -203,6 +232,13 @@ export interface PartialNode extends AstNodeBase {
   type: "partial";
   procedure: ExprNode;
   arguments: ExprNode[];
+  position: number;
+}
+
+/** Operator placeholder: ? in partial application */
+export interface OperatorNode extends AstNodeBase {
+  type: "operator";
+  value: string;
   position: number;
 }
 
@@ -226,6 +262,7 @@ export interface RegexNode extends AstNodeBase {
 export type ExprNode =
   | PathNode
   | BinaryNode
+  | ApplyNode
   | UnaryNode
   | NameNode
   | StringNode
@@ -243,6 +280,7 @@ export type ExprNode =
   | VariableNode
   | LambdaNode
   | PartialNode
+  | OperatorNode
   | TransformNode
   | RegexNode;
 
@@ -274,6 +312,8 @@ export function getNodeCategory(nodeType: AstNodeType): NodeCategory {
       return "function";
     case "binary":
     case "unary":
+    case "apply":
+    case "operator":
       return "operator";
     case "condition":
       return "conditional";
