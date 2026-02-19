@@ -1,7 +1,7 @@
 import jsonata from "jsonata";
 import type { ExprNode } from "./types";
 
-export interface ParseResult {
+interface ParseResult {
   ast: ExprNode | null;
   error: JsonataError | null;
 }

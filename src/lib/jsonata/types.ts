@@ -7,7 +7,7 @@
  */
 
 /** All known AST node type identifiers */
-export type AstNodeType =
+type AstNodeType =
   | "path"
   | "binary"
   | "unary"

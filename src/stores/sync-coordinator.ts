@@ -8,19 +8,11 @@
  */
 
 type EditOrigin = "text" | "graph" | null;
-type Listener = (origin: EditOrigin) => void;
 
 const RESET_DELAY = 300;
 
 let editOrigin: EditOrigin = null;
 let resetTimer: ReturnType<typeof setTimeout> | null = null;
-const listeners = new Set<Listener>();
-
-function notify() {
-  for (const listener of listeners) {
-    listener(editOrigin);
-  }
-}
 
 /**
  * Claim edit origin. Suppresses echo propagation from the other side.
@@ -34,7 +26,6 @@ export function claimOrigin(origin: "text" | "graph"): void {
 
   editOrigin = origin;
   scheduleReset();
-  notify();
 }
 
 /**
@@ -46,34 +37,9 @@ export function shouldSuppress(from: "text" | "graph"): boolean {
   return editOrigin !== from;
 }
 
-/**
- * Get current edit origin.
- */
-export function getOrigin(): EditOrigin {
-  return editOrigin;
-}
-
-/**
- * Force reset origin (e.g., on blur or explicit sync).
- */
-export function resetOrigin(): void {
-  if (resetTimer) clearTimeout(resetTimer);
-  editOrigin = null;
-  notify();
-}
-
-/**
- * Subscribe to origin changes.
- */
-export function onOriginChange(listener: Listener): () => void {
-  listeners.add(listener);
-  return () => listeners.delete(listener);
-}
-
 function scheduleReset() {
   if (resetTimer) clearTimeout(resetTimer);
   resetTimer = setTimeout(() => {
     editOrigin = null;
-    notify();
   }, RESET_DELAY);
 }

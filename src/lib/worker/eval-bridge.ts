@@ -96,8 +96,3 @@ export function evaluate(
     }
   });
 }
-
-/** Force kill and respawn the worker */
-export function resetWorker(): void {
-  terminateWorker();
-}

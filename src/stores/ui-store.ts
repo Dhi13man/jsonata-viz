@@ -6,8 +6,8 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-export type Theme = "dark" | "light";
-export type LayoutPreset = "graph" | "text" | "split";
+type Theme = "dark" | "light";
+type LayoutPreset = "graph" | "text" | "split";
 
 interface UIState {
   theme: Theme;
