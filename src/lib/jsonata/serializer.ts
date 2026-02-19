@@ -194,7 +194,7 @@ function serializePath(node: PathNode): string {
       // Sort attaches to previous step: a^(>field)
       parts.push(serializeSort(step));
     } else {
-      if (i > 0 && step.type !== "filter" && step.type !== "sort") {
+      if (i > 0) {
         parts.push(".");
       }
       parts.push(serializeNode(step));

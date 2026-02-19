@@ -23,7 +23,7 @@ import {
   AlertTriangle,
   type LucideIcon,
 } from "lucide-react";
-import type { FlowNodeData } from "@/lib/mapper/ast-to-flow";
+import type { AstFlowNode } from "@/lib/mapper/ast-to-flow";
 import { NODE_COLORS, type NodeCategory } from "@/lib/jsonata/types";
 import { NodeErrorBoundary } from "@/components/error-boundary/node-error-boundary";
 
@@ -39,10 +39,10 @@ const CATEGORY_ICONS: Record<NodeCategory, LucideIcon> = {
   error: AlertTriangle,
 };
 
-function AstNodeInner({ id, data, selected }: NodeProps<FlowNodeData>) {
+function AstNodeInner({ id, data, selected }: NodeProps<AstFlowNode>) {
   const { label, category, fullPath, preview } = data;
-  const color = NODE_COLORS[category];
-  const Icon = CATEGORY_ICONS[category];
+  const color = NODE_COLORS[category as NodeCategory];
+  const Icon = CATEGORY_ICONS[category as NodeCategory];
 
   return (
     <NodeErrorBoundary nodeId={id}>

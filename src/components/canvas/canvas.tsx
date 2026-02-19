@@ -10,8 +10,7 @@ import {
   Controls,
   MiniMap,
   BackgroundVariant,
-  type NodeTypes,
-  type OnViewportChange,
+  type Viewport,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 
@@ -19,7 +18,7 @@ import { useFlowStore } from "@/stores/flow-store";
 import { AstNode } from "./nodes/ast-node";
 import { CanvasErrorBoundary } from "@/components/error-boundary/canvas-error-boundary";
 
-const nodeTypes: NodeTypes = {
+const nodeTypes = {
   astNode: AstNode,
 };
 
@@ -31,8 +30,8 @@ export function Canvas() {
   const onEdgesChange = useFlowStore((s) => s.onEdgesChange);
   const setViewport = useFlowStore((s) => s.setViewport);
 
-  const onViewportChange: OnViewportChange = useCallback(
-    (vp) => setViewport(vp),
+  const onViewportChange = useCallback(
+    (vp: Viewport) => setViewport(vp),
     [setViewport],
   );
 

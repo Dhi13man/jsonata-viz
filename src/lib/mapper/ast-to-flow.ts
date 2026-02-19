@@ -20,6 +20,8 @@ export interface FlowNodeData {
   fullPath?: string;
   /** Evaluation result preview (set lazily) */
   preview?: string;
+  /** Index signature required by React Flow's Node<Record<string, unknown>> constraint */
+  [key: string]: unknown;
 }
 
 export type AstFlowNode = Node<FlowNodeData>;

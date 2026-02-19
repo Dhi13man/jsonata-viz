@@ -5,7 +5,7 @@
  */
 
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
 import { temporal } from "zundo";
 import { safeLocalStorage } from "@/lib/utils/safe-storage";
 import {
@@ -102,11 +102,11 @@ export const useFlowStore = create<FlowState & FlowActions>()(
       {
         name: "visionata-flow",
         version: 1,
-        storage: safeLocalStorage,
+        storage: createJSONStorage(() => safeLocalStorage),
         partialize: (state) => ({
           viewport: state.viewport,
           manualPositions: state.manualPositions,
-        }),
+        } as FlowState & FlowActions),
         merge: (persisted, current) => {
           const p = persisted as Partial<FlowState> | undefined;
           const vp = p?.viewport;
