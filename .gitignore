@@ -22,6 +22,9 @@ Thumbs.db
 
 # Testing
 coverage/
+playwright-report/
+test-results/
+blob-report/
 
 # Logs
 *.log
@@ -29,3 +32,6 @@ coverage/
 # Cache
 .cache/
 .turbo/
+
+# Env overrides (keep .env.example)
+!.env.example

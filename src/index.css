@@ -1,0 +1,236 @@
+@import "tailwindcss";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/600.css";
+
+/*
+ * Visionata Design System Tokens
+ * Source of truth: docs/DESIGN_SYSTEM.md
+ * Aesthetic: Clinical-Glass (dark-first)
+ */
+
+@theme {
+  /* Node category colors */
+  --color-node-path: #58a6ff;
+  --color-node-function: #bc8cff;
+  --color-node-operator: #d29922;
+  --color-node-conditional: #f0883e;
+  --color-node-array: #3fb950;
+  --color-node-lambda: #f778ba;
+  --color-node-literal: #8b949e;
+  --color-node-transform: #39d2c0;
+  --color-node-error: #f85149;
+
+  /* Status colors */
+  --color-success: #3fb950;
+  --color-warning: #d29922;
+  --color-error: #f85149;
+  --color-info: #58a6ff;
+
+  /* Spacing scale (4px base) */
+  --spacing-0: 0px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-12: 48px;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+
+  /* Motion */
+  --duration-instant: 100ms;
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-enter: cubic-bezier(0, 0, 0.2, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  /* Typography */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* Design system CSS custom properties for theme switching */
+:root,
+[data-theme="dark"] {
+  --bg-canvas: #0d1117;
+  --bg-surface: #161b22;
+  --bg-elevated: #1c2128;
+  --bg-overlay: rgba(13, 17, 23, 0.8);
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-tertiary: #484f58;
+  --border-default: #30363d;
+  --border-hover: #484f58;
+  --border-active: #58a6ff;
+
+  /* Shadows (none in dark mode per design system) */
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-glow-blue: 0 0 0 3px rgba(88, 166, 255, 0.3);
+  --shadow-glow-red: 0 0 0 3px rgba(248, 81, 73, 0.3);
+
+  /* Z-index layering */
+  --z-canvas: 0;
+  --z-wires: 5;
+  --z-nodes: 10;
+  --z-selected: 20;
+  --z-sidebar: 30;
+  --z-panel: 40;
+  --z-overlay: 50;
+  --z-tooltip: 60;
+  --z-command-palette: 70;
+}
+
+[data-theme="light"] {
+  --bg-canvas: #ffffff;
+  --bg-surface: #f6f8fa;
+  --bg-elevated: #ffffff;
+  --bg-overlay: rgba(255, 255, 255, 0.8);
+  --text-primary: #1f2328;
+  --text-secondary: #656d76;
+  --text-tertiary: #8c959f;
+  --border-default: #d0d7de;
+  --border-hover: #afb8c1;
+  --border-active: #58a6ff;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-glow-blue: 0 0 0 3px rgba(88, 166, 255, 0.2);
+  --shadow-glow-red: 0 0 0 3px rgba(248, 81, 73, 0.2);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Base resets */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* React Flow overrides for our theme */
+.react-flow__background {
+  background-color: var(--bg-canvas) !important;
+}
+
+.react-flow__minimap {
+  background-color: var(--bg-surface) !important;
+  border: 1px solid var(--border-default) !important;
+  border-radius: var(--radius-lg) !important;
+}
+
+.react-flow__controls {
+  border: 1px solid var(--border-default) !important;
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden;
+}
+
+.react-flow__controls-button {
+  background-color: var(--bg-surface) !important;
+  border-bottom: 1px solid var(--border-default) !important;
+  color: var(--text-secondary) !important;
+  fill: var(--text-secondary) !important;
+}
+
+.react-flow__controls-button:hover {
+  background-color: var(--bg-elevated) !important;
+  color: var(--text-primary) !important;
+  fill: var(--text-primary) !important;
+}
+
+/* Animated data-flow edges — signature pulsing wires */
+.react-flow__edge-path {
+  stroke: var(--border-active) !important;
+  stroke-width: 2;
+}
+
+.react-flow__edge.animated .react-flow__edge-path {
+  stroke-dasharray: 5;
+  animation: visionata-flow 1s linear infinite;
+}
+
+@keyframes visionata-flow {
+  to {
+    stroke-dashoffset: -10;
+  }
+}
+
+/* CodeMirror overrides for consistent theming */
+.cm-editor {
+  height: 100% !important;
+  font-family: var(--font-mono) !important;
+  font-size: 13px !important;
+}
+
+.cm-editor .cm-scroller {
+  overflow: auto !important;
+}
+
+.cm-editor.cm-focused {
+  outline: none !important;
+}
+
+/* Command palette overlay */
+.command-palette-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-command-palette);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 20vh;
+  background-color: var(--bg-overlay);
+}
+
+/* Scrollbar styling for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--border-default);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--border-hover);
+}
