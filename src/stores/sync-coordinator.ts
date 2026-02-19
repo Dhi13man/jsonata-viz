@@ -43,3 +43,14 @@ function scheduleReset() {
     editOrigin = null;
   }, RESET_DELAY);
 }
+
+// Expose for E2E tests (DEV only, tree-shaken in production)
+declare global {
+  interface Window {
+    __VISIONATA_CLAIM_ORIGIN__?: typeof claimOrigin;
+  }
+}
+
+if (import.meta.env.DEV) {
+  window.__VISIONATA_CLAIM_ORIGIN__ = claimOrigin;
+}

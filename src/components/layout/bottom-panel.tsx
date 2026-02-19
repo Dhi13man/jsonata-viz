@@ -1,11 +1,13 @@
 /**
  * Bottom panel: three-column evaluation view.
- * JSON Input (editable) | Expression (synced) | JSON Output (read-only)
+ * JSON Input (CodeMirror) | Expression (CodeMirror) | JSON Output (read-only)
  */
 
-import { useCallback, useRef, useEffect } from "react";
+import { useCallback } from "react";
 import { useEditorStore } from "@/stores/editor-store";
 import { claimOrigin } from "@/stores/sync-coordinator";
+import { JsonEditor } from "@/components/editors/json-editor";
+import { ExpressionEditor } from "@/components/editors/expression-editor";
 
 export function BottomPanel() {
   const expression = useEditorStore((s) => s.expression);
@@ -16,27 +18,17 @@ export function BottomPanel() {
   const setExpression = useEditorStore((s) => s.setExpression);
   const setInputJson = useEditorStore((s) => s.setInputJson);
 
-  const exprRef = useRef<HTMLTextAreaElement>(null);
-  const inputRef = useRef<HTMLTextAreaElement>(null);
-
-  // Sync textarea value when expression changes from external source
-  useEffect(() => {
-    if (exprRef.current && exprRef.current.value !== expression) {
-      exprRef.current.value = expression;
-    }
-  }, [expression]);
-
   const handleExpressionChange = useCallback(
-    (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    (value: string) => {
       claimOrigin("text");
-      setExpression(e.target.value);
+      setExpression(value);
     },
     [setExpression],
   );
 
   const handleInputChange = useCallback(
-    (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-      setInputJson(e.target.value);
+    (value: string) => {
+      setInputJson(value);
     },
     [setInputJson],
   );
@@ -50,33 +42,19 @@ export function BottomPanel() {
     >
       {/* JSON Input */}
       <PanelColumn label="JSON Input">
-        <textarea
-          ref={inputRef}
-          className="h-full w-full resize-none border-none p-3 font-mono text-[13px] outline-none"
-          style={{
-            backgroundColor: "var(--bg-surface)",
-            color: "var(--text-primary)",
-          }}
+        <JsonEditor
           value={inputJson}
           onChange={handleInputChange}
-          spellCheck={false}
-          aria-label="JSON Input"
+          ariaLabel="JSON Input"
         />
       </PanelColumn>
 
       {/* Expression */}
       <PanelColumn label="Expression">
-        <textarea
-          ref={exprRef}
-          className="h-full w-full resize-none border-none p-3 font-mono text-[13px] outline-none"
-          style={{
-            backgroundColor: "var(--bg-surface)",
-            color: "var(--text-primary)",
-          }}
-          defaultValue={expression}
+        <ExpressionEditor
+          value={expression}
           onChange={handleExpressionChange}
-          spellCheck={false}
-          aria-label="JSONata Expression"
+          ariaLabel="JSONata Expression"
         />
       </PanelColumn>
 

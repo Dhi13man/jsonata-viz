@@ -68,6 +68,13 @@ const DEFAULT_INPUT = JSON.stringify(
   2,
 );
 
+// Expose store for E2E tests (DEV only, tree-shaken in production)
+declare global {
+  interface Window {
+    __VISIONATA_EDITOR__?: typeof useEditorStore;
+  }
+}
+
 export const useEditorStore = create<EditorState & EditorActions>()(
   subscribeWithSelector(
     persist(
@@ -114,3 +121,7 @@ export const useEditorStore = create<EditorState & EditorActions>()(
     ),
   ),
 );
+
+if (import.meta.env.DEV) {
+  window.__VISIONATA_EDITOR__ = useEditorStore;
+}

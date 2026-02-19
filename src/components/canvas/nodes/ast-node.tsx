@@ -41,6 +41,8 @@ const CATEGORY_ICONS: Record<NodeCategory, LucideIcon> = {
 
 function AstNodeInner({ id, data, selected }: NodeProps<AstFlowNode>) {
   const { label, category, fullPath, preview } = data;
+  const heatmapColor = data.heatmapColor as string | undefined;
+  const heatmapTiming = data.heatmapTiming as number | undefined;
   const color = NODE_COLORS[category as NodeCategory];
   const Icon = CATEGORY_ICONS[category as NodeCategory];
 
@@ -49,13 +51,14 @@ function AstNodeInner({ id, data, selected }: NodeProps<AstFlowNode>) {
       <div
         className="flex max-w-[320px] min-w-[120px] items-start gap-2 rounded-lg px-3 py-2"
         style={{
-          backgroundColor: "var(--bg-surface)",
+          backgroundColor: heatmapColor || "var(--bg-surface)",
           border: `1px solid ${selected ? "var(--border-active)" : "var(--border-default)"}`,
           borderLeft: `3px solid ${color}`,
           boxShadow: selected ? "var(--shadow-glow-blue)" : undefined,
           transition:
-            "border-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard)",
+            "border-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard), background-color var(--duration-normal) var(--ease-standard)",
         }}
+        title={heatmapTiming !== undefined ? `Eval: ${heatmapTiming.toFixed(1)}ms` : undefined}
       >
         {/* Input handle */}
         <Handle

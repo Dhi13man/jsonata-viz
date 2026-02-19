@@ -4,10 +4,12 @@
     <meta charset="UTF-8" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; worker-src 'self' blob:; base-uri 'self'; form-action 'none'"
+      content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; worker-src 'self' blob:; base-uri 'self'; form-action 'none'"
     />
     <link rel="icon" type="image/svg+xml" href="/visionata.svg" />
+    <link rel="apple-touch-icon" href="/visionata.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0d1117" />
     <meta
       name="description"
       content="Visionata — Interactive visual development environment for JSONata. Build, test, and debug JSONata expressions with drag-and-drop. Fully client-side."
@@ -17,5 +19,11 @@
   <body class="bg-[var(--bg-canvas)] text-[var(--text-primary)] antialiased">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <!-- Cloudflare Web Analytics -->
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "PLACEHOLDER_TOKEN"}'
+    ></script>
   </body>
 </html>

@@ -1,6 +1,7 @@
 /**
  * URL compression/decompression using lz-string.
- * Expression-only by default. 8KB max; fallback to file export if exceeded.
+ * Expression-only by default. Optionally includes input JSON and test suite.
+ * 8KB max; fallback to file export if exceeded.
  */
 
 import LZString from "lz-string";
@@ -9,14 +10,16 @@ const MAX_URL_BYTES = 8192;
 const MAX_DECOMPRESSED_CHARS = 100_000;
 const PARAM_EXPR = "e";
 const PARAM_INPUT = "i";
+const PARAM_TESTS = "t";
 
 interface ShareData {
   expression: string;
   input?: string;
+  tests?: string;
 }
 
 /**
- * Encode expression (and optionally input) into URL search params.
+ * Encode expression (and optionally input + tests) into URL search params.
  * Returns null if the compressed data exceeds 8KB.
  */
 export function encodeShareUrl(data: ShareData): string | null {
@@ -32,6 +35,11 @@ export function encodeShareUrl(data: ShareData): string | null {
     params.set(PARAM_INPUT, compressedInput);
   }
 
+  if (data.tests) {
+    const compressedTests = LZString.compressToEncodedURIComponent(data.tests);
+    params.set(PARAM_TESTS, compressedTests);
+  }
+
   const search = params.toString();
   if (new Blob([search]).size > MAX_URL_BYTES) {
     return null;
@@ -41,7 +49,7 @@ export function encodeShareUrl(data: ShareData): string | null {
 }
 
 /**
- * Decode expression and input from URL search params.
+ * Decode expression, input, and tests from URL search params.
  * Returns null if no share data found.
  */
 export function decodeShareUrl(
@@ -62,5 +70,11 @@ export function decodeShareUrl(
     : undefined;
   if (input && input.length > MAX_DECOMPRESSED_CHARS) return null;
 
-  return { expression, input };
+  const compressedTests = params.get(PARAM_TESTS);
+  const tests = compressedTests
+    ? (LZString.decompressFromEncodedURIComponent(compressedTests) ?? undefined)
+    : undefined;
+  if (tests && tests.length > MAX_DECOMPRESSED_CHARS) return null;
+
+  return { expression, input, tests };
 }
