@@ -126,26 +126,27 @@ All panels are resizable by dragging edges. Double-click a divider to reset to d
 ### Color Palette -- Surface and Text
 
 | Token | Dark Mode (default) | Light Mode |
-|-------|-------------------|------------|
+| --- | --- | --- |
 | `--bg-canvas` | `#0D1117` | `#FFFFFF` |
 | `--bg-surface` | `#161B22` | `#F6F8FA` |
 | `--bg-elevated` | `#1C2128` | `#FFFFFF` |
 | `--bg-overlay` | `rgba(13,17,23,0.8)` | `rgba(255,255,255,0.8)` |
 | `--text-primary` | `#E6EDF3` | `#1F2328` |
 | `--text-secondary` | `#8B949E` | `#656D76` |
-| `--text-tertiary` | `#484F58` | `#8C959F` |
+| `--text-tertiary` | `#818B98` | `#6A737D` |
+| `--text-on-accent` | `#0D1117` | `#0D1117` |
 | `--border-default` | `#30363D` | `#D0D7DE` |
 | `--border-hover` | `#484F58` | -- |
 | `--border-active` | `#58A6FF` | -- |
 
 ### Status Colors
 
-| Token | Hex | Usage |
-|-------|-----|-------|
-| `--success` | `#3FB950` | Test passing, valid expression |
-| `--warning` | `#D29922` | Type mismatch, deprecation |
-| `--error` | `#F85149` | Test failing, parse error, invalid connection |
-| `--info` | `#58A6FF` | Informational tooltips, help text |
+| Token | Dark Mode | Light Mode | Usage |
+| --- | --- | --- | --- |
+| `--color-success` | `#3FB950` | `#1A7F37` | Test passing, valid expression |
+| `--color-warning` | `#D29922` | `#895700` | Type mismatch, deprecation |
+| `--color-error` | `#F85149` | `#CF222E` | Test failing, parse error, invalid connection |
+| `--color-info` | `#58A6FF` | `#58A6FF` | Informational tooltips, help text |
 
 ### WCAG Contrast Verification (Dark Mode)
 

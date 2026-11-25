@@ -5,7 +5,7 @@
 
 import { useCallback, useMemo } from "react";
 import CodeMirror from "@uiw/react-codemirror";
-import { keymap } from "@codemirror/view";
+import { EditorView, keymap } from "@codemirror/view";
 import { defaultKeymap } from "@codemirror/commands";
 import { jsonataLanguage } from "@/lib/codemirror/jsonata-language";
 import {
@@ -34,17 +34,20 @@ export function ExpressionEditor({
   const extensions = useMemo(
     () => [
       jsonataLanguage,
-      visionataEditorTheme,
       visionataSyntaxHighlighting,
       keymap.of(defaultKeymap),
+      EditorView.contentAttributes.of({
+        "aria-label": ariaLabel ?? "JSONata Expression",
+      }),
     ],
-    [],
+    [ariaLabel],
   );
 
   return (
     <CodeMirror
       value={value}
       onChange={handleChange}
+      theme={visionataEditorTheme}
       extensions={extensions}
       basicSetup={{
         lineNumbers: true,
@@ -53,7 +56,6 @@ export function ExpressionEditor({
         autocompletion: false,
         highlightActiveLine: false,
       }}
-      aria-label={ariaLabel ?? "JSONata Expression"}
       style={{ height: "100%", overflow: "auto" }}
     />
   );

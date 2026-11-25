@@ -271,7 +271,7 @@ function PanelButton({
       className="flex cursor-pointer items-center gap-1 rounded-md border-none px-2 py-1 text-[10px] transition-colors disabled:cursor-not-allowed disabled:opacity-50"
       style={{
         backgroundColor: accent ? "var(--border-active)" : "transparent",
-        color: accent ? "white" : "var(--text-secondary)",
+        color: accent ? "var(--text-on-accent)" : "var(--text-secondary)",
       }}
       title={label}
       aria-label={label}

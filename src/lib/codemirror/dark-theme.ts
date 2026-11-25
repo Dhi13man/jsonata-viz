@@ -77,18 +77,18 @@ export const visionataEditorTheme = EditorView.theme(
 );
 
 const visionataHighlightStyle = HighlightStyle.define([
-  { tag: tags.keyword, color: "#ff7b72" },
-  { tag: tags.operator, color: "#79c0ff" },
-  { tag: tags.variableName, color: "#e6edf3" },
-  { tag: tags.special(tags.variableName), color: "#d2a8ff" },
-  { tag: tags.string, color: "#a5d6ff" },
-  { tag: tags.number, color: "#79c0ff" },
-  { tag: tags.bool, color: "#ff7b72" },
-  { tag: tags.null, color: "#ff7b72" },
-  { tag: tags.regexp, color: "#7ee787" },
-  { tag: tags.punctuation, color: "#8b949e" },
-  { tag: tags.bracket, color: "#8b949e" },
-  { tag: tags.propertyName, color: "#79c0ff" },
+  { tag: tags.keyword, color: "var(--syntax-keyword)" },
+  { tag: tags.operator, color: "var(--syntax-operator)" },
+  { tag: tags.variableName, color: "var(--text-primary)" },
+  { tag: tags.special(tags.variableName), color: "var(--syntax-special)" },
+  { tag: tags.string, color: "var(--syntax-string)" },
+  { tag: tags.number, color: "var(--syntax-operator)" },
+  { tag: tags.bool, color: "var(--syntax-keyword)" },
+  { tag: tags.null, color: "var(--syntax-keyword)" },
+  { tag: tags.regexp, color: "var(--syntax-regexp)" },
+  { tag: tags.punctuation, color: "var(--text-secondary)" },
+  { tag: tags.bracket, color: "var(--text-secondary)" },
+  { tag: tags.propertyName, color: "var(--syntax-operator)" },
 ]);
 
 export const visionataSyntaxHighlighting = syntaxHighlighting(

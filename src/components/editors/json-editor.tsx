@@ -6,7 +6,7 @@
 import { useCallback, useMemo } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { json } from "@codemirror/lang-json";
-import { keymap } from "@codemirror/view";
+import { EditorView, keymap } from "@codemirror/view";
 import { defaultKeymap } from "@codemirror/commands";
 import {
   visionataEditorTheme,
@@ -30,17 +30,20 @@ export function JsonEditor({ value, onChange, ariaLabel }: JsonEditorProps) {
   const extensions = useMemo(
     () => [
       json(),
-      visionataEditorTheme,
       visionataSyntaxHighlighting,
       keymap.of(defaultKeymap),
+      EditorView.contentAttributes.of({
+        "aria-label": ariaLabel ?? "JSON Editor",
+      }),
     ],
-    [],
+    [ariaLabel],
   );
 
   return (
     <CodeMirror
       value={value}
       onChange={handleChange}
+      theme={visionataEditorTheme}
       extensions={extensions}
       basicSetup={{
         lineNumbers: true,
@@ -50,7 +53,6 @@ export function JsonEditor({ value, onChange, ariaLabel }: JsonEditorProps) {
         autocompletion: false,
         highlightActiveLine: false,
       }}
-      aria-label={ariaLabel ?? "JSON Editor"}
       style={{ height: "100%", overflow: "auto" }}
     />
   );
