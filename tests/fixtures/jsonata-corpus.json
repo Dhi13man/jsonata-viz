@@ -1,0 +1,5947 @@
+[
+  {
+    "group": "array-constructor",
+    "case": "case000.json",
+    "expr": "[]"
+  },
+  {
+    "group": "array-constructor",
+    "case": "case001.json",
+    "expr": "[1]"
+  },
+  {
+    "group": "array-constructor",
+    "case": "case002.json",
+    "expr": "[1, 2]"
+  },
+  {
+    "group": "array-constructor",
+    "case": "case003.json",
+    "expr": "[1, 2,3]"
+  },
+  {
+    "group": "array-constructor",
+    "case": "case004.json",
+    "expr": "[1, 2, [3, 4]]"
+  },
+  {
+    "group": "array-constructor",
+    "case": "case005.json",
+    "expr": "[1, \"two\", [\"three\", 4]]"
+  },
+  {
+    "group": "array-constructor",
+    "case": "case006.json",
+    "expr": "[1, $two, [\"three\", $four]]"
+  },
+  {
+    "group": "array-constructor",
+    "case": "case007.json",
+    "expr": "[\"foo.bar\", foo.bar, [\"foo.baz\", foo.blah.baz]]"
+  },
+  {
+    "group": "array-constructor",
+    "case": "case008.json",
+    "expr": "[1, 2, 3][0]"
+  },
+  {
+    "group": "array-constructor",
+    "case": "case009.json",
+    "expr": "[1, 2, [3, 4]][-1]"
+  },
+  {
+    "group": "array-constructor",
+    "case": "case010.json",
+    "expr": "[1, 2, [3, 4]][-1][-1]"
+  },
+  {
+    "group": "array-constructor",
+    "case": "case011.json",
+    "expr": "foo.blah.baz.[fud, fud]"
+  },
+  {
+    "group": "array-constructor",
+    "case": "case012.json",
+    "expr": "foo.blah.baz.[[fud, fud]]"
+  },
+  {
+    "group": "array-constructor",
+    "case": "case013.json",
+    "expr": "foo.blah.[baz].fud"
+  },
+  {
+    "group": "array-constructor",
+    "case": "case014.json",
+    "expr": "foo.blah.[baz, buz].fud"
+  },
+  {
+    "group": "array-constructor",
+    "case": "case015.json",
+    "expr": "[Address, Other.\"Alternative.Address\"].City"
+  },
+  {
+    "group": "array-constructor",
+    "case": "case016.json",
+    "expr": "[Address, Other.`Alternative.Address`].City"
+  },
+  {
+    "group": "array-constructor",
+    "case": "case017.json",
+    "expr": "[0,1,2,3,4,5,6,7,8,9][$ % 2 = 0]"
+  },
+  {
+    "group": "array-constructor",
+    "case": "case018.json",
+    "expr": "[1, 2, 3].$"
+  },
+  {
+    "group": "blocks",
+    "case": "case000.json",
+    "expr": "()"
+  },
+  {
+    "group": "blocks",
+    "case": "case001.json",
+    "expr": "(1; 2; 3)"
+  },
+  {
+    "group": "blocks",
+    "case": "case002.json",
+    "expr": "(1; 2; 3;)"
+  },
+  {
+    "group": "blocks",
+    "case": "case003.json",
+    "expr": "($a:=1; $b:=2; $c:=($a:=4; $a+$b); $a+$c)"
+  },
+  {
+    "group": "blocks",
+    "case": "case004.json",
+    "expr": "Account.Order.Product.($var1 := Price ; $var2:=Quantity; $var1 * $var2)"
+  },
+  {
+    "group": "blocks",
+    "case": "case005.json",
+    "expr": "(  $func := function($arg) {$arg.Account.Order[0].OrderID};  $func($))"
+  },
+  {
+    "group": "blocks",
+    "case": "case006.json",
+    "expr": "(  $func := function($arg) {$arg.Account.Order[0]};  $func($).OrderID)"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case000.json",
+    "expr": "true"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case001.json",
+    "expr": "false"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case002.json",
+    "expr": "false or false"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case003.json",
+    "expr": "false or true"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case004.json",
+    "expr": "true or false"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case005.json",
+    "expr": "true or true"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case006.json",
+    "expr": "false and false"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case007.json",
+    "expr": "false and true"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case008.json",
+    "expr": "true and false"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case009.json",
+    "expr": "true and true"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case010.json",
+    "expr": "$not(false)"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case011.json",
+    "expr": "$not(true)"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case012.json",
+    "expr": "and=1 and or=2"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case013.json",
+    "expr": "and>1 or or<=2"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case014.json",
+    "expr": "and>1 or or!=2"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case015.json",
+    "expr": "and and and"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case016.json",
+    "expr": "$[].content.origin.$lowercase(name)"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case017.json",
+    "expr": "true or foo"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case018.json",
+    "expr": "foo or true"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case019.json",
+    "expr": "false or foo"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case020.json",
+    "expr": "foo or false"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case021.json",
+    "expr": "foo or bar"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case022.json",
+    "expr": "true and foo"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case023.json",
+    "expr": "foo and true"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case024.json",
+    "expr": "false and foo"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case025.json",
+    "expr": "foo and false"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case026.json",
+    "expr": "foo and bar"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case027.json",
+    "expr": "$not(nothing)"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case028.json",
+    "expr": "foo = '' or $number(foo) = 0"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case029.json",
+    "expr": "$type(data) = 'number' and data > 10"
+  },
+  {
+    "group": "boolean-expresssions",
+    "case": "case030.json",
+    "expr": "$type(age) = 'number' or $number(age) > 0"
+  },
+  {
+    "group": "closures",
+    "case": "case000.json",
+    "expr": "Account.(  $AccName := function() { $.\"Account Name\" };  Order[OrderID = \"order104\"].Product{    \"Account\": $AccName(),    \"SKU-\" & $string(ProductID): $.\"Product Name\"  } )"
+  },
+  {
+    "group": "closures",
+    "case": "case001.json",
+    "expr": "Account.(  $AccName := function() { `Account Name` };  Order[OrderID = \"order104\"].Product{    \"Account\": $AccName(),    \"SKU-\" & $string(ProductID): `Product Name`  } )"
+  },
+  {
+    "group": "coalescing-operator",
+    "case": "case000.json",
+    "expr": "bar ?? 42"
+  },
+  {
+    "group": "coalescing-operator",
+    "case": "case001.json",
+    "expr": "foo.bar ?? 98"
+  },
+  {
+    "group": "coalescing-operator",
+    "case": "case002.json",
+    "expr": "foo.blah[0].baz.fud ?? 98"
+  },
+  {
+    "group": "coalescing-operator",
+    "case": "case003.json",
+    "expr": "baz ?? 42"
+  },
+  {
+    "group": "coalescing-operator",
+    "case": "case004.json",
+    "expr": "foo.baz ?? 42"
+  },
+  {
+    "group": "coalescing-operator",
+    "case": "case005.json",
+    "expr": "foo.blah[9].baz.fud ?? 42"
+  },
+  {
+    "group": "coalescing-operator",
+    "case": "case006.json",
+    "expr": "null ?? 42"
+  },
+  {
+    "group": "coalescing-operator",
+    "case": "case007.json",
+    "expr": "false ?? 42"
+  },
+  {
+    "group": "coalescing-operator",
+    "case": "case008.json",
+    "expr": "true ?? 42"
+  },
+  {
+    "group": "coalescing-operator",
+    "case": "case009.json",
+    "expr": "0 ?? 42"
+  },
+  {
+    "group": "coalescing-operator",
+    "case": "case010.json",
+    "expr": "[] ?? 42"
+  },
+  {
+    "group": "coalescing-operator",
+    "case": "case011.json",
+    "expr": "{} ?? 42"
+  },
+  {
+    "group": "coalescing-operator",
+    "case": "case012.json",
+    "expr": "\"\" ?? 42"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case000.json",
+    "expr": "3>-3"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case001.json",
+    "expr": "3>3"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case002.json",
+    "expr": "3=3"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case003.json",
+    "expr": "\"3\"=\"3\""
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case004.json",
+    "expr": "\"3\"=3"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case005.json",
+    "expr": "\"hello\" = \"hello\""
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case006.json",
+    "expr": "\"hello\" != \"world\""
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case007.json",
+    "expr": "\"hello\" < \"world\""
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case008.json",
+    "expr": "\"32\" < 42"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case009.json",
+    "expr": "null <= \"world\""
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case010.json",
+    "expr": "3 >= true"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case011.json",
+    "expr": "foo.bar > bar"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case012.json",
+    "expr": "foo.bar >= bar"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case013.json",
+    "expr": "foo.bar<bar"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case014.json",
+    "expr": "foo.bar<=bar"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case015.json",
+    "expr": "bar>foo.bar"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case016.json",
+    "expr": "bar < foo.bar"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case017.json",
+    "expr": "foo.bar = bar"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case018.json",
+    "expr": "foo.bar!= bar"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case019.json",
+    "expr": "bar = foo.bar + 56"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case020.json",
+    "expr": "bar !=foo.bar + 56"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case021.json",
+    "expr": "foo.blah.baz[fud = \"hello\"]"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case022.json",
+    "expr": "foo.blah.baz[fud != \"world\"]"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case023.json",
+    "expr": "Account.Order.Product[Price > 30].Price"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case024.json",
+    "expr": "Account.Order.Product.Price[$<=35]"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case025.json",
+    "expr": "false > 1"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case026.json",
+    "expr": "false > $x"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case027.json",
+    "expr": "3 > $x"
+  },
+  {
+    "group": "comparison-operators",
+    "case": "case028.json",
+    "expr": "$x <= 'hello'"
+  },
+  {
+    "group": "conditionals",
+    "case": "case000.json",
+    "expr": "[\"Red\"[$$=\"Bus\"], \"White\"[$$=\"Police Car\"]][0]"
+  },
+  {
+    "group": "conditionals",
+    "case": "case003.json",
+    "expr": "$lookup({\"Bus\": \"Red\", \"Police Car\": \"White\"}, $$)"
+  },
+  {
+    "group": "conditionals",
+    "case": "case006.json",
+    "expr": "Account.Order.Product.(Price < 30 ? \"Cheap\")"
+  },
+  {
+    "group": "conditionals",
+    "case": "case007.json",
+    "expr": "Account.Order.Product.(Price < 30 ? \"Cheap\" : \"Expensive\")"
+  },
+  {
+    "group": "conditionals",
+    "case": "case008.json",
+    "expr": "Account.Order.Product.(Price < 30 ? \"Cheap\" : Price < 100 ? \"Expensive\" : \"Rip off\")"
+  },
+  {
+    "group": "context",
+    "case": "case000.json",
+    "expr": "$number()"
+  },
+  {
+    "group": "context",
+    "case": "case001.json",
+    "expr": "[1..5].$string()"
+  },
+  {
+    "group": "context",
+    "case": "case002.json",
+    "expr": "[1..5].(\"Item \" & $string())"
+  },
+  {
+    "group": "context",
+    "case": "case003.json",
+    "expr": "Account.Order.Product.\"Product Name\".$uppercase().$substringBefore(\" \")"
+  },
+  {
+    "group": "default-operator",
+    "case": "case000.json",
+    "expr": "true ?: 42"
+  },
+  {
+    "group": "default-operator",
+    "case": "case001.json",
+    "expr": "false ?: 42"
+  },
+  {
+    "group": "default-operator",
+    "case": "case002.json",
+    "expr": "1 ?: 42"
+  },
+  {
+    "group": "default-operator",
+    "case": "case003.json",
+    "expr": "0 ?: 42"
+  },
+  {
+    "group": "default-operator",
+    "case": "case004.json",
+    "expr": "\"hello\" ?: 42"
+  },
+  {
+    "group": "default-operator",
+    "case": "case005.json",
+    "expr": "\"\" ?: 42"
+  },
+  {
+    "group": "default-operator",
+    "case": "case006.json",
+    "expr": "[1] ?: 42"
+  },
+  {
+    "group": "default-operator",
+    "case": "case007.json",
+    "expr": "[0] ?: 42"
+  },
+  {
+    "group": "default-operator",
+    "case": "case008.json",
+    "expr": "[] ?: 42"
+  },
+  {
+    "group": "default-operator",
+    "case": "case009.json",
+    "expr": "{ \"a\": 1 } ?: 42"
+  },
+  {
+    "group": "default-operator",
+    "case": "case010.json",
+    "expr": "{} ?: 42"
+  },
+  {
+    "group": "default-operator",
+    "case": "case011.json",
+    "expr": "function(){true} ?: 42"
+  },
+  {
+    "group": "default-operator",
+    "case": "case012.json",
+    "expr": "Account.blah ?: 42"
+  },
+  {
+    "group": "descendent-operator",
+    "case": "case000.json",
+    "expr": "foo.**.blah"
+  },
+  {
+    "group": "descendent-operator",
+    "case": "case001.json",
+    "expr": "foo.**.baz"
+  },
+  {
+    "group": "descendent-operator",
+    "case": "case002.json",
+    "expr": "foo.**.fud"
+  },
+  {
+    "group": "descendent-operator",
+    "case": "case003.json",
+    "expr": "\"foo\".**.fud"
+  },
+  {
+    "group": "descendent-operator",
+    "case": "case004.json",
+    "expr": "foo.**.\"fud\""
+  },
+  {
+    "group": "descendent-operator",
+    "case": "case005.json",
+    "expr": "\"foo\".**.\"fud\""
+  },
+  {
+    "group": "descendent-operator",
+    "case": "case006.json",
+    "expr": "foo.*.**.fud"
+  },
+  {
+    "group": "descendent-operator",
+    "case": "case007.json",
+    "expr": "foo.**.*.fud"
+  },
+  {
+    "group": "descendent-operator",
+    "case": "case008.json",
+    "expr": "Account.Order.**.Colour"
+  },
+  {
+    "group": "descendent-operator",
+    "case": "case009.json",
+    "expr": "foo.**.fud[0]"
+  },
+  {
+    "group": "descendent-operator",
+    "case": "case010.json",
+    "expr": "(foo.**.fud)[0]"
+  },
+  {
+    "group": "descendent-operator",
+    "case": "case011.json",
+    "expr": "(**.fud)[0]"
+  },
+  {
+    "group": "descendent-operator",
+    "case": "case012.json",
+    "expr": "**.Price"
+  },
+  {
+    "group": "descendent-operator",
+    "case": "case013.json",
+    "expr": "**.Price[0]"
+  },
+  {
+    "group": "descendent-operator",
+    "case": "case014.json",
+    "expr": "(**.Price)[0]"
+  },
+  {
+    "group": "descendent-operator",
+    "case": "case015.json",
+    "expr": "Account.Order.blah.**"
+  },
+  {
+    "group": "descendent-operator",
+    "case": "case016.json",
+    "expr": "**"
+  },
+  {
+    "group": "encoding",
+    "case": "case000.json",
+    "expr": "$base64encode(\"hello:world\")"
+  },
+  {
+    "group": "encoding",
+    "case": "case001.json",
+    "expr": "$base64encode()"
+  },
+  {
+    "group": "encoding",
+    "case": "case002.json",
+    "expr": "$base64decode(\"aGVsbG86d29ybGQ=\")"
+  },
+  {
+    "group": "encoding",
+    "case": "case003.json",
+    "expr": "$base64decode()"
+  },
+  {
+    "group": "errors",
+    "case": "case000.json",
+    "expr": "\"s\" - 1"
+  },
+  {
+    "group": "errors",
+    "case": "case001.json",
+    "expr": "1 + null"
+  },
+  {
+    "group": "errors",
+    "case": "case002.json",
+    "expr": "\"no closing quote"
+  },
+  {
+    "group": "errors",
+    "case": "case003.json",
+    "expr": "`no closing backtick"
+  },
+  {
+    "group": "errors",
+    "case": "case004.json",
+    "expr": "- \"s\""
+  },
+  {
+    "group": "errors",
+    "case": "case005.json",
+    "expr": "unknown(function)"
+  },
+  {
+    "group": "errors",
+    "case": "case006.json",
+    "expr": "sum(Account.Order.OrderID)"
+  },
+  {
+    "group": "errors",
+    "case": "case007.json",
+    "expr": "[1,2)"
+  },
+  {
+    "group": "errors",
+    "case": "case008.json",
+    "expr": "[1:2]"
+  },
+  {
+    "group": "errors",
+    "case": "case009.json",
+    "expr": "$replace(\"foo\", \"o, \"rr\")"
+  },
+  {
+    "group": "errors",
+    "case": "case010.json",
+    "expr": "[1!2]"
+  },
+  {
+    "group": "errors",
+    "case": "case011.json",
+    "expr": "@ bar"
+  },
+  {
+    "group": "errors",
+    "case": "case012.json",
+    "expr": "2(blah)"
+  },
+  {
+    "group": "errors",
+    "case": "case013.json",
+    "expr": "2()"
+  },
+  {
+    "group": "errors",
+    "case": "case014.json",
+    "expr": "3(?)"
+  },
+  {
+    "group": "errors",
+    "case": "case015.json",
+    "expr": "1="
+  },
+  {
+    "group": "errors",
+    "case": "case016.json",
+    "expr": "function(x){$x}(3)"
+  },
+  {
+    "group": "errors",
+    "case": "case017.json",
+    "expr": "x:=1"
+  },
+  {
+    "group": "errors",
+    "case": "case018.json",
+    "expr": "2:=1"
+  },
+  {
+    "group": "errors",
+    "case": "case019.json",
+    "expr": "$foo()"
+  },
+  {
+    "group": "errors",
+    "case": "case020.json",
+    "expr": "55=>5"
+  },
+  {
+    "group": "errors",
+    "case": "case021.json",
+    "expr": "Ssum(:)"
+  },
+  {
+    "group": "errors",
+    "case": "case022.json",
+    "expr": "[1,2,3]{\"num\": $}[true]"
+  },
+  {
+    "group": "errors",
+    "case": "case023.json",
+    "expr": "[1,2,3]{\"num\": $}{\"num\": $}"
+  },
+  {
+    "group": "errors",
+    "case": "case024.json",
+    "expr": "Account.Order[0].Product;"
+  },
+  {
+    "group": "errors",
+    "case": "case025.json",
+    "expr": "( $A := function(){$min(2, 3)}; $A() )"
+  },
+  {
+    "group": "errors",
+    "case": "case026.json",
+    "expr": "( $B := function(){''}; $A := function(){2 + $B()}; $A() )"
+  },
+  {
+    "group": "fields",
+    "case": "case000.json",
+    "expr": "foo.bar"
+  },
+  {
+    "group": "fields",
+    "case": "case001.json",
+    "expr": "foo.blah"
+  },
+  {
+    "group": "fields",
+    "case": "case002.json",
+    "expr": "foo.blah.bazz"
+  },
+  {
+    "group": "fields",
+    "case": "case003.json",
+    "expr": "foo.blah.baz"
+  },
+  {
+    "group": "fields",
+    "case": "case004.json",
+    "expr": "foo.blah.baz.fud"
+  },
+  {
+    "group": "fields",
+    "case": "case005.json",
+    "expr": "Other.Misc"
+  },
+  {
+    "group": "fields",
+    "case": "case006.json",
+    "expr": "bazz"
+  },
+  {
+    "group": "fields",
+    "case": "case007.json",
+    "expr": "fud"
+  },
+  {
+    "group": "flattening",
+    "case": "case000.json",
+    "expr": "Account.Order.[Product.Price]"
+  },
+  {
+    "group": "flattening",
+    "case": "case001.json",
+    "expr": "$.nest0"
+  },
+  {
+    "group": "flattening",
+    "case": "case002.json",
+    "expr": "nest0"
+  },
+  {
+    "group": "flattening",
+    "case": "case003.json",
+    "expr": "$[0]"
+  },
+  {
+    "group": "flattening",
+    "case": "case004.json",
+    "expr": "$[1]"
+  },
+  {
+    "group": "flattening",
+    "case": "case005.json",
+    "expr": "$[-1]"
+  },
+  {
+    "group": "flattening",
+    "case": "case006.json",
+    "expr": "$[0].nest0"
+  },
+  {
+    "group": "flattening",
+    "case": "case007.json",
+    "expr": "$[1].nest0"
+  },
+  {
+    "group": "flattening",
+    "case": "case008.json",
+    "expr": "$[0].nest0[0]"
+  },
+  {
+    "group": "flattening",
+    "case": "case009.json",
+    "expr": "nest0.[nest1.[nest2.[nest3]]]"
+  },
+  {
+    "group": "flattening",
+    "case": "case010.json",
+    "expr": "nest0.nest1.[nest2.[nest3]]"
+  },
+  {
+    "group": "flattening",
+    "case": "case011.json",
+    "expr": "nest0.[nest1.nest2.[nest3]]"
+  },
+  {
+    "group": "flattening",
+    "case": "case012.json",
+    "expr": "nest0.[nest1.[nest2.nest3]]"
+  },
+  {
+    "group": "flattening",
+    "case": "case013.json",
+    "expr": "nest0.[nest1.nest2.nest3]"
+  },
+  {
+    "group": "flattening",
+    "case": "case014.json",
+    "expr": "nest0.nest1.[nest2.nest3]"
+  },
+  {
+    "group": "flattening",
+    "case": "case015.json",
+    "expr": "nest0.nest1.nest2.[nest3]"
+  },
+  {
+    "group": "flattening",
+    "case": "case016.json",
+    "expr": "nest0.nest1.nest2.nest3"
+  },
+  {
+    "group": "flattening",
+    "case": "case025.json",
+    "expr": "{\"a\": 1 }.a"
+  },
+  {
+    "group": "flattening",
+    "case": "case026.json",
+    "expr": "a"
+  },
+  {
+    "group": "flattening",
+    "case": "case027.json",
+    "expr": "{\"a\": [1] }.a"
+  },
+  {
+    "group": "flattening",
+    "case": "case029.json",
+    "expr": "{\"a\": [[1]] }.a"
+  },
+  {
+    "group": "flattening",
+    "case": "case031.json",
+    "expr": "[{\"a\":[1,2]}, {\"a\":[3]}].a"
+  },
+  {
+    "group": "flattening",
+    "case": "case033.json",
+    "expr": "[{\"a\":[{\"b\":[1]}, {\"b\":[2]}]}, {\"a\":[{\"b\":[3]}, {\"b\":[4]}]}].a[0].b"
+  },
+  {
+    "group": "flattening",
+    "case": "case034.json",
+    "expr": "a[0].b"
+  },
+  {
+    "group": "flattening",
+    "case": "case034a.json",
+    "expr": "$.a[0].b"
+  },
+  {
+    "group": "flattening",
+    "case": "case035.json",
+    "expr": "a.b[0]"
+  },
+  {
+    "group": "flattening",
+    "case": "case036.json",
+    "expr": "Phone[type=\"mobile\"].number"
+  },
+  {
+    "group": "flattening",
+    "case": "case037.json",
+    "expr": "Phone[type=\"mobile\"][].number"
+  },
+  {
+    "group": "flattening",
+    "case": "case038.json",
+    "expr": "Phone[][type=\"mobile\"].number"
+  },
+  {
+    "group": "flattening",
+    "case": "case039.json",
+    "expr": "Phone[type=\"office\"][].number"
+  },
+  {
+    "group": "flattening",
+    "case": "case040.json",
+    "expr": "Phone{type: number}"
+  },
+  {
+    "group": "flattening",
+    "case": "case041.json",
+    "expr": "Phone{type: number[]}"
+  },
+  {
+    "group": "flattening",
+    "case": "case042.json",
+    "expr": "$[type='command'][]"
+  },
+  {
+    "group": "flattening",
+    "case": "case043.json",
+    "expr": "$[][type='command']"
+  },
+  {
+    "group": "flattening",
+    "case": "case044.json",
+    "expr": "$filter($, function($e) { $e != 0 })[]"
+  },
+  {
+    "group": "flattening",
+    "case": "case045.json",
+    "expr": "$.tags[title='example'][]"
+  },
+  {
+    "group": "function-abs",
+    "case": "case000.json",
+    "expr": "$abs(3.7)"
+  },
+  {
+    "group": "function-abs",
+    "case": "case001.json",
+    "expr": "$abs(-3.7)"
+  },
+  {
+    "group": "function-abs",
+    "case": "case002.json",
+    "expr": "$abs(0)"
+  },
+  {
+    "group": "function-abs",
+    "case": "case003.json",
+    "expr": "$abs(nothing)"
+  },
+  {
+    "group": "function-append",
+    "case": "case000.json",
+    "expr": "$append([1,2], [3,4])"
+  },
+  {
+    "group": "function-append",
+    "case": "case001.json",
+    "expr": "$append(1, [3,4])"
+  },
+  {
+    "group": "function-append",
+    "case": "case002.json",
+    "expr": "$append(1,2)"
+  },
+  {
+    "group": "function-append",
+    "case": "case003.json",
+    "expr": "$append(1,notexist)"
+  },
+  {
+    "group": "function-append",
+    "case": "case004.json",
+    "expr": "$append(notexist, [2,3,4])"
+  },
+  {
+    "group": "function-append",
+    "case": "case005.json",
+    "expr": "($append($data.a, [2]); $data.a)"
+  },
+  {
+    "group": "function-applications",
+    "case": "case000.json",
+    "expr": "Account.Order[0].OrderID ~> $uppercase()"
+  },
+  {
+    "group": "function-applications",
+    "case": "case001.json",
+    "expr": "Account.Order[0].OrderID ~> $uppercase() ~> $lowercase()"
+  },
+  {
+    "group": "function-applications",
+    "case": "case002.json",
+    "expr": "Account.Order.OrderID ~> $join()"
+  },
+  {
+    "group": "function-applications",
+    "case": "case003.json",
+    "expr": "Account.Order.OrderID ~> $join(\", \")"
+  },
+  {
+    "group": "function-applications",
+    "case": "case004.json",
+    "expr": "Account.Order.Product.(Price * Quantity) ~> $sum()"
+  },
+  {
+    "group": "function-applications",
+    "case": "case005.json",
+    "expr": "( $uppertrim := $trim ~> $uppercase;  $uppertrim(\"   Hello    World   \") )"
+  },
+  {
+    "group": "function-applications",
+    "case": "case006.json",
+    "expr": "\"john@example.com\" ~> $substringAfter(\"@\") ~> $substringBefore(\".\") "
+  },
+  {
+    "group": "function-applications",
+    "case": "case007.json",
+    "expr": "\"\" ~> $substringAfter(\"@\") ~> $substringBefore(\".\") "
+  },
+  {
+    "group": "function-applications",
+    "case": "case008.json",
+    "expr": "foo ~> $substringAfter(\"@\") ~> $substringBefore(\".\") "
+  },
+  {
+    "group": "function-applications",
+    "case": "case009.json",
+    "expr": "( $domain := $substringAfter(?,\"@\") ~> $substringBefore(?,\".\"); $domain(\"john@example.com\") )"
+  },
+  {
+    "group": "function-applications",
+    "case": "case010.json",
+    "expr": "( $square := function($x){$x*$x}; [1..5] ~> $map($square) ) "
+  },
+  {
+    "group": "function-applications",
+    "case": "case011.json",
+    "expr": "( $square := function($x){$x*$x}; [1..5] ~> $map($square) ~> $sum() ) "
+  },
+  {
+    "group": "function-applications",
+    "case": "case012.json",
+    "expr": "($betweenBackets := $substringAfter(?, \"(\") ~> $substringBefore(?, \")\");$betweenBackets(\"test(foo)bar\")) "
+  },
+  {
+    "group": "function-applications",
+    "case": "case013.json",
+    "expr": "($square := function($x){$x*$x};$chain := λ($f, $g){λ($x){$g($f($x))}};$instructions := [$sum, $square];$sumsq := $instructions ~> $reduce($chain);[1..5] ~> $sumsq()) "
+  },
+  {
+    "group": "function-applications",
+    "case": "case014.json",
+    "expr": "($square := function($x){$x*$x};$chain := λ($f, $g){λ($x){ $x ~> $f ~> $g }};$instructions := [$sum, $square, $string];$sumsq := $instructions ~> $reduce($chain);[1..5] ~> $sumsq()) "
+  },
+  {
+    "group": "function-applications",
+    "case": "case015.json",
+    "expr": "($square := function($x){$x*$x};$instructions := $sum ~> $square;[1..5] ~> $instructions())  "
+  },
+  {
+    "group": "function-applications",
+    "case": "case016.json",
+    "expr": "($square := function($x){$x*$x};$sum_of_squares := $map(?, $square) ~> $sum;[1..5] ~> $sum_of_squares())  "
+  },
+  {
+    "group": "function-applications",
+    "case": "case017.json",
+    "expr": "($times := λ($x, $y) { $x * $y };$product := $reduce(?, $times);$square := function($x){$x*$x};$product_of_squares := $map(?, $square) ~> $product;[1..5] ~> $product_of_squares())"
+  },
+  {
+    "group": "function-applications",
+    "case": "case018.json",
+    "expr": "($square := function($x){$x*$x};[1..5] ~> $map($square) ~> $reduce(λ($x, $y) { $x * $y });)"
+  },
+  {
+    "group": "function-applications",
+    "case": "case019.json",
+    "expr": "($prices := Account.Order.Product.Price;$quantities := Account.Order.Product.Quantity;$product := λ($arr) { $arr[0] * $arr[1] };$zip($prices, $quantities) ~> $map($product) ~> $sum())"
+  },
+  {
+    "group": "function-applications",
+    "case": "case020.json",
+    "expr": "42 ~> \"hello\""
+  },
+  {
+    "group": "function-applications",
+    "case": "case021.json",
+    "expr": "Account.Order.Product[$.\"Product Name\" ~> /hat/i].ProductID"
+  },
+  {
+    "group": "function-assert",
+    "case": "case000.json",
+    "expr": "$assert(Account.Order[0].Product[0].Price < 34, 'Too Expensive')"
+  },
+  {
+    "group": "function-assert",
+    "case": "case001.json",
+    "expr": "$assert(Account.Order[0].Product[0].Price < 35, 'Too Expensive')"
+  },
+  {
+    "group": "function-assert",
+    "case": "case002.json",
+    "expr": "($assert(Account.Order[0].Product[0].Price < 35, 'Too Expensive'); Account.Order[0].Product[0].Price)"
+  },
+  {
+    "group": "function-assert",
+    "case": "case003.json",
+    "expr": "($assert(Account.Order[0].Product[0].Price < 34, 'Too Expensive'); Account.Order[0].Product[0].Price)"
+  },
+  {
+    "group": "function-assert",
+    "case": "case004.json",
+    "expr": "$assert(null)"
+  },
+  {
+    "group": "function-assert",
+    "case": "case005.json",
+    "expr": "$assert(5)"
+  },
+  {
+    "group": "function-assert",
+    "case": "case006.json",
+    "expr": "$assert(false)"
+  },
+  {
+    "group": "function-assert",
+    "case": "case007.json",
+    "expr": "$assert(true)"
+  },
+  {
+    "group": "function-average",
+    "case": "case000.json",
+    "expr": "$average(Account.Order.Product.(Price * Quantity))"
+  },
+  {
+    "group": "function-average",
+    "case": "case001.json",
+    "expr": "Account.Order.$average(Product.(Price * Quantity))"
+  },
+  {
+    "group": "function-average",
+    "case": "case002.json",
+    "expr": "Account.Order.(OrderID & \": \" & $average(Product.(Price*Quantity)))"
+  },
+  {
+    "group": "function-average",
+    "case": "case003.json",
+    "expr": "$average([])"
+  },
+  {
+    "group": "function-average",
+    "case": "case004.json",
+    "expr": "$average([1,2,3])"
+  },
+  {
+    "group": "function-average",
+    "case": "case005.json",
+    "expr": "$average([\"1\",\"2\",\"3\"])"
+  },
+  {
+    "group": "function-average",
+    "case": "case006.json",
+    "expr": "$average([\"1\",\"2\",3])"
+  },
+  {
+    "group": "function-average",
+    "case": "case007.json",
+    "expr": "$average(1)"
+  },
+  {
+    "group": "function-average",
+    "case": "case008.json",
+    "expr": "$average([],[])"
+  },
+  {
+    "group": "function-average",
+    "case": "case009.json",
+    "expr": "$average([1,2,3],[])"
+  },
+  {
+    "group": "function-average",
+    "case": "case010.json",
+    "expr": "$average([],[],[])"
+  },
+  {
+    "group": "function-average",
+    "case": "case011.json",
+    "expr": "$average([1,2],[],[])"
+  },
+  {
+    "group": "function-average",
+    "case": "case012.json",
+    "expr": "$average(undefined)"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case000.json",
+    "expr": "$boolean(\"Hello World\")"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case001.json",
+    "expr": "$boolean(\"\")"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case002.json",
+    "expr": "$boolean(true)"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case003.json",
+    "expr": "$boolean(false)"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case004.json",
+    "expr": "$boolean(0)"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case005.json",
+    "expr": "$boolean(10)"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case006.json",
+    "expr": "$boolean(-0.5)"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case007.json",
+    "expr": "$boolean(null)"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case008.json",
+    "expr": "$boolean([])"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case009.json",
+    "expr": "$boolean([0])"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case010.json",
+    "expr": "$boolean([1])"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case011.json",
+    "expr": "$boolean([1,2,3])"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case012.json",
+    "expr": "$boolean([0,0])"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case013.json",
+    "expr": "$boolean([[]])"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case014.json",
+    "expr": "$boolean([[null]])"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case015.json",
+    "expr": "$boolean([[[true]]])"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case016.json",
+    "expr": "$boolean({})"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case017.json",
+    "expr": "$boolean({\"hello\":\"world\"})"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case018.json",
+    "expr": "$boolean(Account)"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case019.json",
+    "expr": "$boolean(Account.Order.Product.Price)"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case020.json",
+    "expr": "$boolean(Account.blah)"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case021.json",
+    "expr": "$boolean($boolean)"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case022.json",
+    "expr": "$boolean(function(){true})"
+  },
+  {
+    "group": "function-boolean",
+    "case": "case023.json",
+    "expr": "$boolean(2,3)"
+  },
+  {
+    "group": "function-ceil",
+    "case": "case000.json",
+    "expr": "$ceil(3.7)"
+  },
+  {
+    "group": "function-ceil",
+    "case": "case001.json",
+    "expr": "$ceil(-3.7)"
+  },
+  {
+    "group": "function-ceil",
+    "case": "case002.json",
+    "expr": "$ceil(0)"
+  },
+  {
+    "group": "function-ceil",
+    "case": "case003.json",
+    "expr": "$ceil(nothing)"
+  },
+  {
+    "group": "function-contains",
+    "case": "case000.json",
+    "expr": "$contains(\"Hello World\", \"lo\")"
+  },
+  {
+    "group": "function-contains",
+    "case": "case001.json",
+    "expr": "$contains(\"Hello World\", \"World\")"
+  },
+  {
+    "group": "function-contains",
+    "case": "case002.json",
+    "expr": "$contains(\"Hello World\", \"world\")"
+  },
+  {
+    "group": "function-contains",
+    "case": "case003.json",
+    "expr": "$contains(\"Hello World\", \"Word\")"
+  },
+  {
+    "group": "function-contains",
+    "case": "case004.json",
+    "expr": "$contains(nothing, \"World\")"
+  },
+  {
+    "group": "function-contains",
+    "case": "case005.json",
+    "expr": "$contains(23, 3)"
+  },
+  {
+    "group": "function-contains",
+    "case": "case006.json",
+    "expr": "$contains(\"23\", 3)"
+  },
+  {
+    "group": "function-count",
+    "case": "case000.json",
+    "expr": "$count(Account.Order.Product.(Price * Quantity))"
+  },
+  {
+    "group": "function-count",
+    "case": "case001.json",
+    "expr": "Account.Order.$count(Product.(Price * Quantity))"
+  },
+  {
+    "group": "function-count",
+    "case": "case002.json",
+    "expr": "Account.Order.(OrderID & \": \" & $count(Product.(Price*Quantity)))"
+  },
+  {
+    "group": "function-count",
+    "case": "case003.json",
+    "expr": "$count([])"
+  },
+  {
+    "group": "function-count",
+    "case": "case004.json",
+    "expr": "$count([1,2,3])"
+  },
+  {
+    "group": "function-count",
+    "case": "case005.json",
+    "expr": "$count([\"1\",\"2\",\"3\"])"
+  },
+  {
+    "group": "function-count",
+    "case": "case006.json",
+    "expr": "$count([\"1\",\"2\",3])"
+  },
+  {
+    "group": "function-count",
+    "case": "case007.json",
+    "expr": "$count(1)"
+  },
+  {
+    "group": "function-count",
+    "case": "case008.json",
+    "expr": "$count([],[])"
+  },
+  {
+    "group": "function-count",
+    "case": "case009.json",
+    "expr": "$count([1,2,3],[])"
+  },
+  {
+    "group": "function-count",
+    "case": "case010.json",
+    "expr": "$count([],[],[])"
+  },
+  {
+    "group": "function-count",
+    "case": "case011.json",
+    "expr": "$count([1,2],[],[])"
+  },
+  {
+    "group": "function-count",
+    "case": "case012.json",
+    "expr": "$count(undefined)"
+  },
+  {
+    "group": "function-count",
+    "case": "case013.json",
+    "expr": "$count([1,2,3,4]) / 2"
+  },
+  {
+    "group": "function-decodeUrl",
+    "case": "case000.json",
+    "expr": "$decodeUrl(\"https://mozilla.org/?x=%D1%88%D0%B5%D0%BB%D0%BB%D1%8B\")"
+  },
+  {
+    "group": "function-decodeUrl",
+    "case": "case001.json",
+    "expr": "$decodeUrl(blah)"
+  },
+  {
+    "group": "function-decodeUrl",
+    "case": "case002.json",
+    "expr": "$decodeUrl('%E0%A4%A')"
+  },
+  {
+    "group": "function-decodeUrlComponent",
+    "case": "case000.json",
+    "expr": "$decodeUrlComponent(\"%3Fx%3Dtest\")"
+  },
+  {
+    "group": "function-decodeUrlComponent",
+    "case": "case001.json",
+    "expr": "$decodeUrlComponent(blah)"
+  },
+  {
+    "group": "function-decodeUrlComponent",
+    "case": "case002.json",
+    "expr": "$decodeUrlComponent('%E0%A4%A')"
+  },
+  {
+    "group": "function-each",
+    "case": "case000.json",
+    "expr": "$each(Address, λ($v, $k) {$k & \": \" & $v})"
+  },
+  {
+    "group": "function-each",
+    "case": "case001.json",
+    "expr": "$each({'a': 'hello', 'b': 'world'}, $uppercase)"
+  },
+  {
+    "group": "function-each",
+    "case": "case002.json",
+    "expr": "$each(function($v, $k) {$k[$v>2]})"
+  },
+  {
+    "group": "function-encodeUrl",
+    "case": "case000.json",
+    "expr": "$encodeUrl(\"https://mozilla.org/?x=шеллы\")"
+  },
+  {
+    "group": "function-encodeUrl",
+    "case": "case001.json",
+    "expr": "$encodeUrl(blah)"
+  },
+  {
+    "group": "function-encodeUrl",
+    "case": "case002.json",
+    "expr": "$encodeUrl('\ud800')"
+  },
+  {
+    "group": "function-encodeUrlComponent",
+    "case": "case000.json",
+    "expr": "$encodeUrlComponent(\"?x=test\")"
+  },
+  {
+    "group": "function-encodeUrlComponent",
+    "case": "case001.json",
+    "expr": "$encodeUrlComponent(blah)"
+  },
+  {
+    "group": "function-encodeUrlComponent",
+    "case": "case002.json",
+    "expr": "$encodeUrlComponent('\ud800')"
+  },
+  {
+    "group": "function-error",
+    "case": "case000.json",
+    "expr": "Account.Order[0].Product[0].Price > 35 ? Account.Order[0].Product[0].Price : $error('Too Expensive')"
+  },
+  {
+    "group": "function-error",
+    "case": "case001.json",
+    "expr": "Account.Order[0].Product[0].Price > 34 ? Account.Order[0].Product[0].Price : $error('Too Expensive')"
+  },
+  {
+    "group": "function-error",
+    "case": "case002.json",
+    "expr": "Account.Order[0].Product[0].Price > 35 ? $error('Too Expensive') : Account.Order[0].Product[0].Price"
+  },
+  {
+    "group": "function-error",
+    "case": "case003.json",
+    "expr": "Account.Order[0].Product[0].Price > 34 ? $error('Too Expensive') : Account.Order[0].Product[0].Price"
+  },
+  {
+    "group": "function-error",
+    "case": "case004.json",
+    "expr": "$count(Account.Order[0].Product) < 2 ? $error('Not enough products in orders')"
+  },
+  {
+    "group": "function-error",
+    "case": "case005.json",
+    "expr": "$count(Account.Order[0].Product) < 3 ? $error('Not enough products in orders')"
+  },
+  {
+    "group": "function-error",
+    "case": "case006.json",
+    "expr": "($msg:='My Message'; $error($msg); true)"
+  },
+  {
+    "group": "function-error",
+    "case": "case007.json",
+    "expr": "$error(null)"
+  },
+  {
+    "group": "function-error",
+    "case": "case008.json",
+    "expr": "$error(5)"
+  },
+  {
+    "group": "function-error",
+    "case": "case009.json",
+    "expr": "$error()"
+  },
+  {
+    "group": "function-error",
+    "case": "case010.json",
+    "expr": "$error(foo)"
+  },
+  {
+    "group": "function-eval",
+    "case": "case000.json",
+    "expr": "$eval('[1,2,3]')"
+  },
+  {
+    "group": "function-eval",
+    "case": "case001.json",
+    "expr": "$eval(nothing)"
+  },
+  {
+    "group": "function-eval",
+    "case": "case002.json",
+    "expr": "$eval('[1,$string(2),3]')"
+  },
+  {
+    "group": "function-eval",
+    "case": "case003.json",
+    "expr": "$eval('Account.Order.Product.Quantity ~> $sum()')"
+  },
+  {
+    "group": "function-eval",
+    "case": "case004.json",
+    "expr": "Account.Order.Product.{'Name': `Product Name`, 'Total': $eval('Price * Quantity')}"
+  },
+  {
+    "group": "function-eval",
+    "case": "case005.json",
+    "expr": "Account.Order.Product.{'Name': `Product Name`, 'Volume': $eval('Width*Height*Depth', Description)}"
+  },
+  {
+    "group": "function-eval",
+    "case": "case006.json",
+    "expr": "$eval('[1,string(2),3]')"
+  },
+  {
+    "group": "function-eval",
+    "case": "case007.json",
+    "expr": "$eval('[1,#string(2),3]')"
+  },
+  {
+    "group": "function-exists",
+    "case": "case000.json",
+    "expr": "$exists(\"Hello World\")"
+  },
+  {
+    "group": "function-exists",
+    "case": "case001.json",
+    "expr": "$exists(\"\")"
+  },
+  {
+    "group": "function-exists",
+    "case": "case002.json",
+    "expr": "$exists(true)"
+  },
+  {
+    "group": "function-exists",
+    "case": "case003.json",
+    "expr": "$exists(false)"
+  },
+  {
+    "group": "function-exists",
+    "case": "case004.json",
+    "expr": "$exists(0)"
+  },
+  {
+    "group": "function-exists",
+    "case": "case005.json",
+    "expr": "$exists(-0.5)"
+  },
+  {
+    "group": "function-exists",
+    "case": "case006.json",
+    "expr": "$exists(null)"
+  },
+  {
+    "group": "function-exists",
+    "case": "case007.json",
+    "expr": "$exists([])"
+  },
+  {
+    "group": "function-exists",
+    "case": "case008.json",
+    "expr": "$exists([0])"
+  },
+  {
+    "group": "function-exists",
+    "case": "case009.json",
+    "expr": "$exists([1,2,3])"
+  },
+  {
+    "group": "function-exists",
+    "case": "case010.json",
+    "expr": "$exists([[]])"
+  },
+  {
+    "group": "function-exists",
+    "case": "case011.json",
+    "expr": "$exists([[null]])"
+  },
+  {
+    "group": "function-exists",
+    "case": "case012.json",
+    "expr": "$exists([[[true]]])"
+  },
+  {
+    "group": "function-exists",
+    "case": "case013.json",
+    "expr": "$exists({})"
+  },
+  {
+    "group": "function-exists",
+    "case": "case014.json",
+    "expr": "$exists({\"hello\":\"world\"})"
+  },
+  {
+    "group": "function-exists",
+    "case": "case015.json",
+    "expr": "$exists(Account)"
+  },
+  {
+    "group": "function-exists",
+    "case": "case016.json",
+    "expr": "$exists(Account.Order.Product.Price)"
+  },
+  {
+    "group": "function-exists",
+    "case": "case017.json",
+    "expr": "$exists($exists)"
+  },
+  {
+    "group": "function-exists",
+    "case": "case018.json",
+    "expr": "$exists(function(){true})"
+  },
+  {
+    "group": "function-exists",
+    "case": "case019.json",
+    "expr": "$exists(blah)"
+  },
+  {
+    "group": "function-exists",
+    "case": "case020.json",
+    "expr": "$exists(Account.blah)"
+  },
+  {
+    "group": "function-exists",
+    "case": "case021.json",
+    "expr": "$exists(Account.Order[2])"
+  },
+  {
+    "group": "function-exists",
+    "case": "case022.json",
+    "expr": "$exists(Account.Order[0].blah)"
+  },
+  {
+    "group": "function-exists",
+    "case": "case023.json",
+    "expr": "$exists(2,3)"
+  },
+  {
+    "group": "function-exists",
+    "case": "case024.json",
+    "expr": "$exists()"
+  },
+  {
+    "group": "function-floor",
+    "case": "case000.json",
+    "expr": "$floor(3.7)"
+  },
+  {
+    "group": "function-floor",
+    "case": "case001.json",
+    "expr": "$floor(-3.7)"
+  },
+  {
+    "group": "function-floor",
+    "case": "case002.json",
+    "expr": "$floor(0)"
+  },
+  {
+    "group": "function-floor",
+    "case": "case003.json",
+    "expr": "$floor(nothing)"
+  },
+  {
+    "group": "function-formatBase",
+    "case": "case000.json",
+    "expr": "$formatBase(100)"
+  },
+  {
+    "group": "function-formatBase",
+    "case": "case001.json",
+    "expr": "$formatBase(nothing)"
+  },
+  {
+    "group": "function-formatBase",
+    "case": "case002.json",
+    "expr": "$formatBase(100, 2)"
+  },
+  {
+    "group": "function-formatBase",
+    "case": "case003.json",
+    "expr": "$formatBase(-100, 2)"
+  },
+  {
+    "group": "function-formatBase",
+    "case": "case004.json",
+    "expr": "$formatBase(100, 36)"
+  },
+  {
+    "group": "function-formatBase",
+    "case": "case005.json",
+    "expr": "$formatBase(99.5, 2.5)"
+  },
+  {
+    "group": "function-formatBase",
+    "case": "case006.json",
+    "expr": "$formatBase(100, 1)"
+  },
+  {
+    "group": "function-formatBase",
+    "case": "case007.json",
+    "expr": "$formatBase(100, 37)"
+  },
+  {
+    "group": "function-formatBase",
+    "case": "case008.json",
+    "expr": "$formatBase(big_id)"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case000.json",
+    "expr": "$formatNumber(12345.6, \"#,###.00\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case001.json",
+    "expr": "$formatNumber(12345678.9, \"9,999.99\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case002.json",
+    "expr": "$formatNumber(123412345678.9, \"9,9,99.99\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case003.json",
+    "expr": "$formatNumber(1234.56789, \"9,999.999,999\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case004.json",
+    "expr": "$formatNumber(123.9, \"9999\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case005.json",
+    "expr": "$formatNumber(0.14, \"01%\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case006.json",
+    "expr": "$formatNumber(0.4857,\"###.###‰\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case007.json",
+    "expr": "$formatNumber(0.14, \"###pm\", {\"per-mille\": \"pm\"})"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case008.json",
+    "expr": "$formatNumber(-6, \"000\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case009.json",
+    "expr": "$formatNumber(1234.5678, \"00.000e0\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case010.json",
+    "expr": "$formatNumber(1234.5678, \"00.000e000\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case011.json",
+    "expr": "$formatNumber(1234.5678, \"①①.①①①e①\", {\"zero-digit\": \"⑟\"})"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case012.json",
+    "expr": "$formatNumber(0.234, \"0.0e0\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case013.json",
+    "expr": "$formatNumber(0.234, \"#.00e0\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case014.json",
+    "expr": "$formatNumber(0.123, \"#.e9\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case015.json",
+    "expr": "$formatNumber(0.234, \".00e0\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case016.json",
+    "expr": "$formatNumber(2392.14*(-36.58), \"000,000.000###;###,###.000###\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case017.json",
+    "expr": "$formatNumber(2.14*86.58,\"PREFIX##00.000###SUFFIX\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case018.json",
+    "expr": "$formatNumber(1E20,\"#,######\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case019.json",
+    "expr": "$formatNumber(20,\"#;#;#\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case020.json",
+    "expr": "$formatNumber(20,\"#.0.0\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case021.json",
+    "expr": "$formatNumber(20,\"#0%%\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case022.json",
+    "expr": "$formatNumber(20,\"#0‰‰\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case023.json",
+    "expr": "$formatNumber(20,\"#0%‰\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case024.json",
+    "expr": "$formatNumber(20,\".e0\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case025.json",
+    "expr": "$formatNumber(20,\"0+.e0\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case026.json",
+    "expr": "$formatNumber(20,\"0,.e0\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case027.json",
+    "expr": "$formatNumber(20,\"0,\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case028.json",
+    "expr": "$formatNumber(20,\"0,,0\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case029.json",
+    "expr": "$formatNumber(20,\"0#.e0\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case030.json",
+    "expr": "$formatNumber(20,\"#0.#0e0\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case031.json",
+    "expr": "$formatNumber(20,\"#0.0e0%\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case032.json",
+    "expr": "$formatNumber(20,\"#0.0e0,0\")"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case033.json",
+    "expr": "$formatNumber(2, '000.000')"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case034.json",
+    "expr": "$formatNumber(2, 'AAA.AAA', {'zero-digit': 'A'})"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case035.json",
+    "expr": "$formatNumber(0.1, 'AeAAA', {'zero-digit': 'A'})"
+  },
+  {
+    "group": "function-formatNumber",
+    "case": "case036.json",
+    "expr": "$formatNumber(foo, '#0.00')"
+  },
+  {
+    "group": "function-fromMillis",
+    "case": "case000.json",
+    "expr": "$fromMillis(1)"
+  },
+  {
+    "group": "function-fromMillis",
+    "case": "case001.json",
+    "expr": "$fromMillis(1509380732935)"
+  },
+  {
+    "group": "function-fromMillis",
+    "case": "case002.json",
+    "expr": "$fromMillis(foo)"
+  },
+  {
+    "group": "function-join",
+    "case": "case000.json",
+    "expr": "$join(\"hello\")"
+  },
+  {
+    "group": "function-join",
+    "case": "case001.json",
+    "expr": "$join([\"hello\"])"
+  },
+  {
+    "group": "function-join",
+    "case": "case002.json",
+    "expr": "$join([\"hello\", \"world\"])"
+  },
+  {
+    "group": "function-join",
+    "case": "case003.json",
+    "expr": "$join([\"hello\", \"world\"], \", \")"
+  },
+  {
+    "group": "function-join",
+    "case": "case004.json",
+    "expr": "$join([], \", \")"
+  },
+  {
+    "group": "function-join",
+    "case": "case005.json",
+    "expr": "$join(Account.Order.Product.Description.Colour, \", \")"
+  },
+  {
+    "group": "function-join",
+    "case": "case006.json",
+    "expr": "$join(Account.Order.Product.Description.Colour, no.sep)"
+  },
+  {
+    "group": "function-join",
+    "case": "case007.json",
+    "expr": "$join(Account.blah.Product.Description.Colour, \", \")"
+  },
+  {
+    "group": "function-join",
+    "case": "case008.json",
+    "expr": "$join(true, \", \")"
+  },
+  {
+    "group": "function-join",
+    "case": "case009.json",
+    "expr": "$join([1,2,3], \", \")"
+  },
+  {
+    "group": "function-join",
+    "case": "case010.json",
+    "expr": "$join([\"hello\"], 3)"
+  },
+  {
+    "group": "function-join",
+    "case": "case011.json",
+    "expr": "$join()"
+  },
+  {
+    "group": "function-keys",
+    "case": "case000.json",
+    "expr": "$keys(Account)"
+  },
+  {
+    "group": "function-keys",
+    "case": "case001.json",
+    "expr": "$keys(Account.Order.Product)"
+  },
+  {
+    "group": "function-keys",
+    "case": "case002.json",
+    "expr": "$keys({})"
+  },
+  {
+    "group": "function-keys",
+    "case": "case003.json",
+    "expr": "$keys({\"foo\":{}})"
+  },
+  {
+    "group": "function-keys",
+    "case": "case004.json",
+    "expr": "$keys(\"foo\")"
+  },
+  {
+    "group": "function-keys",
+    "case": "case005.json",
+    "expr": "$keys(function(){1})"
+  },
+  {
+    "group": "function-keys",
+    "case": "case006.json",
+    "expr": "$keys([\"foo\", \"bar\"])"
+  },
+  {
+    "group": "function-length",
+    "case": "case000.json",
+    "expr": "$length(\"\")"
+  },
+  {
+    "group": "function-length",
+    "case": "case001.json",
+    "expr": "$length(\"hello\")"
+  },
+  {
+    "group": "function-length",
+    "case": "case002.json",
+    "expr": "$length(missing)"
+  },
+  {
+    "group": "function-length",
+    "case": "case003.json",
+    "expr": "$length(\"\\u03BB-calculus\")"
+  },
+  {
+    "group": "function-length",
+    "case": "case004.json",
+    "expr": "$length(\"\\uD834\\uDD1E\")"
+  },
+  {
+    "group": "function-length",
+    "case": "case005.json",
+    "expr": "$length(\"𝄞\")"
+  },
+  {
+    "group": "function-length",
+    "case": "case006.json",
+    "expr": "$length(\"超明體繁\")"
+  },
+  {
+    "group": "function-length",
+    "case": "case007.json",
+    "expr": "$length(\"\\t\")"
+  },
+  {
+    "group": "function-length",
+    "case": "case008.json",
+    "expr": "$length(\"\\n\")"
+  },
+  {
+    "group": "function-length",
+    "case": "case009.json",
+    "expr": "$length(1234)"
+  },
+  {
+    "group": "function-length",
+    "case": "case010.json",
+    "expr": "$length(null)"
+  },
+  {
+    "group": "function-length",
+    "case": "case011.json",
+    "expr": "$length(true)"
+  },
+  {
+    "group": "function-length",
+    "case": "case012.json",
+    "expr": "$length([\"str\"])"
+  },
+  {
+    "group": "function-length",
+    "case": "case013.json",
+    "expr": "$length()"
+  },
+  {
+    "group": "function-length",
+    "case": "case015.json",
+    "expr": "$length(\"Hello\", \"World\")"
+  },
+  {
+    "group": "function-length",
+    "case": "case016.json",
+    "expr": "$length(\"𝄞💩\")"
+  },
+  {
+    "group": "function-lookup",
+    "case": "case000.json",
+    "expr": "$lookup(Account, \"Account Name\")"
+  },
+  {
+    "group": "function-lookup",
+    "case": "case001.json",
+    "expr": "$lookup(Account.Order.Product, \"Product Name\")"
+  },
+  {
+    "group": "function-lookup",
+    "case": "case002.json",
+    "expr": "$lookup(Account.Order.Product.ProductID, \"Product Name\")"
+  },
+  {
+    "group": "function-lookup",
+    "case": "case003.json",
+    "expr": "$lookup($$, \"gust\")"
+  },
+  {
+    "group": "function-lowercase",
+    "case": "case000.json",
+    "expr": "$lowercase(\"Hello World\")"
+  },
+  {
+    "group": "function-lowercase",
+    "case": "case001.json",
+    "expr": "$lowercase(blah)"
+  },
+  {
+    "group": "function-max",
+    "case": "case000.json",
+    "expr": "$max(Account.Order.Product.(Price * Quantity))"
+  },
+  {
+    "group": "function-max",
+    "case": "case001.json",
+    "expr": "Account.Order.$max(Product.(Price * Quantity))"
+  },
+  {
+    "group": "function-max",
+    "case": "case003.json",
+    "expr": "$max([])"
+  },
+  {
+    "group": "function-max",
+    "case": "case004.json",
+    "expr": "$max([1,2,3])"
+  },
+  {
+    "group": "function-max",
+    "case": "case005.json",
+    "expr": "$max([\"1\",\"2\",\"3\"])"
+  },
+  {
+    "group": "function-max",
+    "case": "case006.json",
+    "expr": "$max([\"1\",\"2\",3])"
+  },
+  {
+    "group": "function-max",
+    "case": "case007.json",
+    "expr": "$max(1)"
+  },
+  {
+    "group": "function-max",
+    "case": "case008.json",
+    "expr": "$max([-1,-5])"
+  },
+  {
+    "group": "function-max",
+    "case": "case009.json",
+    "expr": "$max([],[])"
+  },
+  {
+    "group": "function-max",
+    "case": "case010.json",
+    "expr": "$max([1,2,3],[])"
+  },
+  {
+    "group": "function-max",
+    "case": "case011.json",
+    "expr": "$max([],[],[])"
+  },
+  {
+    "group": "function-max",
+    "case": "case012.json",
+    "expr": "$max([1,2],[],[])"
+  },
+  {
+    "group": "function-max",
+    "case": "case013.json",
+    "expr": "$max(undefined)"
+  },
+  {
+    "group": "function-max",
+    "case": "case014.json",
+    "expr": "$min(Account.Order.Product.(Price * Quantity))"
+  },
+  {
+    "group": "function-max",
+    "case": "case015.json",
+    "expr": "Account.Order.$min(Product.(Price * Quantity))"
+  },
+  {
+    "group": "function-max",
+    "case": "case016.json",
+    "expr": "Account.Order.(OrderID & \": \" & $min(Product.(Price*Quantity)))"
+  },
+  {
+    "group": "function-max",
+    "case": "case017.json",
+    "expr": "$min([])"
+  },
+  {
+    "group": "function-max",
+    "case": "case018.json",
+    "expr": "$min([1,2,3])"
+  },
+  {
+    "group": "function-max",
+    "case": "case019.json",
+    "expr": "$min([\"1\",\"2\",\"3\"])"
+  },
+  {
+    "group": "function-max",
+    "case": "case020.json",
+    "expr": "$min([\"1\",\"2\",3])"
+  },
+  {
+    "group": "function-max",
+    "case": "case021.json",
+    "expr": "$min(1)"
+  },
+  {
+    "group": "function-max",
+    "case": "case022.json",
+    "expr": "$min([],[])"
+  },
+  {
+    "group": "function-max",
+    "case": "case023.json",
+    "expr": "$min([1,2,3],[])"
+  },
+  {
+    "group": "function-max",
+    "case": "case024.json",
+    "expr": "$min([],[],[])"
+  },
+  {
+    "group": "function-max",
+    "case": "case025.json",
+    "expr": "$min([1,2],[],[])"
+  },
+  {
+    "group": "function-max",
+    "case": "case026.json",
+    "expr": "$min(undefined)"
+  },
+  {
+    "group": "function-merge",
+    "case": "case000.json",
+    "expr": "$merge(nothing)"
+  },
+  {
+    "group": "function-merge",
+    "case": "case001.json",
+    "expr": "$merge({\"a\":1})"
+  },
+  {
+    "group": "function-merge",
+    "case": "case002.json",
+    "expr": "$merge([{\"a\":1}, {\"b\":2}])"
+  },
+  {
+    "group": "function-merge",
+    "case": "case003.json",
+    "expr": "$merge([{\"a\": 1}, {\"b\": 2, \"c\": 3}])"
+  },
+  {
+    "group": "function-merge",
+    "case": "case004.json",
+    "expr": "$merge([{\"a\": 1}, {\"b\": 2, \"a\": 3}])"
+  },
+  {
+    "group": "function-number",
+    "case": "case000.json",
+    "expr": "$number(0)"
+  },
+  {
+    "group": "function-number",
+    "case": "case001.json",
+    "expr": "$number(10)"
+  },
+  {
+    "group": "function-number",
+    "case": "case002.json",
+    "expr": "$number(-0.05)"
+  },
+  {
+    "group": "function-number",
+    "case": "case003.json",
+    "expr": "$number(\"0\")"
+  },
+  {
+    "group": "function-number",
+    "case": "case004.json",
+    "expr": "$number(\"-0.05\")"
+  },
+  {
+    "group": "function-number",
+    "case": "case005.json",
+    "expr": "$number(\"1e2\")"
+  },
+  {
+    "group": "function-number",
+    "case": "case006.json",
+    "expr": "$number(\"1.0e-2\")"
+  },
+  {
+    "group": "function-number",
+    "case": "case007.json",
+    "expr": "$number(\"1e0\")"
+  },
+  {
+    "group": "function-number",
+    "case": "case008.json",
+    "expr": "$number(\"10e500\")"
+  },
+  {
+    "group": "function-number",
+    "case": "case009.json",
+    "expr": "$number(\"Hello world\")"
+  },
+  {
+    "group": "function-number",
+    "case": "case010.json",
+    "expr": "$number(\"1/2\")"
+  },
+  {
+    "group": "function-number",
+    "case": "case011.json",
+    "expr": "$number(\"1234 hello\")"
+  },
+  {
+    "group": "function-number",
+    "case": "case012.json",
+    "expr": "$number(\"\")"
+  },
+  {
+    "group": "function-number",
+    "case": "case013.json",
+    "expr": "$number(true)"
+  },
+  {
+    "group": "function-number",
+    "case": "case014.json",
+    "expr": "$number(false)"
+  },
+  {
+    "group": "function-number",
+    "case": "case015.json",
+    "expr": "$number(Account.blah)"
+  },
+  {
+    "group": "function-number",
+    "case": "case016.json",
+    "expr": "$number(null)"
+  },
+  {
+    "group": "function-number",
+    "case": "case017.json",
+    "expr": "$number([])"
+  },
+  {
+    "group": "function-number",
+    "case": "case018.json",
+    "expr": "$number(\"[1]\")"
+  },
+  {
+    "group": "function-number",
+    "case": "case019.json",
+    "expr": "$number([1,2])"
+  },
+  {
+    "group": "function-number",
+    "case": "case020.json",
+    "expr": "$number([\"hello\"])"
+  },
+  {
+    "group": "function-number",
+    "case": "case021.json",
+    "expr": "$number([\"2\"])"
+  },
+  {
+    "group": "function-number",
+    "case": "case022.json",
+    "expr": "$number({})"
+  },
+  {
+    "group": "function-number",
+    "case": "case023.json",
+    "expr": "$number({\"hello\":\"world\"})"
+  },
+  {
+    "group": "function-number",
+    "case": "case024.json",
+    "expr": "$number($number)"
+  },
+  {
+    "group": "function-number",
+    "case": "case025.json",
+    "expr": "$number(function(){5})"
+  },
+  {
+    "group": "function-number",
+    "case": "case026.json",
+    "expr": "$number(1,2)"
+  },
+  {
+    "group": "function-number",
+    "case": "case027.json",
+    "expr": "$number('00')"
+  },
+  {
+    "group": "function-number",
+    "case": "case028.json",
+    "expr": "$number('0123')"
+  },
+  {
+    "group": "function-number",
+    "case": "case029.json",
+    "expr": "$number('-007')"
+  },
+  {
+    "group": "function-number",
+    "case": "case030.json",
+    "expr": "$number('000.00123000')"
+  },
+  {
+    "group": "function-number",
+    "case": "case031.json",
+    "expr": "$number('0x12')"
+  },
+  {
+    "group": "function-number",
+    "case": "case032.json",
+    "expr": "$number('0B101')"
+  },
+  {
+    "group": "function-number",
+    "case": "case033.json",
+    "expr": "$number('0O12')"
+  },
+  {
+    "group": "function-pad",
+    "case": "case000.json",
+    "expr": "$pad(\"foo\", 5)"
+  },
+  {
+    "group": "function-pad",
+    "case": "case001.json",
+    "expr": "$pad(\"foo\", -5)"
+  },
+  {
+    "group": "function-pad",
+    "case": "case002.json",
+    "expr": "$pad(\"foo\", -5, \"#\")"
+  },
+  {
+    "group": "function-pad",
+    "case": "case003.json",
+    "expr": "$pad(\"foo\", 5, \"\")"
+  },
+  {
+    "group": "function-pad",
+    "case": "case004.json",
+    "expr": "$pad(\"foo\", 1)"
+  },
+  {
+    "group": "function-pad",
+    "case": "case005.json",
+    "expr": "$pad(\"foo\", 8, \"-+\")"
+  },
+  {
+    "group": "function-pad",
+    "case": "case006.json",
+    "expr": "$pad(nothing, 1)"
+  },
+  {
+    "group": "function-pad",
+    "case": "case007.json",
+    "expr": "$pad('a𝄞💩', 7)"
+  },
+  {
+    "group": "function-pad",
+    "case": "case008.json",
+    "expr": "$pad('𝄞💩', -7)"
+  },
+  {
+    "group": "function-pad",
+    "case": "case009.json",
+    "expr": "$pad('a𝄞💩', 7, '💩')"
+  },
+  {
+    "group": "function-pad",
+    "case": "case010.json",
+    "expr": "$pad('a𝄞💩', 6, '💩')"
+  },
+  {
+    "group": "function-pad",
+    "case": "case011.json",
+    "expr": "$pad('foo', 5.7, ' ')"
+  },
+  {
+    "group": "function-pad",
+    "case": "case012.json",
+    "expr": "$pad('foo', -5.7, ' ')"
+  },
+  {
+    "group": "function-power",
+    "case": "case000.json",
+    "expr": "$power(4, 2)"
+  },
+  {
+    "group": "function-power",
+    "case": "case001.json",
+    "expr": "$power(4, 0.5)"
+  },
+  {
+    "group": "function-power",
+    "case": "case002.json",
+    "expr": "$power(10, -2)"
+  },
+  {
+    "group": "function-power",
+    "case": "case003.json",
+    "expr": "$power(-2, 3)"
+  },
+  {
+    "group": "function-power",
+    "case": "case004.json",
+    "expr": "$power(nothing, 3)"
+  },
+  {
+    "group": "function-power",
+    "case": "case005.json",
+    "expr": "$power(-2, 1/3)"
+  },
+  {
+    "group": "function-power",
+    "case": "case006.json",
+    "expr": "$power(100, 1000)"
+  },
+  {
+    "group": "function-replace",
+    "case": "case000.json",
+    "expr": "$replace(\"Hello World\", \"World\", \"Everyone\")"
+  },
+  {
+    "group": "function-replace",
+    "case": "case001.json",
+    "expr": "$replace(\"the cat sat on the mat\", \"at\", \"it\")"
+  },
+  {
+    "group": "function-replace",
+    "case": "case002.json",
+    "expr": "$replace(\"the cat sat on the mat\", \"at\", \"it\", 0)"
+  },
+  {
+    "group": "function-replace",
+    "case": "case003.json",
+    "expr": "$replace(\"the cat sat on the mat\", \"at\", \"it\", 2)"
+  },
+  {
+    "group": "function-replace",
+    "case": "case004.json",
+    "expr": "$replace(nothing, \"at\", \"it\", 2)"
+  },
+  {
+    "group": "function-replace",
+    "case": "case005.json",
+    "expr": "$replace(\"hello\")"
+  },
+  {
+    "group": "function-replace",
+    "case": "case006.json",
+    "expr": "$replace(\"hello\", \"l\", \"1\", null)"
+  },
+  {
+    "group": "function-replace",
+    "case": "case007.json",
+    "expr": "$replace(\"hello\", \"l\", \"1\", -2)"
+  },
+  {
+    "group": "function-replace",
+    "case": "case008.json",
+    "expr": "$replace(\"hello\", 1)"
+  },
+  {
+    "group": "function-replace",
+    "case": "case009.json",
+    "expr": "$replace(\"hello\", \"\", \"bye\")"
+  },
+  {
+    "group": "function-replace",
+    "case": "case010.json",
+    "expr": "$replace(\"hello\", 2, 1)"
+  },
+  {
+    "group": "function-replace",
+    "case": "case011.json",
+    "expr": "$replace(123, 2, 1)"
+  },
+  {
+    "group": "function-reverse",
+    "case": "case000.json",
+    "expr": "$reverse([1..5])"
+  },
+  {
+    "group": "function-reverse",
+    "case": "case001.json",
+    "expr": "[[$], [$reverse($)], [$]]"
+  },
+  {
+    "group": "function-reverse",
+    "case": "case002.json",
+    "expr": "$reverse(nothing)"
+  },
+  {
+    "group": "function-reverse",
+    "case": "case003.json",
+    "expr": "$reverse([1])"
+  },
+  {
+    "group": "function-round",
+    "case": "case000.json",
+    "expr": "$round(4)"
+  },
+  {
+    "group": "function-round",
+    "case": "case001.json",
+    "expr": "$round(2.3)"
+  },
+  {
+    "group": "function-round",
+    "case": "case002.json",
+    "expr": "$round(2.7)"
+  },
+  {
+    "group": "function-round",
+    "case": "case003.json",
+    "expr": "$round(2.5)"
+  },
+  {
+    "group": "function-round",
+    "case": "case004.json",
+    "expr": "$round(3.5)"
+  },
+  {
+    "group": "function-round",
+    "case": "case005.json",
+    "expr": "$round(-0.5)"
+  },
+  {
+    "group": "function-round",
+    "case": "case006.json",
+    "expr": "$round(-0.3)"
+  },
+  {
+    "group": "function-round",
+    "case": "case007.json",
+    "expr": "$round(0.5)"
+  },
+  {
+    "group": "function-round",
+    "case": "case008.json",
+    "expr": "$round(-7.5)"
+  },
+  {
+    "group": "function-round",
+    "case": "case009.json",
+    "expr": "$round(-8.5)"
+  },
+  {
+    "group": "function-round",
+    "case": "case010.json",
+    "expr": "$round(4.49, 1)"
+  },
+  {
+    "group": "function-round",
+    "case": "case011.json",
+    "expr": "$round(4.525, 2)"
+  },
+  {
+    "group": "function-round",
+    "case": "case012.json",
+    "expr": "$round(4.515, 2)"
+  },
+  {
+    "group": "function-round",
+    "case": "case013.json",
+    "expr": "$round(12345, -2)"
+  },
+  {
+    "group": "function-round",
+    "case": "case014.json",
+    "expr": "$round(12450, -2)"
+  },
+  {
+    "group": "function-round",
+    "case": "case015.json",
+    "expr": "$round(12350, -2)"
+  },
+  {
+    "group": "function-round",
+    "case": "case016.json",
+    "expr": "$round(6.022e-23, 24)"
+  },
+  {
+    "group": "function-round",
+    "case": "case017.json",
+    "expr": "$round(unknown)"
+  },
+  {
+    "group": "function-shuffle",
+    "case": "case000.json",
+    "expr": "$count($shuffle([1..10]))"
+  },
+  {
+    "group": "function-shuffle",
+    "case": "case001.json",
+    "expr": "$sort($shuffle([1..10]))"
+  },
+  {
+    "group": "function-shuffle",
+    "case": "case002.json",
+    "expr": "$shuffle(nothing)"
+  },
+  {
+    "group": "function-shuffle",
+    "case": "case003.json",
+    "expr": "$shuffle([1])"
+  },
+  {
+    "group": "function-sift",
+    "case": "case000.json",
+    "expr": "$sift(λ($v){$v.**.Postcode})"
+  },
+  {
+    "group": "function-sift",
+    "case": "case001.json",
+    "expr": "**[*].$sift(λ($v){$v.Postcode})"
+  },
+  {
+    "group": "function-sift",
+    "case": "case002.json",
+    "expr": "$sift(λ($v, $k){$k ~> /^A/})"
+  },
+  {
+    "group": "function-sift",
+    "case": "case003.json",
+    "expr": "$sift({'a': 1, 'b': 0}, $boolean)"
+  },
+  {
+    "group": "function-sift",
+    "case": "case004.json",
+    "expr": "$sift({'a': 'hello', 'b': 'world', 'hello': 'again'}, λ($v,$k,$o){$lookup($o, $v)})"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case000.json",
+    "expr": "λ($arg)<b:b>{$not($arg)}(true)"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case001.json",
+    "expr": "λ($arg)<b:b>{$not($arg)}(foo)"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case002.json",
+    "expr": "λ($arg)<x:b>{$not($arg)}(null)"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case003.json",
+    "expr": "function($x,$y)<n-n:n>{$x+$y}(2, 6)"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case004.json",
+    "expr": "[1..5].function($x,$y)<n-n:n>{$x+$y}(6)"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case005.json",
+    "expr": "[1..5].function($x,$y)<n-n:n>{$x+$y}(2, 6)"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case006.json",
+    "expr": "Age.function($x,$y)<n-n:n>{$x+$y}(6)"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case007.json",
+    "expr": "λ($str)<s->{$uppercase($str)}(\"hello\")"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case008.json",
+    "expr": "Account.Order.Product.Description.Colour.λ($str)<s->{$uppercase($str)}()"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case009.json",
+    "expr": "λ($str, $prefix)<s-s>{$prefix & $str}(\"World\", \"Hello \")"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case010.json",
+    "expr": "FirstName.λ($str, $prefix)<s-s>{$prefix & $str}(\"Hello \")"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case011.json",
+    "expr": "λ($arr, $sep)<a<s>s?:s>{$join($arr, $sep)}(\"a\")"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case012.json",
+    "expr": "λ($arr, $sep)<a<s>s?:s>{$join($arr, $sep)}([\"a\"])"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case013.json",
+    "expr": "λ($arr, $sep)<a<s>s?:s>{$join($arr, $sep)}(\"a\", \"-\")"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case014.json",
+    "expr": "λ($arr, $sep)<a<s>s?:s>{$join($arr, $sep)}([\"a\"], \"-\")"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case015.json",
+    "expr": "λ($arr, $sep)<a<s>s?:s>{$join($arr, $sep)}([\"a\", \"b\"], \"-\")"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case016.json",
+    "expr": "λ($arr, $sep)<as?:s>{$join($arr, $sep)}([\"a\", \"b\"], \"-\")"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case017.json",
+    "expr": "λ($arr, $sep)<a<s>s?:s>{$join($arr, $sep)}([], \"-\")"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case018.json",
+    "expr": "λ($arr, $sep)<a<s>s?:s>{$join($arr, $sep)}(foo, \"-\")"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case019.json",
+    "expr": "λ($obj)<o>{$obj}({\"hello\": \"world\"})"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case020.json",
+    "expr": "λ($arr)<a<a<n>>>{$arr}([[1]])"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case021.json",
+    "expr": "λ($num)<(ns)-:n>{$number($num)}(5)"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case022.json",
+    "expr": "λ($num)<(ns)-:n>{$number($num)}(\"5\")"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case023.json",
+    "expr": "[1..5].λ($num)<(ns)-:n>{$number($num)}()"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case024.json",
+    "expr": "($twice := function($f)<f:f>{function($x)<n:n>{$f($f($x))}};$add2 := function($x)<n:n>{$x+2};$add4 := $twice($add2);$add4(5))"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case025.json",
+    "expr": "($twice := function($f)<f<n:n>:f<n:n>>{function($x)<n:n>{$f($f($x))}};$add2 := function($x)<n:n>{$x+2};$add4 := $twice($add2);$add4(5))"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case026.json",
+    "expr": "λ($arg)<n<n>>{$arg}(5)"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case027.json",
+    "expr": "λ($arg1, $arg2)<nn:a>{[$arg1, $arg2]}(1,\"2\")"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case028.json",
+    "expr": "λ($arg1, $arg2)<nn:a>{[$arg1, $arg2]}(1,3,\"2\")"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case029.json",
+    "expr": "λ($arg1, $arg2)<nn+:a>{[$arg1, $arg2]}(1,3, 2,\"g\")"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case030.json",
+    "expr": "λ($arr)<a<n>>{$arr}([\"3\"]) "
+  },
+  {
+    "group": "function-signatures",
+    "case": "case031.json",
+    "expr": "λ($arr)<a<n>>{$arr}([1, 2, \"3\"]) "
+  },
+  {
+    "group": "function-signatures",
+    "case": "case032.json",
+    "expr": "λ($arr)<a<n>>{$arr}(\"f\")"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case033.json",
+    "expr": "($fun := λ($arr)<a<n>>{$arr};$fun(\"f\"))"
+  },
+  {
+    "group": "function-signatures",
+    "case": "case034.json",
+    "expr": "λ($arr)<(sa<n>)>>{$arr}([[1]])"
+  },
+  {
+    "group": "function-sort",
+    "case": "case000.json",
+    "expr": "$sort(nothing)"
+  },
+  {
+    "group": "function-sort",
+    "case": "case001.json",
+    "expr": "$sort(1)"
+  },
+  {
+    "group": "function-sort",
+    "case": "case002.json",
+    "expr": "$sort([1,3,2])"
+  },
+  {
+    "group": "function-sort",
+    "case": "case003.json",
+    "expr": "$sort([1,3,22,11])"
+  },
+  {
+    "group": "function-sort",
+    "case": "case004.json",
+    "expr": "[[$], [$sort($)], [$]]"
+  },
+  {
+    "group": "function-sort",
+    "case": "case005.json",
+    "expr": "$sort(Account.Order.Product.Price)"
+  },
+  {
+    "group": "function-sort",
+    "case": "case006.json",
+    "expr": "$sort(Account.Order.Product.\"Product Name\")"
+  },
+  {
+    "group": "function-sort",
+    "case": "case007.json",
+    "expr": "$sort(Account.Order.Product)"
+  },
+  {
+    "group": "function-sort",
+    "case": "case008.json",
+    "expr": "$sort(Account.Order.Product, function($a, $b) { $a.(Price * Quantity) > $b.(Price * Quantity) }).(Price & \" x \" & Quantity)"
+  },
+  {
+    "group": "function-sort",
+    "case": "case009.json",
+    "expr": "$sort(Account.Order.Product, function($a, $b) { $a.Price > $b.Price }).SKU"
+  },
+  {
+    "group": "function-sort",
+    "case": "case010.json",
+    "expr": "\n                (Account.Order.Product\n                  ~> $sort(λ($a,$b){$a.Quantity < $b.Quantity})\n                  ~> $sort(λ($a,$b){$a.Price > $b.Price})\n                ).SKU\n            "
+  },
+  {
+    "group": "function-split",
+    "case": "case000.json",
+    "expr": "$split(\"Hello World\", \" \")"
+  },
+  {
+    "group": "function-split",
+    "case": "case001.json",
+    "expr": "$split(\"Hello\", \" \")"
+  },
+  {
+    "group": "function-split",
+    "case": "case002.json",
+    "expr": "$split(\"Hello  World\", \" \")"
+  },
+  {
+    "group": "function-split",
+    "case": "case003.json",
+    "expr": "$split(\"Hello\", \"\")"
+  },
+  {
+    "group": "function-split",
+    "case": "case004.json",
+    "expr": "$sum($split(\"12345\", \"\").$number($))"
+  },
+  {
+    "group": "function-split",
+    "case": "case005.json",
+    "expr": "$split(\"a, b, c, d\", \", \")"
+  },
+  {
+    "group": "function-split",
+    "case": "case006.json",
+    "expr": "$split(\"a, b, c, d\", \", \", 2)"
+  },
+  {
+    "group": "function-split",
+    "case": "case007.json",
+    "expr": "$split(\"a, b, c, d\", \", \", 2.5)"
+  },
+  {
+    "group": "function-split",
+    "case": "case008.json",
+    "expr": "$split(\"a, b, c, d\", \", \", 10)"
+  },
+  {
+    "group": "function-split",
+    "case": "case009.json",
+    "expr": "$split(\"a, b, c, d\", \", \", 0)"
+  },
+  {
+    "group": "function-split",
+    "case": "case010.json",
+    "expr": "$split(nothing, \" \")"
+  },
+  {
+    "group": "function-split",
+    "case": "case011.json",
+    "expr": "$split(\"a, b, c, d\", \", \", -3)"
+  },
+  {
+    "group": "function-split",
+    "case": "case012.json",
+    "expr": "$split(\"a, b, c, d\", \", \", null)"
+  },
+  {
+    "group": "function-split",
+    "case": "case013.json",
+    "expr": "$split(\"a, b, c, d\", \", \", -5)"
+  },
+  {
+    "group": "function-split",
+    "case": "case014.json",
+    "expr": "$split(\"a, b, c, d\", \", \", \"2\")"
+  },
+  {
+    "group": "function-split",
+    "case": "case015.json",
+    "expr": "$split(\"a, b, c, d\", true)"
+  },
+  {
+    "group": "function-split",
+    "case": "case016.json",
+    "expr": "$split(12345, 3)"
+  },
+  {
+    "group": "function-split",
+    "case": "case017.json",
+    "expr": "$split(12345)"
+  },
+  {
+    "group": "function-split",
+    "case": "case018.json",
+    "expr": "$split('12💩345💩6', '💩')"
+  },
+  {
+    "group": "function-spread",
+    "case": "case000.json",
+    "expr": "$spread(\"Hello World\")"
+  },
+  {
+    "group": "function-spread",
+    "case": "case001.json",
+    "expr": "$spread((Account.Order.Product.Description))"
+  },
+  {
+    "group": "function-spread",
+    "case": "case002.json",
+    "expr": "$spread(blah)"
+  },
+  {
+    "group": "function-spread",
+    "case": "case003.json",
+    "expr": "$string($spread(function($x){$x*$x}))"
+  },
+  {
+    "group": "function-sqrt",
+    "case": "case000.json",
+    "expr": "$sqrt(4)"
+  },
+  {
+    "group": "function-sqrt",
+    "case": "case001.json",
+    "expr": "$sqrt(2)"
+  },
+  {
+    "group": "function-sqrt",
+    "case": "case002.json",
+    "expr": "$sqrt(nothing)"
+  },
+  {
+    "group": "function-sqrt",
+    "case": "case003.json",
+    "expr": "$sqrt(-2)"
+  },
+  {
+    "group": "function-string",
+    "case": "case000.json",
+    "expr": "$string(5)"
+  },
+  {
+    "group": "function-string",
+    "case": "case001.json",
+    "expr": "$string(22/7)"
+  },
+  {
+    "group": "function-string",
+    "case": "case002.json",
+    "expr": "$string(1e100)"
+  },
+  {
+    "group": "function-string",
+    "case": "case003.json",
+    "expr": "$string(1e-100)"
+  },
+  {
+    "group": "function-string",
+    "case": "case004.json",
+    "expr": "$string(1e-6)"
+  },
+  {
+    "group": "function-string",
+    "case": "case005.json",
+    "expr": "$string(1e-7)"
+  },
+  {
+    "group": "function-string",
+    "case": "case006.json",
+    "expr": "$string(1e20)"
+  },
+  {
+    "group": "function-string",
+    "case": "case007.json",
+    "expr": "$string(1e21)"
+  },
+  {
+    "group": "function-string",
+    "case": "case008.json",
+    "expr": "Account.Order.$string($sum(Product.(Price* Quantity)))"
+  },
+  {
+    "group": "function-string",
+    "case": "case009.json",
+    "expr": "$string(true)"
+  },
+  {
+    "group": "function-string",
+    "case": "case010.json",
+    "expr": "$string(false)"
+  },
+  {
+    "group": "function-string",
+    "case": "case011.json",
+    "expr": "$string(null)"
+  },
+  {
+    "group": "function-string",
+    "case": "case012.json",
+    "expr": "$string(blah)"
+  },
+  {
+    "group": "function-string",
+    "case": "case013.json",
+    "expr": "$string($string)"
+  },
+  {
+    "group": "function-string",
+    "case": "case014.json",
+    "expr": "$string(function(){true})"
+  },
+  {
+    "group": "function-string",
+    "case": "case015.json",
+    "expr": "$string(function(){1})"
+  },
+  {
+    "group": "function-string",
+    "case": "case016.json",
+    "expr": "$string({\"string\": \"hello\"})"
+  },
+  {
+    "group": "function-string",
+    "case": "case017.json",
+    "expr": "$string([\"string\", 5])"
+  },
+  {
+    "group": "function-string",
+    "case": "case018.json",
+    "expr": "$string({  \"string\": \"hello\",  \"number\": 78.8 / 2,  \"null\":null,  \"boolean\": false,  \"function\": $sum,  \"lambda\": function(){true},  \"object\": {    \"str\": \"another\",    \"lambda2\": function($n){$n}  },  \"array\": []})"
+  },
+  {
+    "group": "function-string",
+    "case": "case019.json",
+    "expr": "$string(1/0)"
+  },
+  {
+    "group": "function-string",
+    "case": "case020.json",
+    "expr": "$string({\"inf\": 1/0})"
+  },
+  {
+    "group": "function-string",
+    "case": "case021.json",
+    "expr": "$string(2,3)"
+  },
+  {
+    "group": "function-string",
+    "case": "case022.json",
+    "expr": "$string()"
+  },
+  {
+    "group": "function-string",
+    "case": "case023.json",
+    "expr": "$string({\"string\": \"hello\"}, false)"
+  },
+  {
+    "group": "function-string",
+    "case": "case024.json",
+    "expr": "$string({\"string\": \"hello\"}, true)"
+  },
+  {
+    "group": "function-string",
+    "case": "case025.json",
+    "expr": "$string([\"string\", 5], false)"
+  },
+  {
+    "group": "function-string",
+    "case": "case026.json",
+    "expr": "$string([\"string\", 5], true)"
+  },
+  {
+    "group": "function-string",
+    "case": "case027.json",
+    "expr": "$string({  \"string\": \"hello\",  \"number\": 78.8 / 2,  \"null\":null,  \"boolean\": false,  \"function\": $sum,  \"lambda\": function(){true},  \"object\": {    \"str\": \"another\",    \"lambda2\": function($n){$n}  },  \"array\": []}, false)"
+  },
+  {
+    "group": "function-string",
+    "case": "case028.json",
+    "expr": "$string({  \"string\": \"hello\",  \"number\": 78.8 / 2,  \"null\":null,  \"boolean\": false,  \"function\": $sum,  \"lambda\": function(){true},  \"object\": {    \"str\": \"another\",    \"lambda2\": function($n){$n}  },  \"array\": []}, true)"
+  },
+  {
+    "group": "function-string",
+    "case": "case030.json",
+    "expr": "$string(big_id)"
+  },
+  {
+    "group": "function-substring",
+    "case": "case000.json",
+    "expr": "$substring(\"hello world\", 0, 5)"
+  },
+  {
+    "group": "function-substring",
+    "case": "case001.json",
+    "expr": "$substring(\"hello world\", -5, 5)"
+  },
+  {
+    "group": "function-substring",
+    "case": "case002.json",
+    "expr": "$substring(\"hello world\", 6)"
+  },
+  {
+    "group": "function-substring",
+    "case": "case003.json",
+    "expr": "$substring(blah, 6)"
+  },
+  {
+    "group": "function-substring",
+    "case": "case004.json",
+    "expr": "$substring('𝄞💩', 0, 2)"
+  },
+  {
+    "group": "function-substring",
+    "case": "case005.json",
+    "expr": "$substring('𝄞💩', 0, 1)"
+  },
+  {
+    "group": "function-substring",
+    "case": "case006.json",
+    "expr": "$substring('𝄞💩', 1, 1)"
+  },
+  {
+    "group": "function-substring",
+    "case": "case007.json",
+    "expr": "$substring(\"hello world\", -5)"
+  },
+  {
+    "group": "function-substring",
+    "case": "case009.json",
+    "expr": "$substring(\"hello world\", -5, 4)"
+  },
+  {
+    "group": "function-substring",
+    "case": "case010.json",
+    "expr": "$substring(\"hello world\", -5, 1)"
+  },
+  {
+    "group": "function-substring",
+    "case": "case011.json",
+    "expr": "$substring(\"hello world\", -5, 0)"
+  },
+  {
+    "group": "function-substring",
+    "case": "case012.json",
+    "expr": "$substring(\"hello world\", -5, -1)"
+  },
+  {
+    "group": "function-substring",
+    "case": "case013.json",
+    "expr": "$substring(\"hello world\", 0, -6)"
+  },
+  {
+    "group": "function-substring",
+    "case": "case014.json",
+    "expr": "$substring(\"hello world\", -100, 3)"
+  },
+  {
+    "group": "function-substring",
+    "case": "case015.json",
+    "expr": "$substring(\"😂😁😀\", -2, 1)"
+  },
+  {
+    "group": "function-substring",
+    "case": "case016.json",
+    "expr": "$substring(\"😂😁😀\", -3, 1)"
+  },
+  {
+    "group": "function-substring",
+    "case": "case017.json",
+    "expr": "$substring(\"😂😁😀\", -4, 1)"
+  },
+  {
+    "group": "function-substring",
+    "case": "case018.json",
+    "expr": "$substring(\"😂😁😀\", -5, 1)"
+  },
+  {
+    "group": "function-substringAfter",
+    "case": "case000.json",
+    "expr": "$substringAfter(\"Hello World\", \" \")"
+  },
+  {
+    "group": "function-substringAfter",
+    "case": "case001.json",
+    "expr": "$substringAfter(\"Hello World\", \"l\")"
+  },
+  {
+    "group": "function-substringAfter",
+    "case": "case002.json",
+    "expr": "$substringAfter(\"Hello World\", \"f\")"
+  },
+  {
+    "group": "function-substringAfter",
+    "case": "case003.json",
+    "expr": "$substringAfter(\"Hello World\", \"ld\")"
+  },
+  {
+    "group": "function-substringAfter",
+    "case": "case004.json",
+    "expr": "$substringAfter(blah, \"ld\")"
+  },
+  {
+    "group": "function-substringBefore",
+    "case": "case000.json",
+    "expr": "$substringBefore(\"Hello World\", \" \")"
+  },
+  {
+    "group": "function-substringBefore",
+    "case": "case001.json",
+    "expr": "$substringBefore(\"Hello World\", \"l\")"
+  },
+  {
+    "group": "function-substringBefore",
+    "case": "case002.json",
+    "expr": "$substringBefore(\"Hello World\", \"f\")"
+  },
+  {
+    "group": "function-substringBefore",
+    "case": "case003.json",
+    "expr": "$substringBefore(\"Hello World\", \"He\")"
+  },
+  {
+    "group": "function-substringBefore",
+    "case": "case004.json",
+    "expr": "$substringBefore(blah, \"He\")"
+  },
+  {
+    "group": "function-sum",
+    "case": "case000.json",
+    "expr": "$sum(Account.Order.Product.(Price * Quantity))"
+  },
+  {
+    "group": "function-sum",
+    "case": "case001.json",
+    "expr": "Account.Order.$sum(Product.(Price * Quantity))"
+  },
+  {
+    "group": "function-sum",
+    "case": "case002.json",
+    "expr": "Account.Order.(OrderID & \": \" & $sum(Product.(Price*Quantity)))"
+  },
+  {
+    "group": "function-sum",
+    "case": "case003.json",
+    "expr": "$sum()"
+  },
+  {
+    "group": "function-sum",
+    "case": "case004.json",
+    "expr": "$sum(1)"
+  },
+  {
+    "group": "function-sum",
+    "case": "case005.json",
+    "expr": "$sum(Account.Order)"
+  },
+  {
+    "group": "function-sum",
+    "case": "case006.json",
+    "expr": "$sum(undefined)"
+  },
+  {
+    "group": "function-tomillis",
+    "case": "case001.json",
+    "expr": "$toMillis(\"1970-01-01T00:00:00.001Z\")"
+  },
+  {
+    "group": "function-tomillis",
+    "case": "case002.json",
+    "expr": "$toMillis(\"2018-02-01T09:42:13.123+0000\")"
+  },
+  {
+    "group": "function-tomillis",
+    "case": "case003.json",
+    "expr": "$toMillis(\"2017-10-30\")"
+  },
+  {
+    "group": "function-tomillis",
+    "case": "case004.json",
+    "expr": "$toMillis(\"2017-10-30T15:28:34Z\")"
+  },
+  {
+    "group": "function-tomillis",
+    "case": "case005.json",
+    "expr": "$toMillis(\"2018\")"
+  },
+  {
+    "group": "function-tomillis",
+    "case": "case006.json",
+    "expr": "$toMillis(foo)"
+  },
+  {
+    "group": "function-tomillis",
+    "case": "case007.json",
+    "expr": "$toMillis(\"foo\")"
+  },
+  {
+    "group": "function-tomillis",
+    "case": "case008.json",
+    "expr": "$toMillis(\"01-02-2018\")"
+  },
+  {
+    "group": "function-tomillis",
+    "case": "case009.json",
+    "expr": "$toMillis(\"2018-02-03 11:15:33\")"
+  },
+  {
+    "group": "function-tomillis",
+    "case": "case010.json",
+    "expr": "$toMillis(\"201802\", \"[Y0001][M01]\")"
+  },
+  {
+    "group": "function-tomillis",
+    "case": "case011.json",
+    "expr": "$toMillis(\"201802\", \"[Y,*-4][M01]\")"
+  },
+  {
+    "group": "function-tomillis",
+    "case": "case012.json",
+    "expr": "$toMillis(\"20180205\", \"[Y0001][M01][D01]\")"
+  },
+  {
+    "group": "function-tomillis",
+    "case": "case013.json",
+    "expr": "$toMillis('2024-01-01T12:38:49Z') = $toMillis('20240101123849', '[Y0000][M00][D00][H00][m00][s00]')"
+  },
+  {
+    "group": "function-trim",
+    "case": "case000.json",
+    "expr": "$trim(\"Hello World\")"
+  },
+  {
+    "group": "function-trim",
+    "case": "case001.json",
+    "expr": "$trim(\"   Hello  \n  \t World  \t \")"
+  },
+  {
+    "group": "function-trim",
+    "case": "case002.json",
+    "expr": "$trim()"
+  },
+  {
+    "group": "function-typeOf",
+    "case": "case001.json",
+    "expr": "($var:= undefined; $type($var))"
+  },
+  {
+    "group": "function-typeOf",
+    "case": "case002.json",
+    "expr": "($var:= null; $type($var))"
+  },
+  {
+    "group": "function-typeOf",
+    "case": "case003.json",
+    "expr": "($var:= 123; $type($var))"
+  },
+  {
+    "group": "function-typeOf",
+    "case": "case004.json",
+    "expr": "($var:= '123'; $type($var))"
+  },
+  {
+    "group": "function-typeOf",
+    "case": "case005.json",
+    "expr": "($var:= true; $type($var))"
+  },
+  {
+    "group": "function-typeOf",
+    "case": "case006.json",
+    "expr": "($var:= 'true'; $type($var))"
+  },
+  {
+    "group": "function-typeOf",
+    "case": "case007.json",
+    "expr": "($var:= []; $type($var))"
+  },
+  {
+    "group": "function-typeOf",
+    "case": "case008.json",
+    "expr": "($var:= ['a']; $type($var))"
+  },
+  {
+    "group": "function-typeOf",
+    "case": "case009.json",
+    "expr": "($var:= ['a','b']; $type($var))"
+  },
+  {
+    "group": "function-typeOf",
+    "case": "case010.json",
+    "expr": "($var:= function(){true}; $type($var))"
+  },
+  {
+    "group": "function-typeOf",
+    "case": "case011.json",
+    "expr": "($var:= (λ($v, $i, $a) {$v.price = $max($a.price)}); $type($var))"
+  },
+  {
+    "group": "function-typeOf",
+    "case": "case012.json",
+    "expr": "($var:= {}; $type($var))"
+  },
+  {
+    "group": "function-typeOf",
+    "case": "case013.json",
+    "expr": "($var:= {\"foo\":\"bar\"}; $type($var))"
+  },
+  {
+    "group": "function-uppercase",
+    "case": "case000.json",
+    "expr": "$uppercase(\"Hello World\")"
+  },
+  {
+    "group": "function-uppercase",
+    "case": "case001.json",
+    "expr": "$uppercase(blah)"
+  },
+  {
+    "group": "function-zip",
+    "case": "case000.json",
+    "expr": "$zip([1,2,3],[4,5,6])"
+  },
+  {
+    "group": "function-zip",
+    "case": "case001.json",
+    "expr": "$zip([1,2,3],[4,5,6],[7,8,9])"
+  },
+  {
+    "group": "function-zip",
+    "case": "case002.json",
+    "expr": "$zip([1,2,3],[4,5],[7,8,9])"
+  },
+  {
+    "group": "function-zip",
+    "case": "case003.json",
+    "expr": "$zip([1,2,3])"
+  },
+  {
+    "group": "function-zip",
+    "case": "case004.json",
+    "expr": "$zip(1,2,3)"
+  },
+  {
+    "group": "function-zip",
+    "case": "case005.json",
+    "expr": "$zip([1,2,3], [4,5,6], nothing)"
+  },
+  {
+    "group": "higher-order-functions",
+    "case": "case000.json",
+    "expr": "($twice:=function($f){function($x){$f($f($x))}}; $add3:=function($y){$y+3}; $add6:=$twice($add3); $add6(7))"
+  },
+  {
+    "group": "higher-order-functions",
+    "case": "case001.json",
+    "expr": "λ($f) { λ($x) { $x($x) }( λ($g) { $f( (λ($a) {$g($g)($a)}))})}(λ($f) { λ($n) { $n < 2 ? 1 : $n * $f($n - 1) } })(6)"
+  },
+  {
+    "group": "higher-order-functions",
+    "case": "case002.json",
+    "expr": "λ($f) { λ($x) { $x($x) }( λ($g) { $f( (λ($a) {$g($g)($a)}))})}(λ($f) { λ($n) { $n <= 1 ? $n : $f($n-1) + $f($n-2) } })(6) "
+  },
+  {
+    "group": "hof-filter",
+    "case": "case000.json",
+    "expr": "(library.books~>$filter(λ($v, $i, $a) {$v.price = $max($a.price)})).isbn"
+  },
+  {
+    "group": "hof-filter",
+    "case": "case001.json",
+    "expr": "nothing~>$filter(λ($v, $i, $a) {$v.price = $max($a.price)})"
+  },
+  {
+    "group": "hof-filter",
+    "case": "case002.json",
+    "expr": "$filter(data, function($d) { true })"
+  },
+  {
+    "group": "hof-filter",
+    "case": "case003.json",
+    "expr": "$filter([0, 1, 2], $boolean)"
+  },
+  {
+    "group": "hof-map",
+    "case": "case000.json",
+    "expr": "(  $data := {    \"one\": [1,2,3,4,5],    \"two\": [5,4,3,2,1]  };  $add := function($x){$x*$x};  $map($data.one, $add) )  "
+  },
+  {
+    "group": "hof-map",
+    "case": "case001.json",
+    "expr": "(  $data := {    \"one\": [1,2,3,4,5],    \"two\": [5,4,3,2,1]  };  $add := function($x){$x*$x};  $map($add) )  "
+  },
+  {
+    "group": "hof-map",
+    "case": "case0010.json",
+    "expr": "( $square := function($x){$x*$x}; $map([1], $square)[] )"
+  },
+  {
+    "group": "hof-map",
+    "case": "case0011.json",
+    "expr": "( $data := [1]; $square := function($x){$x*$x}; $data ~> $map($square)[] )"
+  },
+  {
+    "group": "hof-map",
+    "case": "case002.json",
+    "expr": "$map([1,2,3], $string)"
+  },
+  {
+    "group": "hof-map",
+    "case": "case003.json",
+    "expr": "Account.Order.Product ~> $map(λ($prod, $index) { $index+1 & \": \" & $prod.\"Product Name\" })"
+  },
+  {
+    "group": "hof-map",
+    "case": "case004.json",
+    "expr": "Account.Order.Product ~> $map(λ($prod, $index, $arr) { $index+1 & \"/\" & $count($arr) & \": \" & $prod.\"Product Name\" })"
+  },
+  {
+    "group": "hof-map",
+    "case": "case005.json",
+    "expr": "$map(Phone, function($v, $i) {$i[$v.type=\"office\"]})"
+  },
+  {
+    "group": "hof-map",
+    "case": "case006.json",
+    "expr": "$map(Phone, function($v, $i) {$v.type=\"office\" ? $i})"
+  },
+  {
+    "group": "hof-map",
+    "case": "case007.json",
+    "expr": "$map(Phone, function($v, $i) {$v.type=\"office\" ? $i: null})"
+  },
+  {
+    "group": "hof-map",
+    "case": "case009.json",
+    "expr": "$map([0, 1, 2], $boolean)"
+  },
+  {
+    "group": "hof-reduce",
+    "case": "case000.json",
+    "expr": "(  $seq := [1,2,3,4,5];  $reduce($seq, function($x, $y){$x+$y})) "
+  },
+  {
+    "group": "hof-reduce",
+    "case": "case001.json",
+    "expr": "(  $concat := function($s){function($a, $b){$string($a) & $s & $string($b)}};  $comma_join := $concat(' ... ');  $reduce([1,2,3,4,5], $comma_join))      "
+  },
+  {
+    "group": "hof-reduce",
+    "case": "case002.json",
+    "expr": "(  $seq := [1,2,3,4,5];  $reduce($seq, function($x, $y){$x+$y}, 2))"
+  },
+  {
+    "group": "hof-reduce",
+    "case": "case003.json",
+    "expr": "(  $seq := 1;  $reduce($seq, function($x, $y){$x+$y}))"
+  },
+  {
+    "group": "hof-reduce",
+    "case": "case005.json",
+    "expr": "$reduce(Account.Order.Product.Quantity, $append)"
+  },
+  {
+    "group": "hof-reduce",
+    "case": "case007.json",
+    "expr": "($product := function($a, $b) { $a * $b };$power := function($x, $n) { $n = 0 ? 1 : $reduce([1..$n].($x), $product) };[0..5].$power(2, $))"
+  },
+  {
+    "group": "hof-reduce",
+    "case": "case008.json",
+    "expr": "(  $seq := 1;  $reduce($seq, function($x){$x}))"
+  },
+  {
+    "group": "hof-single",
+    "case": "case000.json",
+    "expr": "(library.books~>$single(λ($v, $i, $a) {$v.price = $max($a.price)})).isbn"
+  },
+  {
+    "group": "hof-single",
+    "case": "case001.json",
+    "expr": "nothing~>$single(λ($v, $i, $a) {$v.price = $max($a.price)})"
+  },
+  {
+    "group": "hof-single",
+    "case": "case002.json",
+    "expr": "$single(data, function($d) { true })"
+  },
+  {
+    "group": "hof-single",
+    "case": "case003.json",
+    "expr": "$single([0, 1, 2], $boolean)"
+  },
+  {
+    "group": "hof-single",
+    "case": "case004.json",
+    "expr": "$single([0, 1, 2], function($v) {$v = 3})"
+  },
+  {
+    "group": "hof-single",
+    "case": "case005.json",
+    "expr": "$single([0, 1, 2])"
+  },
+  {
+    "group": "hof-single",
+    "case": "case006.json",
+    "expr": "$single([0])"
+  },
+  {
+    "group": "hof-single",
+    "case": "case007.json",
+    "expr": "$single([])"
+  },
+  {
+    "group": "hof-single",
+    "case": "case008.json",
+    "expr": "$single([true, false, true], function($v) {$v=false})"
+  },
+  {
+    "group": "hof-single",
+    "case": "case009.json",
+    "expr": "$single(['zero', 'one', 'two'], function($v, $i, $k) {$i=1})"
+  },
+  {
+    "group": "hof-single",
+    "case": "case010.json",
+    "expr": "Phone ~> $filter(function($p) {$p.type = 'home'}) ~> $single(function($p) {$p.number = '0203 544 1234'})"
+  },
+  {
+    "group": "hof-zip-map",
+    "case": "case000.json",
+    "expr": "(  $data := {    \"one\": [1,2,3,4,5],    \"two\": [5,4,3,2,1]  };  $map($zip($data.one, $data.two), $sum)) "
+  },
+  {
+    "group": "hof-zip-map",
+    "case": "case001.json",
+    "expr": "(  $data := {    \"one\": [1,2,3,4,5],    \"two\": [5,4,3,2,1]  };  $data.$zip(one, two) ~> $map($sum)) "
+  },
+  {
+    "group": "hof-zip-map",
+    "case": "case002.json",
+    "expr": "(  $data := {    \"one\": [1],    \"two\": [5]  };  $data.$zip(one, two) ~> $map($sum)) "
+  },
+  {
+    "group": "hof-zip-map",
+    "case": "case003.json",
+    "expr": "(  $data := {    \"one\": 1,    \"two\": 5  };  $data.$zip(one, two) ~> $map($sum)) "
+  },
+  {
+    "group": "inclusion-operator",
+    "case": "case000.json",
+    "expr": "1 in [1,2]"
+  },
+  {
+    "group": "inclusion-operator",
+    "case": "case001.json",
+    "expr": "3 in [1,2]"
+  },
+  {
+    "group": "inclusion-operator",
+    "case": "case002.json",
+    "expr": "\"hello\" in [1,2]"
+  },
+  {
+    "group": "inclusion-operator",
+    "case": "case003.json",
+    "expr": "\"world\" in [\"hello\", \"world\"]"
+  },
+  {
+    "group": "inclusion-operator",
+    "case": "case004.json",
+    "expr": "in in [\"hello\", \"world\"]"
+  },
+  {
+    "group": "inclusion-operator",
+    "case": "case005.json",
+    "expr": "\"world\" in in"
+  },
+  {
+    "group": "inclusion-operator",
+    "case": "case006.json",
+    "expr": "\"hello\" in \"hello\""
+  },
+  {
+    "group": "inclusion-operator",
+    "case": "case007.json",
+    "expr": "library.books[\"Aho\" in authors].title"
+  },
+  {
+    "group": "inclusion-operator",
+    "case": "case008.json",
+    "expr": "content.integration.$lowercase(name)"
+  },
+  {
+    "group": "lambdas",
+    "case": "case000.json",
+    "expr": "function($x){$x*$x}(5)"
+  },
+  {
+    "group": "lambdas",
+    "case": "case001.json",
+    "expr": "function($x){$x>5 ? \"foo\"}(6)"
+  },
+  {
+    "group": "lambdas",
+    "case": "case002.json",
+    "expr": "function($x){$x>5 ? \"foo\"}(3)"
+  },
+  {
+    "group": "lambdas",
+    "case": "case003.json",
+    "expr": "($factorial:= function($x){$x <= 1 ? 1 : $x * $factorial($x-1)}; $factorial(4))"
+  },
+  {
+    "group": "lambdas",
+    "case": "case004.json",
+    "expr": "($fibonacci := function($x){$x <= 1 ? $x : $fibonacci($x-1) + $fibonacci($x-2)}; [1,2,3,4,5,6,7,8,9].$fibonacci($))"
+  },
+  {
+    "group": "lambdas",
+    "case": "case005.json",
+    "expr": "($nth_price := function($n) { (Account.Order.Product.Price)[$n] }; $nth_price(1) )"
+  },
+  {
+    "group": "lambdas",
+    "case": "case006.json",
+    "expr": "            (              $even := function($n) { $n = 0 ? true : $odd($n-1) };              $odd := function($n) { $n = 0 ? false : $even($n-1) };              $even(82)            )"
+  },
+  {
+    "group": "lambdas",
+    "case": "case007.json",
+    "expr": "            (              $even := function($n) { $n = 0 ? true : $odd($n-1) };               $odd := function($n) { $n = 0 ? false : $even($n-1) };               $even(65) )"
+  },
+  {
+    "group": "lambdas",
+    "case": "case008.json",
+    "expr": "        (          $even := function($n) { $n = 0 ? true : $odd($n-1) };           $odd := function($n) { $n = 0 ? false : $even($n-1) };           $odd(65)         )"
+  },
+  {
+    "group": "lambdas",
+    "case": "case009.json",
+    "expr": "(  $gcd := λ($a, $b){$b = 0 ? $a : $gcd($b, $a%$b) };  [$gcd(8,12), $gcd(9,12)])"
+  },
+  {
+    "group": "lambdas",
+    "case": "case010.json",
+    "expr": "(  $range := function($start, $end, $step) { (    $step:=($step?$step:1);    $start+$step > $end ? $start : $append($start, $range($start+$step, $end, $step))   )};  $range(0,15))        "
+  },
+  {
+    "group": "lambdas",
+    "case": "case011.json",
+    "expr": "(  $range := function($start, $end, $step) { (      $step:=($step?$step:1);        $start+$step > $end ? $start : $append($start, $range($start+$step, $end, $step))   )};  $range(0,15,2))        "
+  },
+  {
+    "group": "lambdas",
+    "case": "case012.json",
+    "expr": "( $median := λ($x){$sort($x)[$count($x)/2]};  $median([5,4,3,2,1,6,7,8,1]) )"
+  },
+  {
+    "group": "lambdas",
+    "case": "case013.json",
+    "expr": "( $f := function(){1}; $f.environment )"
+  },
+  {
+    "group": "literals",
+    "case": "case000.json",
+    "expr": "\"hello\""
+  },
+  {
+    "group": "literals",
+    "case": "case001.json",
+    "expr": "'hello'"
+  },
+  {
+    "group": "literals",
+    "case": "case002.json",
+    "expr": "\"Wayne's World\""
+  },
+  {
+    "group": "literals",
+    "case": "case003.json",
+    "expr": "42"
+  },
+  {
+    "group": "literals",
+    "case": "case004.json",
+    "expr": "-42"
+  },
+  {
+    "group": "literals",
+    "case": "case005.json",
+    "expr": "3.14159"
+  },
+  {
+    "group": "literals",
+    "case": "case006.json",
+    "expr": "6.022e23"
+  },
+  {
+    "group": "literals",
+    "case": "case007.json",
+    "expr": "1.602E-19"
+  },
+  {
+    "group": "literals",
+    "case": "case008.json",
+    "expr": "10e1000"
+  },
+  {
+    "group": "literals",
+    "case": "case009.json",
+    "expr": "\"hello\\tworld\""
+  },
+  {
+    "group": "literals",
+    "case": "case010.json",
+    "expr": "\"hello\\nworld\""
+  },
+  {
+    "group": "literals",
+    "case": "case011.json",
+    "expr": "\"hello \\\"world\\\"\""
+  },
+  {
+    "group": "literals",
+    "case": "case012.json",
+    "expr": "\"C:\\\\Test\\\\test.txt\""
+  },
+  {
+    "group": "literals",
+    "case": "case013.json",
+    "expr": "\"\\u03BB-calculus rocks\""
+  },
+  {
+    "group": "literals",
+    "case": "case014.json",
+    "expr": "\"𝄞\""
+  },
+  {
+    "group": "literals",
+    "case": "case015.json",
+    "expr": "\"\\y\""
+  },
+  {
+    "group": "literals",
+    "case": "case016.json",
+    "expr": "\"\\u\""
+  },
+  {
+    "group": "literals",
+    "case": "case017.json",
+    "expr": "\"\\u123t\""
+  },
+  {
+    "group": "literals",
+    "case": "case018.json",
+    "expr": "{ 'foo': { 'sequence': 123, 'bar': 'baz' } } "
+  },
+  {
+    "group": "literals",
+    "case": "case019.json",
+    "expr": "{ 'foo': { 'sequence': true, 'bar': 'baz' } } "
+  },
+  {
+    "group": "matchers",
+    "case": "case001.json",
+    "expr": "$split('some text', $uppercase)"
+  },
+  {
+    "group": "missing-paths",
+    "case": "case000.json",
+    "expr": "fdf"
+  },
+  {
+    "group": "missing-paths",
+    "case": "case001.json",
+    "expr": "fdf.ett"
+  },
+  {
+    "group": "missing-paths",
+    "case": "case002.json",
+    "expr": "fdf.ett[10]"
+  },
+  {
+    "group": "missing-paths",
+    "case": "case003.json",
+    "expr": "fdf.ett[vc > 10]"
+  },
+  {
+    "group": "missing-paths",
+    "case": "case004.json",
+    "expr": "fdf.ett + 27"
+  },
+  {
+    "group": "missing-paths",
+    "case": "case005.json",
+    "expr": "$fdsd"
+  },
+  {
+    "group": "multiple-array-selectors",
+    "case": "case000.json",
+    "expr": "[1..10][[1..3,8,-1]]"
+  },
+  {
+    "group": "multiple-array-selectors",
+    "case": "case001.json",
+    "expr": "[1..10][[1..3,8,5]]"
+  },
+  {
+    "group": "multiple-array-selectors",
+    "case": "case002.json",
+    "expr": "[1..10][[1..3,8,false]]"
+  },
+  {
+    "group": "null",
+    "case": "case000.json",
+    "expr": "null"
+  },
+  {
+    "group": "null",
+    "case": "case001.json",
+    "expr": "[null]"
+  },
+  {
+    "group": "null",
+    "case": "case002.json",
+    "expr": "[null, null]"
+  },
+  {
+    "group": "null",
+    "case": "case003.json",
+    "expr": "$not(null)"
+  },
+  {
+    "group": "null",
+    "case": "case004.json",
+    "expr": "null = null"
+  },
+  {
+    "group": "null",
+    "case": "case005.json",
+    "expr": "null != null"
+  },
+  {
+    "group": "null",
+    "case": "case006.json",
+    "expr": "{\"true\": true, \"false\":false, \"null\": null}"
+  },
+  {
+    "group": "numeric-operators",
+    "case": "case000.json",
+    "expr": "foo.bar + bar"
+  },
+  {
+    "group": "numeric-operators",
+    "case": "case001.json",
+    "expr": "bar + foo.bar"
+  },
+  {
+    "group": "numeric-operators",
+    "case": "case002.json",
+    "expr": "foo.bar - bar"
+  },
+  {
+    "group": "numeric-operators",
+    "case": "case003.json",
+    "expr": "bar - foo.bar"
+  },
+  {
+    "group": "numeric-operators",
+    "case": "case004.json",
+    "expr": "foo.bar * bar"
+  },
+  {
+    "group": "numeric-operators",
+    "case": "case005.json",
+    "expr": "bar * foo.bar"
+  },
+  {
+    "group": "numeric-operators",
+    "case": "case006.json",
+    "expr": "foo.bar / bar"
+  },
+  {
+    "group": "numeric-operators",
+    "case": "case007.json",
+    "expr": "bar / foo.bar"
+  },
+  {
+    "group": "numeric-operators",
+    "case": "case008.json",
+    "expr": "foo.bar % bar"
+  },
+  {
+    "group": "numeric-operators",
+    "case": "case009.json",
+    "expr": "bar % foo.bar"
+  },
+  {
+    "group": "numeric-operators",
+    "case": "case010.json",
+    "expr": "bar + foo.bar * bar"
+  },
+  {
+    "group": "numeric-operators",
+    "case": "case011.json",
+    "expr": "foo.bar * bar + bar"
+  },
+  {
+    "group": "numeric-operators",
+    "case": "case012.json",
+    "expr": "24 * notexist"
+  },
+  {
+    "group": "numeric-operators",
+    "case": "case013.json",
+    "expr": "notexist + 1"
+  },
+  {
+    "group": "numeric-operators",
+    "case": "case014.json",
+    "expr": "1/(10e300 * 10e100) "
+  },
+  {
+    "group": "numeric-operators",
+    "case": "case015.json",
+    "expr": "\"5\" + \"5\""
+  },
+  {
+    "group": "numeric-operators",
+    "case": "case016.json",
+    "expr": "- notexist"
+  },
+  {
+    "group": "numeric-operators",
+    "case": "case017.json",
+    "expr": "false + 1"
+  },
+  {
+    "group": "numeric-operators",
+    "case": "case018.json",
+    "expr": "false + $x"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case000.json",
+    "expr": "{}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case001.json",
+    "expr": "{\"key\": \"value\"}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case002.json",
+    "expr": "{\"one\": 1, \"two\": 2}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case003.json",
+    "expr": "{\"one\": 1, \"two\": 2}.two"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case004.json",
+    "expr": "{\"one\": 1, \"two\": {\"three\": 3, \"four\": \"4\"}}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case005.json",
+    "expr": "{\"one\": 1, \"two\": [3, \"four\"]}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case006.json",
+    "expr": "{\"test\": ()}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case007.json",
+    "expr": "blah.{}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case008.json",
+    "expr": "Account.Order{OrderID: Product.\"Product Name\"}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case009.json",
+    "expr": "Account.Order.{OrderID: Product.\"Product Name\"}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case010.json",
+    "expr": "Account.Order.Product{$string(ProductID): Price}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case011.json",
+    "expr": "Account.Order.Product{$string(ProductID): (Price)[0]}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case012.json",
+    "expr": "Account.Order.Product.{$string(ProductID): Price}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case013.json",
+    "expr": "Account.Order.Product{ProductID: \"Product Name\"}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case014.json",
+    "expr": "Account.Order.Product.{ProductID: \"Product Name\"}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case015.json",
+    "expr": "Account.Order{OrderID: $sum(Product.(Price*Quantity))}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case016.json",
+    "expr": "Account.Order.{OrderID: $sum(Product.(Price*Quantity))}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case017.json",
+    "expr": "Account.Order.Product{$.\"Product Name\": Price, $.\"Product Name\": Price}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case018.json",
+    "expr": "Account.Order.Product{`Product Name`: Price, SKU: Price}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case019.json",
+    "expr": "Account.Order{  OrderID: {    \"TotalPrice\":$sum(Product.(Price * Quantity)),    \"Items\": Product.\"Product Name\"  }}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case020.json",
+    "expr": "{  \"Order\": Account.Order.{      \"ID\": OrderID,      \"Product\": Product.{          \"Name\": $.\"Product Name\",          \"SKU\": ProductID,          \"Details\": {            \"Weight\": Description.Weight,            \"Dimensions\": Description.(Width & \" x \" & Height & \" x \" & Depth)          }        },      \"Total Price\": $sum(Product.(Price * Quantity))    }}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case021.json",
+    "expr": "{  \"Order\": Account.Order.{      \"ID\": OrderID,      \"Product\": Product.{          \"Name\": `Product Name`,          \"SKU\": ProductID,          \"Details\": {            \"Weight\": Description.Weight,            \"Dimensions\": Description.(Width & \" x \" & Height & \" x \" & Depth)          }        },      \"Total Price\": $sum(Product.(Price * Quantity))    }}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case022.json",
+    "expr": "Phone{type: $join(number, \", \"), \"phone\":number}"
+  },
+  {
+    "group": "object-constructor",
+    "case": "case023.json",
+    "expr": "$.{ type: $average(value), kind: $sum(value) } "
+  },
+  {
+    "group": "object-constructor",
+    "case": "case024.json",
+    "expr": "{ type: $average(value), kind: $sum(value) } "
+  },
+  {
+    "group": "object-constructor",
+    "case": "case026.json",
+    "expr": "$${id:{'label':label,'value':value}}"
+  },
+  {
+    "group": "parentheses",
+    "case": "case000.json",
+    "expr": "foo.(blah).baz.fud"
+  },
+  {
+    "group": "parentheses",
+    "case": "case001.json",
+    "expr": "foo.(blah.baz).fud"
+  },
+  {
+    "group": "parentheses",
+    "case": "case002.json",
+    "expr": "(foo.blah.baz).fud"
+  },
+  {
+    "group": "parentheses",
+    "case": "case003.json",
+    "expr": "foo.blah.(baz.fud)"
+  },
+  {
+    "group": "parentheses",
+    "case": "case004.json",
+    "expr": "(foo.blah.baz.fud)"
+  },
+  {
+    "group": "parentheses",
+    "case": "case005.json",
+    "expr": "(foo).(blah).baz.(fud)"
+  },
+  {
+    "group": "parentheses",
+    "case": "case006.json",
+    "expr": "(foo.(blah).baz.fud)"
+  },
+  {
+    "group": "parentheses",
+    "case": "case007.json",
+    "expr": "(4 + 2) / 2"
+  },
+  {
+    "group": "partial-application",
+    "case": "case000.json",
+    "expr": "(  $add := function($x, $y){$x+$y};  $add2 := $add(?, 2);  $add2(3))"
+  },
+  {
+    "group": "partial-application",
+    "case": "case001.json",
+    "expr": "(  $add := function($x, $y){$x+$y};  $add2 := $add(2, ?);  $add2(4))"
+  },
+  {
+    "group": "partial-application",
+    "case": "case002.json",
+    "expr": "(  $firstn := $substring(?, 0, ?);  $first5 := $firstn(?, 5);  $first5(\"Hello World\"))"
+  },
+  {
+    "group": "partial-application",
+    "case": "case003.json",
+    "expr": "substring(?, 0, ?)"
+  },
+  {
+    "group": "partial-application",
+    "case": "case004.json",
+    "expr": "unknown(?)"
+  },
+  {
+    "group": "performance",
+    "case": "case000.json",
+    "expr": "{\"items\": items.{\"foo\": \"bar\",\"count\": $count($$.items[text!=\"\" and text!=\"foo\"].row)}}"
+  },
+  {
+    "group": "performance",
+    "case": "case001.json",
+    "expr": "{\"items\": items#$i.{\"foo\": \"bar\",\"label\": $$.items[$i].label & \" \" & $$.items[text!=\"\" and text!=\"test\"][$i].text}}"
+  },
+  {
+    "group": "predicates",
+    "case": "case000.json",
+    "expr": "nothing[x=6][y=3].number"
+  },
+  {
+    "group": "predicates",
+    "case": "case001.json",
+    "expr": "clues[x=6][y=3].number"
+  },
+  {
+    "group": "predicates",
+    "case": "case002.json",
+    "expr": "$[x=6][y=3].number"
+  },
+  {
+    "group": "predicates",
+    "case": "case003.json",
+    "expr": "Account.Order.Product[$lowercase(Description.Colour) = \"purple\"][0].Price"
+  },
+  {
+    "group": "quoted-selectors",
+    "case": "case000.json",
+    "expr": "foo.\"blah\""
+  },
+  {
+    "group": "quoted-selectors",
+    "case": "case001.json",
+    "expr": "foo.\"blah\".baz.'fud'"
+  },
+  {
+    "group": "quoted-selectors",
+    "case": "case002.json",
+    "expr": "\"foo\".\"blah\".\"baz\".\"fud\""
+  },
+  {
+    "group": "quoted-selectors",
+    "case": "case003.json",
+    "expr": "foo.\"blah.baz\""
+  },
+  {
+    "group": "quoted-selectors",
+    "case": "case004.json",
+    "expr": "foo.`blah`"
+  },
+  {
+    "group": "quoted-selectors",
+    "case": "case005.json",
+    "expr": "foo.`blah`.baz.'fud'"
+  },
+  {
+    "group": "quoted-selectors",
+    "case": "case006.json",
+    "expr": "`foo`.`blah`.`baz`.`fud`"
+  },
+  {
+    "group": "quoted-selectors",
+    "case": "case007.json",
+    "expr": "foo.`blah.baz`"
+  },
+  {
+    "group": "range-operator",
+    "case": "case000.json",
+    "expr": "[0..9]"
+  },
+  {
+    "group": "range-operator",
+    "case": "case001.json",
+    "expr": "[0..9][$ % 2 = 0]"
+  },
+  {
+    "group": "range-operator",
+    "case": "case002.json",
+    "expr": "[0, 4..9, 20, 22]"
+  },
+  {
+    "group": "range-operator",
+    "case": "case003.json",
+    "expr": "[5..2]"
+  },
+  {
+    "group": "range-operator",
+    "case": "case004.json",
+    "expr": "[5..2, 2..5]"
+  },
+  {
+    "group": "range-operator",
+    "case": "case005.json",
+    "expr": "[-2..2]"
+  },
+  {
+    "group": "range-operator",
+    "case": "case006.json",
+    "expr": "[-2..2].($*$)"
+  },
+  {
+    "group": "range-operator",
+    "case": "case007.json",
+    "expr": "[-2..blah]"
+  },
+  {
+    "group": "range-operator",
+    "case": "case008.json",
+    "expr": "[blah..5, 3, -2..blah]"
+  },
+  {
+    "group": "range-operator",
+    "case": "case009.json",
+    "expr": "[1.1 .. 5]"
+  },
+  {
+    "group": "range-operator",
+    "case": "case010.json",
+    "expr": "[1 .. 5.5]"
+  },
+  {
+    "group": "range-operator",
+    "case": "case011.json",
+    "expr": "[10..1.5]"
+  },
+  {
+    "group": "range-operator",
+    "case": "case012.json",
+    "expr": "[true..false]"
+  },
+  {
+    "group": "range-operator",
+    "case": "case013.json",
+    "expr": "['dogs'..'cats']"
+  },
+  {
+    "group": "range-operator",
+    "case": "case014.json",
+    "expr": "[1..'']"
+  },
+  {
+    "group": "range-operator",
+    "case": "case015.json",
+    "expr": "[1..[]]"
+  },
+  {
+    "group": "range-operator",
+    "case": "case016.json",
+    "expr": "[1..{}]"
+  },
+  {
+    "group": "range-operator",
+    "case": "case017.json",
+    "expr": "[1..false]"
+  },
+  {
+    "group": "range-operator",
+    "case": "case018.json",
+    "expr": "[2..true]"
+  },
+  {
+    "group": "range-operator",
+    "case": "case019.json",
+    "expr": "[$x..true]"
+  },
+  {
+    "group": "range-operator",
+    "case": "case020.json",
+    "expr": "[false..$x]"
+  },
+  {
+    "group": "range-operator",
+    "case": "case021.json",
+    "expr": "[1..10000000] ~> $count()"
+  },
+  {
+    "group": "range-operator",
+    "case": "case022.json",
+    "expr": "[0..10000000] ~> $count()"
+  },
+  {
+    "group": "range-operator",
+    "case": "case023.json",
+    "expr": "[1..10000001] ~> $count()"
+  },
+  {
+    "group": "range-operator",
+    "case": "case024.json",
+    "expr": "[100..10000099] ~> $count()"
+  },
+  {
+    "group": "regex",
+    "case": "case000.json",
+    "expr": "$split(\"ababbxabbcc\",/b+/)"
+  },
+  {
+    "group": "regex",
+    "case": "case001.json",
+    "expr": "$split(\"ababbxabbcc\",/b+/, 2)"
+  },
+  {
+    "group": "regex",
+    "case": "case002.json",
+    "expr": "$split(\"ababbxabbcc\",/d+/)"
+  },
+  {
+    "group": "regex",
+    "case": "case003.json",
+    "expr": "$contains(\"ababbxabbcc\",/ab+/)"
+  },
+  {
+    "group": "regex",
+    "case": "case004.json",
+    "expr": "$contains(\"ababbxabbcc\",/ax+/)"
+  },
+  {
+    "group": "regex",
+    "case": "case005.json",
+    "expr": "Account.Order.Product[$contains($.\"Product Name\", /hat/)].ProductID"
+  },
+  {
+    "group": "regex",
+    "case": "case006.json",
+    "expr": "Account.Order.Product[$contains($.\"Product Name\", /hat/i)].ProductID"
+  },
+  {
+    "group": "regex",
+    "case": "case007.json",
+    "expr": "$replace(\"ababbxabbcc\",/b+/, \"yy\")"
+  },
+  {
+    "group": "regex",
+    "case": "case008.json",
+    "expr": "$replace(\"ababbxabbcc\",/b+/, \"yy\", 2)"
+  },
+  {
+    "group": "regex",
+    "case": "case009.json",
+    "expr": "$replace(\"ababbxabbcc\",/b+/, \"yy\", 0)"
+  },
+  {
+    "group": "regex",
+    "case": "case010.json",
+    "expr": "$replace(\"ababbxabbcc\",/d+/, \"yy\")"
+  },
+  {
+    "group": "regex",
+    "case": "case011.json",
+    "expr": "$replace(\"John Smith\", /(\\w+)\\s(\\w+)/, \"$2, $1\")"
+  },
+  {
+    "group": "regex",
+    "case": "case012.json",
+    "expr": "$replace(\"265USD\", /([0-9]+)USD/, \"$$$1\")"
+  },
+  {
+    "group": "regex",
+    "case": "case013.json",
+    "expr": "$replace(\"265USD\", /([0-9]+)USD/, \"$w\")"
+  },
+  {
+    "group": "regex",
+    "case": "case014.json",
+    "expr": "$replace(\"265USD\", /([0-9]+)USD/, \"$0 -> $$$1\")"
+  },
+  {
+    "group": "regex",
+    "case": "case015.json",
+    "expr": "$replace(\"265USD\", /([0-9]+)USD/, \"$0$1$2\")"
+  },
+  {
+    "group": "regex",
+    "case": "case016.json",
+    "expr": "$replace(\"abcd\", /(ab)|(a)/, \"[1=$1][2=$2]\")"
+  },
+  {
+    "group": "regex",
+    "case": "case017.json",
+    "expr": "$replace(\"abracadabra\", /bra/, \"*\")"
+  },
+  {
+    "group": "regex",
+    "case": "case018.json",
+    "expr": "$replace(\"abracadabra\", /a.*a/, \"*\")"
+  },
+  {
+    "group": "regex",
+    "case": "case019.json",
+    "expr": "$replace(\"abracadabra\", /a.*?a/, \"*\")"
+  },
+  {
+    "group": "regex",
+    "case": "case020.json",
+    "expr": "$replace(\"abracadabra\", /a/, \"\")"
+  },
+  {
+    "group": "regex",
+    "case": "case021.json",
+    "expr": "$replace(\"abracadabra\", /a(.)/, \"a$1$1\")"
+  },
+  {
+    "group": "regex",
+    "case": "case022.json",
+    "expr": "$replace(\"abracadabra\", /.*?/, \"$1\")"
+  },
+  {
+    "group": "regex",
+    "case": "case023.json",
+    "expr": "$replace(\"AAAA\", /A+/, \"b\")"
+  },
+  {
+    "group": "regex",
+    "case": "case024.json",
+    "expr": "$replace(\"AAAA\", /A+?/, \"b\")"
+  },
+  {
+    "group": "regex",
+    "case": "case025.json",
+    "expr": "$replace(\"darted\", /^(.*?)d(.*)$/, \"$1c$2\")"
+  },
+  {
+    "group": "regex",
+    "case": "case026.json",
+    "expr": "$replace(\"abcdefghijklmno\", /(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)(k)(l)(m)/, \"$8$5$12$12$18$123\")"
+  },
+  {
+    "group": "regex",
+    "case": "case027.json",
+    "expr": "$replace(\"abcdefghijklmno\", /xyz/, \"$8$5$12$12$18$123\")"
+  },
+  {
+    "group": "regex",
+    "case": "case028.json",
+    "expr": "$replace(\"abcdefghijklmno\", /ijk/, \"$8$5$12$12$18$123\")"
+  },
+  {
+    "group": "regex",
+    "case": "case029.json",
+    "expr": "$replace(\"abcdefghijklmno\", /(ijk)/, \"$8$5$12$12$18$123\")"
+  },
+  {
+    "group": "regex",
+    "case": "case030.json",
+    "expr": "$replace(\"abcdefghijklmno\", /ijk/, \"$x\")"
+  },
+  {
+    "group": "regex",
+    "case": "case031.json",
+    "expr": "$replace(\"abcdefghijklmno\", /(ijk)/, \"$x$\")"
+  },
+  {
+    "group": "regex",
+    "case": "case032.json",
+    "expr": "Account.Order.Product.$replace($.\"Product Name\", /hat/i, function($match) { \"foo\" })"
+  },
+  {
+    "group": "regex",
+    "case": "case033.json",
+    "expr": "Account.Order.Product.$replace($.\"Product Name\", /(h)(at)/i, function($match) { $uppercase($match.match) })"
+  },
+  {
+    "group": "regex",
+    "case": "case034.json",
+    "expr": "$replace(\"temperature = 68F today\", /(-?\\d+(?:\\.\\d*)?)F\\b/, function($m) { ($number($m.groups[0]) - 32) * 5/9 & \"C\" })"
+  },
+  {
+    "group": "regex",
+    "case": "case035.json",
+    "expr": "Account.Order.Product.$replace($.\"Product Name\", /hat/i, function($match) { true })"
+  },
+  {
+    "group": "regex",
+    "case": "case036.json",
+    "expr": "Account.Order.Product.$replace($.\"Product Name\", /hat/i, function($match) { 42 })"
+  },
+  {
+    "group": "regex",
+    "case": "case037.json",
+    "expr": "$map($, $match(?, /^(\\w*\\s\\w*)/)).match"
+  },
+  {
+    "group": "regex",
+    "case": "case038.json",
+    "expr": "$map($, function($i){ $match($i, /^(\\w*\\s\\w*)/) }).match"
+  },
+  {
+    "group": "simple-array-selectors",
+    "case": "case000.json",
+    "expr": "nest0.nest1[0]"
+  },
+  {
+    "group": "simple-array-selectors",
+    "case": "case001.json",
+    "expr": "foo.blah[0].baz.fud"
+  },
+  {
+    "group": "simple-array-selectors",
+    "case": "case002.json",
+    "expr": "foo.blah[1].baz.fud"
+  },
+  {
+    "group": "simple-array-selectors",
+    "case": "case003.json",
+    "expr": "foo.blah[-1].bazz"
+  },
+  {
+    "group": "simple-array-selectors",
+    "case": "case004.json",
+    "expr": "(foo.blah)[1].baz.fud"
+  },
+  {
+    "group": "simple-array-selectors",
+    "case": "case005.json",
+    "expr": "foo.blah.baz.fud[0]"
+  },
+  {
+    "group": "simple-array-selectors",
+    "case": "case006.json",
+    "expr": "foo.blah.baz.fud[-1]"
+  },
+  {
+    "group": "simple-array-selectors",
+    "case": "case007.json",
+    "expr": "(foo.blah.baz.fud)[0]"
+  },
+  {
+    "group": "simple-array-selectors",
+    "case": "case008.json",
+    "expr": "(foo.blah.baz.fud)[1]"
+  },
+  {
+    "group": "simple-array-selectors",
+    "case": "case009.json",
+    "expr": "(foo.blah.baz.fud)[5 * 0.2]"
+  },
+  {
+    "group": "simple-array-selectors",
+    "case": "case010.json",
+    "expr": "(foo.blah.baz.fud)[-1]"
+  },
+  {
+    "group": "simple-array-selectors",
+    "case": "case011.json",
+    "expr": "(foo.blah.baz.fud)[-2]"
+  },
+  {
+    "group": "simple-array-selectors",
+    "case": "case012.json",
+    "expr": "(foo.blah.baz.fud)[2-4]"
+  },
+  {
+    "group": "simple-array-selectors",
+    "case": "case013.json",
+    "expr": "(foo.blah.baz.fud)[-(4-2)]"
+  },
+  {
+    "group": "simple-array-selectors",
+    "case": "case014.json",
+    "expr": "(foo.blah.baz.fud)[$$.foo.bar / 30]"
+  },
+  {
+    "group": "simple-array-selectors",
+    "case": "case015.json",
+    "expr": "foo.blah[0].baz"
+  },
+  {
+    "group": "simple-array-selectors",
+    "case": "case016.json",
+    "expr": "foo.blah.baz[0]"
+  },
+  {
+    "group": "simple-array-selectors",
+    "case": "case017.json",
+    "expr": "(foo.blah.baz)[0]"
+  },
+  {
+    "group": "simple-array-selectors",
+    "case": "case021.json",
+    "expr": "$[1][0]"
+  },
+  {
+    "group": "simple-array-selectors",
+    "case": "case022.json",
+    "expr": "$[1.1][0.9]"
+  },
+  {
+    "group": "sorting",
+    "case": "case000.json",
+    "expr": "Account.Order.Product.Price^($)"
+  },
+  {
+    "group": "sorting",
+    "case": "case001.json",
+    "expr": "Account.Order.Product.Price^(<$)"
+  },
+  {
+    "group": "sorting",
+    "case": "case002.json",
+    "expr": "Account.Order.Product.Price^(>$)"
+  },
+  {
+    "group": "sorting",
+    "case": "case003.json",
+    "expr": "Account.Order.Product^(Price).Description.Colour"
+  },
+  {
+    "group": "sorting",
+    "case": "case004.json",
+    "expr": "Account.Order.Product^(Price).SKU"
+  },
+  {
+    "group": "sorting",
+    "case": "case005.json",
+    "expr": "Account.Order.Product^(Price * Quantity).Description.Colour"
+  },
+  {
+    "group": "sorting",
+    "case": "case006.json",
+    "expr": "Account.Order.Product^(Quantity, Description.Colour).Description.Colour"
+  },
+  {
+    "group": "sorting",
+    "case": "case007.json",
+    "expr": "Account.Order.Product^(Quantity, >Description.Colour).Description.Colour"
+  },
+  {
+    "group": "sorting",
+    "case": "case014.json",
+    "expr": "$^(age).name"
+  },
+  {
+    "group": "sorting",
+    "case": "case015.json",
+    "expr": "($^(age)).name"
+  },
+  {
+    "group": "sorting",
+    "case": "case016.json",
+    "expr": "$^(age)[0].name"
+  },
+  {
+    "group": "sorting",
+    "case": "case017.json",
+    "expr": "($^(age))[0].name"
+  },
+  {
+    "group": "sorting",
+    "case": "case018.json",
+    "expr": "($^(age)[0]).name"
+  },
+  {
+    "group": "sorting",
+    "case": "case019.json",
+    "expr": "$[0]^(age)"
+  },
+  {
+    "group": "sorting",
+    "case": "case020.json",
+    "expr": "Account.Order#$o.Product^(ProductID).{ 'Product': `Product Name`, 'Order Index': $o }"
+  },
+  {
+    "group": "string-concat",
+    "case": "case000.json",
+    "expr": "\"foo\" & \"bar\""
+  },
+  {
+    "group": "string-concat",
+    "case": "case001.json",
+    "expr": "\"foo\"&\"bar\""
+  },
+  {
+    "group": "string-concat",
+    "case": "case002.json",
+    "expr": "foo.blah[0].baz.fud &foo.blah[1].baz.fud"
+  },
+  {
+    "group": "string-concat",
+    "case": "case003.json",
+    "expr": "foo.(blah[0].baz.fud & blah[1].baz.fud)"
+  },
+  {
+    "group": "string-concat",
+    "case": "case004.json",
+    "expr": "foo.(blah[0].baz.fud & none)"
+  },
+  {
+    "group": "string-concat",
+    "case": "case005.json",
+    "expr": "foo.(none.here & blah[1].baz.fud)"
+  },
+  {
+    "group": "string-concat",
+    "case": "case006.json",
+    "expr": "[1,2]&[3,4]"
+  },
+  {
+    "group": "string-concat",
+    "case": "case007.json",
+    "expr": "[1,2]&3"
+  },
+  {
+    "group": "string-concat",
+    "case": "case008.json",
+    "expr": "1&2"
+  },
+  {
+    "group": "string-concat",
+    "case": "case009.json",
+    "expr": "1&[2]"
+  },
+  {
+    "group": "string-concat",
+    "case": "case010.json",
+    "expr": "\"hello\"&5"
+  },
+  {
+    "group": "string-concat",
+    "case": "case011.json",
+    "expr": "\"Prices: \" & Account.Order.Product.Price"
+  },
+  {
+    "group": "tail-recursion",
+    "case": "case000.json",
+    "expr": "            (              $f := function($n){()};              $f(1)            ) "
+  },
+  {
+    "group": "tail-recursion",
+    "case": "case001.json",
+    "expr": "(  $factorial := function($n){$n = 0 ? 1 : $n * $factorial($n - 1)};  $factorial(99))             "
+  },
+  {
+    "group": "tail-recursion",
+    "case": "case002.json",
+    "expr": "(  $factorial := function($n){$n = 0 ? 1 : $n * $factorial($n - 1)};  $factorial(100))             "
+  },
+  {
+    "group": "tail-recursion",
+    "case": "case003.json",
+    "expr": "(  $factorial := function($n){(    $iter := function($n, $acc) {      $n = 0 ? $acc : $iter($n - 1, $n * $acc)    };    $iter($n, 1)  )};  $factorial(5)) "
+  },
+  {
+    "group": "tail-recursion",
+    "case": "case004.json",
+    "expr": "(  $factorial := function($n){(    $iter := function($n, $acc) {      $n = 0 ? $acc : $iter($n - 1, $n * $acc)    };    $iter($n, 1)  )};  $factorial(150)) "
+  },
+  {
+    "group": "tail-recursion",
+    "case": "case005.json",
+    "expr": "(  $inf := function($n){$n+$inf($n-1)};  $inf(5))"
+  },
+  {
+    "group": "tail-recursion",
+    "case": "case006.json",
+    "expr": "(  $inf := function(){$inf()};  $inf())"
+  },
+  {
+    "group": "tail-recursion",
+    "case": "case007.json",
+    "expr": "        (          $even := function($n) { $n = 0 ? true : $odd($n-1) };           $odd := function($n) { $n = 0 ? false : $even($n-1) };           $odd(6555)         )"
+  },
+  {
+    "group": "tail-recursion",
+    "case": "case008.json",
+    "expr": "($f := function($s, $x)<an:s> { $x > 0 ? $f([$s, $s], $x-1) : $s};  $f('a', 2)  )"
+  },
+  {
+    "group": "tail-recursion",
+    "case": "case009.json",
+    "expr": "($f := function($s, $x)<sn:s> { $x > 0 ? $f([$s, $s], $x-1) : $s};  $f('a', 2)  )"
+  },
+  {
+    "group": "token-conversion",
+    "case": "case000.json",
+    "expr": "$.'7a'"
+  },
+  {
+    "group": "token-conversion",
+    "case": "case001.json",
+    "expr": "$.'7'"
+  },
+  {
+    "group": "token-conversion",
+    "case": "case002.json",
+    "expr": "$.7a"
+  },
+  {
+    "group": "token-conversion",
+    "case": "case003.json",
+    "expr": "$.7"
+  },
+  {
+    "group": "transform",
+    "case": "case000.json",
+    "expr": "{'Order': Account.Order.{  'ID': OrderID,  'Product': Product.{    'SKU': ProductID,    'Details': {      'Weight': Description.Weight,      'Dimensions': Description.(Width & ' x ' & Height & ' x ' & Depth)    }  },  'Total Price': $sum(Product.(Price * Quantity))}}"
+  },
+  {
+    "group": "transform",
+    "case": "case001.json",
+    "expr": "\n        (\n          $tempReadings := $count(state.tempReadings) = 5 ?\n              [state.tempReadings[[1..4]], event.t] :\n              [state.tempReadings, event.t];\n        \n          {\n            \"tempReadings\": $tempReadings,\n            \"sumTemperatures\": $sum($tempReadings),\n            \"avgTemperature\": $average($tempReadings) ~> $round(2),\n            \"maxTemperature\": $max($tempReadings),\n            \"minTemperature\": $min($tempReadings)\n          }\n        )"
+  },
+  {
+    "group": "transform",
+    "case": "case002.json",
+    "expr": "$"
+  },
+  {
+    "group": "transform",
+    "case": "case003.json",
+    "expr": "foo"
+  },
+  {
+    "group": "transform",
+    "case": "case004.json",
+    "expr": "baz"
+  },
+  {
+    "group": "transform",
+    "case": "case005.json",
+    "expr": "Foo"
+  },
+  {
+    "group": "transform",
+    "case": "case006.json",
+    "expr": "food"
+  },
+  {
+    "group": "transform",
+    "case": "case007.json",
+    "expr": "maz.rar"
+  },
+  {
+    "group": "transform",
+    "case": "case008.json",
+    "expr": "jee.par.waa"
+  },
+  {
+    "group": "transform",
+    "case": "case012.json",
+    "expr": "bar"
+  },
+  {
+    "group": "transform",
+    "case": "case027.json",
+    "expr": "$lowercase(Salutation)"
+  },
+  {
+    "group": "transform",
+    "case": "case028.json",
+    "expr": "$lowercase(敷)"
+  },
+  {
+    "group": "transform",
+    "case": "case029.json",
+    "expr": "$lowercase(Español)"
+  },
+  {
+    "group": "transform",
+    "case": "case030.json",
+    "expr": "$lowercase($.\"NI.Number\")"
+  },
+  {
+    "group": "transform",
+    "case": "case031.json",
+    "expr": "$lowercase(\"COMPENSATION IS : \" & Employment.\"Executive.Compensation\")"
+  },
+  {
+    "group": "transform",
+    "case": "case032.json",
+    "expr": "\"Hello\""
+  },
+  {
+    "group": "transform",
+    "case": "case033.json",
+    "expr": "$uppercase(Salutation)"
+  },
+  {
+    "group": "transform",
+    "case": "case035.json",
+    "expr": "$uppercase(\"鯵噂ソ竹\")"
+  },
+  {
+    "group": "transform",
+    "case": "case036.json",
+    "expr": "Employment.Name & \" is happy\""
+  },
+  {
+    "group": "transform",
+    "case": "case037.json",
+    "expr": "Employment.Name & \" is pleased to employ \" & Salutation & \" \" & Surname"
+  },
+  {
+    "group": "transform",
+    "case": "case038.json",
+    "expr": "$uppercase(\"Hello \" & Salutation & \" \" & Surname)"
+  },
+  {
+    "group": "transform",
+    "case": "case039.json",
+    "expr": "$uppercase(Salutation & \" \" & Surname & \" - has \" & Cars & \" registered cars\")"
+  },
+  {
+    "group": "transform",
+    "case": "case040.json",
+    "expr": "$uppercase(Employment.ContractType)"
+  },
+  {
+    "group": "transform",
+    "case": "case041.json",
+    "expr": "$substringBefore(\"Hola\", \"l\")"
+  },
+  {
+    "group": "transform",
+    "case": "case042.json",
+    "expr": "$substringBefore(\"Hola\", 'l')"
+  },
+  {
+    "group": "transform",
+    "case": "case043.json",
+    "expr": "$substringBefore(\"Hola\", \"Q\")"
+  },
+  {
+    "group": "transform",
+    "case": "case044.json",
+    "expr": "$substringBefore(\"Hola\", \"\")"
+  },
+  {
+    "group": "transform",
+    "case": "case045.json",
+    "expr": "$substringBefore(\"鯵噂ソ竹\", \"ソ\")"
+  },
+  {
+    "group": "transform",
+    "case": "case046.json",
+    "expr": "$substringAfter(\"Coca\" & \"Cola\", \"ca\")"
+  },
+  {
+    "group": "transform",
+    "case": "case047.json",
+    "expr": "$substringAfter(Salutation & \" \" & MiddleName &\" \" & Surname, MiddleName)"
+  },
+  {
+    "group": "transform",
+    "case": "case048.json",
+    "expr": "$substringAfter(Salutation & \" \" & Employment.Role, Salutation)"
+  },
+  {
+    "group": "transform",
+    "case": "case049.json",
+    "expr": "$substringAfter(\"Hola\", 'l')"
+  },
+  {
+    "group": "transform",
+    "case": "case050.json",
+    "expr": "$substringAfter(\"Hola\", \"Q\")"
+  },
+  {
+    "group": "transform",
+    "case": "case051.json",
+    "expr": "$lowercase(Employment.Role) & \" (\" & Employment.Role & \")\""
+  },
+  {
+    "group": "transform",
+    "case": "case052.json",
+    "expr": "Employment.Years & \" years of employment\""
+  },
+  {
+    "group": "transform",
+    "case": "case053.json",
+    "expr": "$uppercase(Salutation & \" \" & Surname & \" - has \" & Employment.Years & \" years of employment\")"
+  },
+  {
+    "group": "transform",
+    "case": "case054.json",
+    "expr": "$substring(Employment.Role, 7,4)"
+  },
+  {
+    "group": "transform",
+    "case": "case055.json",
+    "expr": "$substring(Employment.Role, -4,4)"
+  },
+  {
+    "group": "transform",
+    "case": "case056.json",
+    "expr": "$substring(\"Hello World\",Cars,5)"
+  },
+  {
+    "group": "transform",
+    "case": "case057.json",
+    "expr": "$lowercase(\"Missing close brackets\""
+  },
+  {
+    "group": "transform",
+    "case": "case058.json",
+    "expr": "$unknown(Salutation)"
+  },
+  {
+    "group": "transform",
+    "case": "case059.json",
+    "expr": "$decrypt(Salutation)"
+  },
+  {
+    "group": "transform",
+    "case": "case060.json",
+    "expr": "Employment.authentication(Salutation)"
+  },
+  {
+    "group": "transform",
+    "case": "case061.json",
+    "expr": "$uppercase(Invalid)"
+  },
+  {
+    "group": "transform",
+    "case": "case062.json",
+    "expr": "$uppercase(Employment.Invalid)"
+  },
+  {
+    "group": "transform",
+    "case": "case063.json",
+    "expr": "$lowercase(\"Coca\", \"Cola\")"
+  },
+  {
+    "group": "transform",
+    "case": "case064.json",
+    "expr": "$lowercase(Salary)"
+  },
+  {
+    "group": "transform",
+    "case": "case065.json",
+    "expr": "$lowercase(20)"
+  },
+  {
+    "group": "transform",
+    "case": "case066.json",
+    "expr": "$lowercase(20.55)"
+  },
+  {
+    "group": "transform",
+    "case": "case067.json",
+    "expr": "$lowercase(Employment)"
+  },
+  {
+    "group": "transform",
+    "case": "case068.json",
+    "expr": "$lowercase(Qualifications)"
+  },
+  {
+    "group": "transform",
+    "case": "case069.json",
+    "expr": "$uppercase(\"Coca\", \"Cola\")"
+  },
+  {
+    "group": "transform",
+    "case": "case070.json",
+    "expr": "$uppercase(Salary)"
+  },
+  {
+    "group": "transform",
+    "case": "case071.json",
+    "expr": "$uppercase(28)"
+  },
+  {
+    "group": "transform",
+    "case": "case072.json",
+    "expr": "$uppercase(20.55)"
+  },
+  {
+    "group": "transform",
+    "case": "case073.json",
+    "expr": "$uppercase(Cars)"
+  },
+  {
+    "group": "transform",
+    "case": "case074.json",
+    "expr": "$uppercase(Employment)"
+  },
+  {
+    "group": "transform",
+    "case": "case075.json",
+    "expr": "$uppercase(Qualifications)"
+  },
+  {
+    "group": "transform",
+    "case": "case076.json",
+    "expr": "$substringBefore(\"Coca\" & \"ca\")"
+  },
+  {
+    "group": "transform",
+    "case": "case077.json",
+    "expr": "$substringBefore(Salary,\"xx\")"
+  },
+  {
+    "group": "transform",
+    "case": "case078.json",
+    "expr": "$substringBefore(22,\"xx\")"
+  },
+  {
+    "group": "transform",
+    "case": "case079.json",
+    "expr": "$substringBefore(22.55,\"xx\")"
+  },
+  {
+    "group": "transform",
+    "case": "case080.json",
+    "expr": "$substringBefore(\"22\",2)"
+  },
+  {
+    "group": "transform",
+    "case": "case081.json",
+    "expr": "$substringBefore(\"22.55\",5)"
+  },
+  {
+    "group": "transform",
+    "case": "case082.json",
+    "expr": "$substringBefore(Employment,\"xx\")"
+  },
+  {
+    "group": "transform",
+    "case": "case083.json",
+    "expr": "$substringBefore(Qualifications,\"xx\")"
+  },
+  {
+    "group": "transform",
+    "case": "case084.json",
+    "expr": "$substringAfter(\"Coca\" & \"ca\")"
+  },
+  {
+    "group": "transform",
+    "case": "case085.json",
+    "expr": "$substringAfter(Salary,\"xx\")"
+  },
+  {
+    "group": "transform",
+    "case": "case086.json",
+    "expr": "$substringAfter(22,\"xx\")"
+  },
+  {
+    "group": "transform",
+    "case": "case087.json",
+    "expr": "$substringAfter(22.55,\"xx\")"
+  },
+  {
+    "group": "transform",
+    "case": "case088.json",
+    "expr": "$substringAfter(\"22\",2)"
+  },
+  {
+    "group": "transform",
+    "case": "case089.json",
+    "expr": "$substringAfter(\"22.55\",5)"
+  },
+  {
+    "group": "transform",
+    "case": "case090.json",
+    "expr": "$substringAfter(Employment,\"xx\")"
+  },
+  {
+    "group": "transform",
+    "case": "case091.json",
+    "expr": "$substringAfter(Qualifications,\"xx\")"
+  },
+  {
+    "group": "transform",
+    "case": "case092.json",
+    "expr": "$substring(\"Coca\" & \"ca\", 2, 4, 5)"
+  },
+  {
+    "group": "transform",
+    "case": "case093.json",
+    "expr": "$substring(\"Coca\", \"Mr\", 4)"
+  },
+  {
+    "group": "transform",
+    "case": "case094.json",
+    "expr": "$substring(\"Coca\", 3, \"Whoops\")"
+  },
+  {
+    "group": "transform",
+    "case": "case095.json",
+    "expr": "$substring(Salary,2,4)"
+  },
+  {
+    "group": "transform",
+    "case": "case096.json",
+    "expr": "$substring(\"Hello\",\"World\",5)"
+  },
+  {
+    "group": "transform",
+    "case": "case097.json",
+    "expr": "$substring(\"Hello\",5,\"World\")"
+  },
+  {
+    "group": "transform",
+    "case": "case098.json",
+    "expr": "$substring(\"Hello World\",5.5,5)"
+  },
+  {
+    "group": "transform",
+    "case": "case099.json",
+    "expr": "$substring(Employment,\"xx\")"
+  },
+  {
+    "group": "transform",
+    "case": "case100.json",
+    "expr": "$substring(Qualifications,6,5)"
+  },
+  {
+    "group": "transform",
+    "case": "case101.json",
+    "expr": "detail.contents"
+  },
+  {
+    "group": "transform",
+    "case": "case102.json",
+    "expr": "detail.meta"
+  },
+  {
+    "group": "transforms",
+    "case": "case000.json",
+    "expr": "$ ~> |Account.Order.Product|{\"Total\":Price*Quantity},[\"Description\", \"SKU\"]|"
+  },
+  {
+    "group": "transforms",
+    "case": "case001.json",
+    "expr": "Account.Order ~> |Product|{\"Total\":Price*Quantity},[\"Description\", \"SKU\"]|"
+  },
+  {
+    "group": "transforms",
+    "case": "case002.json",
+    "expr": "$ ~> |Account.Order.Product|{\"Total\":Price*Quantity, \"Price\": Price * 1.2}|"
+  },
+  {
+    "group": "transforms",
+    "case": "case003.json",
+    "expr": "$ ~> |Account.Order.Product|{},\"Description\"|"
+  },
+  {
+    "group": "transforms",
+    "case": "case004.json",
+    "expr": "$ ~> |Account.Order.Product|nomatch,\"Description\"|"
+  },
+  {
+    "group": "transforms",
+    "case": "case005.json",
+    "expr": "$ ~> |(Account.Order.Product)[0]|{\"Description\":\"blah\"}|"
+  },
+  {
+    "group": "transforms",
+    "case": "case006.json",
+    "expr": "$ ~> |foo.bar|{\"Description\":\"blah\"}|"
+  },
+  {
+    "group": "transforms",
+    "case": "case007.json",
+    "expr": "Account ~> |Order|{\"Product\":\"blah\"},nomatch|"
+  },
+  {
+    "group": "transforms",
+    "case": "case008.json",
+    "expr": "foo ~> |foo.bar|{\"Description\":\"blah\"}|"
+  },
+  {
+    "group": "transforms",
+    "case": "case009.json",
+    "expr": "Account ~> |Order|5|"
+  },
+  {
+    "group": "transforms",
+    "case": "case010.json",
+    "expr": "Account ~> |Order|{},5|"
+  },
+  {
+    "group": "transforms",
+    "case": "case012.json",
+    "expr": "{} ~> |$|['one', 'two', 'three']|"
+  },
+  {
+    "group": "transforms",
+    "case": "case013.json",
+    "expr": "$ ~> | ** ['hi'] | {'hello': hi}, ['hi'] |"
+  },
+  {
+    "group": "transforms",
+    "case": "case014.json",
+    "expr": "$ ~> | ** [hi] | {'hello': hi}, ['hi'] |"
+  },
+  {
+    "group": "variables",
+    "case": "case000.json",
+    "expr": "$price.foo.bar"
+  },
+  {
+    "group": "variables",
+    "case": "case002.json",
+    "expr": "$var[1]"
+  },
+  {
+    "group": "variables",
+    "case": "case003.json",
+    "expr": "$.foo.bar"
+  },
+  {
+    "group": "variables",
+    "case": "case004.json",
+    "expr": "$a := 5"
+  },
+  {
+    "group": "variables",
+    "case": "case005.json",
+    "expr": "$a := $b := 5"
+  },
+  {
+    "group": "variables",
+    "case": "case006.json",
+    "expr": "($a := $b := 5; $a)"
+  },
+  {
+    "group": "variables",
+    "case": "case007.json",
+    "expr": "($a := $b := 5; $b)"
+  },
+  {
+    "group": "variables",
+    "case": "case008.json",
+    "expr": "( $a := 5; $a := $a + 2; $a )"
+  },
+  {
+    "group": "variables",
+    "case": "case009.json",
+    "expr": "[1,2,3].$v"
+  },
+  {
+    "group": "variables",
+    "case": "case010.json",
+    "expr": "( $foo := \"defined\"; ( $foo := nothing ); $foo )"
+  },
+  {
+    "group": "variables",
+    "case": "case011.json",
+    "expr": "( $foo := \"defined\"; ( $foo := nothing; $foo ) )"
+  },
+  {
+    "group": "variables",
+    "case": "case012.json",
+    "expr": "($a := [1,2]; $a[1]:=3; $a)"
+  },
+  {
+    "group": "wildcards",
+    "case": "case000.json",
+    "expr": "foo.*"
+  },
+  {
+    "group": "wildcards",
+    "case": "case001.json",
+    "expr": "foo.*.baz"
+  },
+  {
+    "group": "wildcards",
+    "case": "case002.json",
+    "expr": "foo.*.bazz"
+  },
+  {
+    "group": "wildcards",
+    "case": "case003.json",
+    "expr": "foo.*.baz.*"
+  },
+  {
+    "group": "wildcards",
+    "case": "case006.json",
+    "expr": "*[type=\"home\"]"
+  },
+  {
+    "group": "wildcards",
+    "case": "case007.json",
+    "expr": "Account[$$.Account.\"Account Name\" = \"Firefly\"].*[OrderID=\"order104\"].Product.Price"
+  },
+  {
+    "group": "wildcards",
+    "case": "case008.json",
+    "expr": "Account[$$.Account.`Account Name` = \"Firefly\"].*[OrderID=\"order104\"].Product.Price"
+  },
+  {
+    "group": "wildcards",
+    "case": "case009.json",
+    "expr": "*"
+  }
+]
