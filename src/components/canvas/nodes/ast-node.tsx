@@ -58,7 +58,11 @@ function AstNodeInner({ id, data, selected }: NodeProps<AstFlowNode>) {
           transition:
             "border-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard), background-color var(--duration-normal) var(--ease-standard)",
         }}
-        title={heatmapTiming !== undefined ? `Eval: ${heatmapTiming.toFixed(1)}ms` : undefined}
+        title={
+          heatmapTiming !== undefined
+            ? `Eval: ${heatmapTiming.toFixed(1)}ms`
+            : undefined
+        }
       >
         {/* Input handle */}
         <Handle

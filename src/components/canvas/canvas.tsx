@@ -80,11 +80,15 @@ export function Canvas({ profiling }: CanvasProps) {
 
   const onDrop = useCallback((event: React.DragEvent) => {
     event.preventDefault();
-    const exprTemplate = event.dataTransfer.getData("application/visionata-template");
+    const exprTemplate = event.dataTransfer.getData(
+      "application/visionata-template",
+    );
     if (exprTemplate) {
       claimOrigin("text");
       const { expression, setExpression } = useEditorStore.getState();
-      const newExpr = expression ? `${expression} ~> ${exprTemplate}` : exprTemplate;
+      const newExpr = expression
+        ? `${expression} ~> ${exprTemplate}`
+        : exprTemplate;
       setExpression(newExpr);
     }
   }, []);
@@ -99,7 +103,7 @@ export function Canvas({ profiling }: CanvasProps) {
       >
         {parseError && (
           <div
-            className="absolute left-1/2 top-3 z-10 -translate-x-1/2 rounded-lg border px-4 py-2 text-xs"
+            className="absolute top-3 left-1/2 z-10 -translate-x-1/2 rounded-lg border px-4 py-2 text-xs"
             style={{
               backgroundColor: "var(--bg-elevated)",
               borderColor: "var(--color-error)",

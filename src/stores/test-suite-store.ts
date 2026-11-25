@@ -33,13 +33,26 @@ interface TestSuiteState {
 interface TestSuiteActions {
   /** Hydrate from IndexedDB on mount */
   hydrate: () => Promise<void>;
-  addTestCase: (tc: Omit<TestCase, "id" | "createdAt" | "updatedAt" | "status">) => Promise<void>;
+  addTestCase: (
+    tc: Omit<TestCase, "id" | "createdAt" | "updatedAt" | "status">,
+  ) => Promise<void>;
   updateTestCase: (id: string, updates: Partial<TestCase>) => Promise<void>;
   removeTestCase: (id: string) => Promise<void>;
   /** Run a single test case against current expression/input */
-  runTestCase: (id: string, evaluate: (expr: string, input: string) => Promise<{ result?: unknown; error?: string }>) => Promise<void>;
+  runTestCase: (
+    id: string,
+    evaluate: (
+      expr: string,
+      input: string,
+    ) => Promise<{ result?: unknown; error?: string }>,
+  ) => Promise<void>;
   /** Run all test cases */
-  runAllTests: (evaluate: (expr: string, input: string) => Promise<{ result?: unknown; error?: string }>) => Promise<void>;
+  runAllTests: (
+    evaluate: (
+      expr: string,
+      input: string,
+    ) => Promise<{ result?: unknown; error?: string }>,
+  ) => Promise<void>;
   /** Import test cases from JSON */
   importTestCases: (cases: TestCase[]) => Promise<void>;
   /** Clear all test cases */
@@ -81,7 +94,9 @@ export const useTestSuiteStore = create<TestSuiteState & TestSuiteActions>()(
       try {
         const db = await getDB();
         const all = await db.getAll(STORE_NAME);
-        const cases = (all as TestCase[]).sort((a, b) => a.createdAt - b.createdAt);
+        const cases = (all as TestCase[]).sort(
+          (a, b) => a.createdAt - b.createdAt,
+        );
         set({ testCases: cases, hydrated: true });
       } catch {
         set({ hydrated: true });
@@ -100,7 +115,9 @@ export const useTestSuiteStore = create<TestSuiteState & TestSuiteActions>()(
       try {
         const db = await getDB();
         await db.put(STORE_NAME, testCase);
-      } catch { /* IDB unavailable */ }
+      } catch {
+        /* IDB unavailable */
+      }
       set((s) => ({ testCases: [...s.testCases, testCase] }));
     },
 
@@ -111,7 +128,9 @@ export const useTestSuiteStore = create<TestSuiteState & TestSuiteActions>()(
       try {
         const db = await getDB();
         await db.put(STORE_NAME, updated);
-      } catch { /* IDB unavailable */ }
+      } catch {
+        /* IDB unavailable */
+      }
       set((s) => ({
         testCases: s.testCases.map((tc) => (tc.id === id ? updated : tc)),
       }));
@@ -121,7 +140,9 @@ export const useTestSuiteStore = create<TestSuiteState & TestSuiteActions>()(
       try {
         const db = await getDB();
         await db.delete(STORE_NAME, id);
-      } catch { /* IDB unavailable */ }
+      } catch {
+        /* IDB unavailable */
+      }
       set((s) => ({
         testCases: s.testCases.filter((tc) => tc.id !== id),
       }));
@@ -134,7 +155,11 @@ export const useTestSuiteStore = create<TestSuiteState & TestSuiteActions>()(
       try {
         const { result, error } = await evaluate(tc.expression, tc.inputJson);
         if (error) {
-          get().updateTestCase(id, { status: "error", lastError: error, lastResult: undefined });
+          get().updateTestCase(id, {
+            status: "error",
+            lastError: error,
+            lastResult: undefined,
+          });
           return;
         }
         const resultStr = JSON.stringify(result, null, 2);
@@ -142,7 +167,9 @@ export const useTestSuiteStore = create<TestSuiteState & TestSuiteActions>()(
         // Normalize comparison: parse both as JSON if possible
         let pass = false;
         try {
-          pass = JSON.stringify(JSON.parse(resultStr)) === JSON.stringify(JSON.parse(expectedStr));
+          pass =
+            JSON.stringify(JSON.parse(resultStr)) ===
+            JSON.stringify(JSON.parse(expectedStr));
         } catch {
           pass = resultStr === expectedStr;
         }
@@ -189,7 +216,9 @@ export const useTestSuiteStore = create<TestSuiteState & TestSuiteActions>()(
           tx.store.put(tc);
         }
         await tx.done;
-      } catch { /* IDB unavailable */ }
+      } catch {
+        /* IDB unavailable */
+      }
       set((s) => ({ testCases: [...s.testCases, ...withIds] }));
     },
 
@@ -197,7 +226,9 @@ export const useTestSuiteStore = create<TestSuiteState & TestSuiteActions>()(
       try {
         const db = await getDB();
         await db.clear(STORE_NAME);
-      } catch { /* IDB unavailable */ }
+      } catch {
+        /* IDB unavailable */
+      }
       set({ testCases: [], passCount: 0, failCount: 0 });
     },
   }),

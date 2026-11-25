@@ -23,7 +23,10 @@ export function PropertiesPanel() {
     return (
       <div
         className="flex h-full items-center justify-center p-4"
-        style={{ backgroundColor: "var(--bg-surface)", color: "var(--text-tertiary)" }}
+        style={{
+          backgroundColor: "var(--bg-surface)",
+          color: "var(--text-tertiary)",
+        }}
       >
         <p className="text-center text-xs">
           Select a node to view its properties

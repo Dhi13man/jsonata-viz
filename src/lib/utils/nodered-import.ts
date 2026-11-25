@@ -92,12 +92,7 @@ export function extractFromNodeRed(flowJson: string): ExtractedExpression[] {
 
     // Any string property that looks like JSONata (contains $, ~>, or common patterns)
     for (const [key, value] of Object.entries(node)) {
-      if (
-        key === "id" ||
-        key === "type" ||
-        key === "name" ||
-        key === "func"
-      )
+      if (key === "id" || key === "type" || key === "name" || key === "func")
         continue;
       if (typeof value !== "string" || value.length < 3) continue;
       if (/\$[a-zA-Z_]|~>|\.\./.test(value)) {

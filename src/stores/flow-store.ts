@@ -103,10 +103,11 @@ export const useFlowStore = create<FlowState & FlowActions>()(
         name: "visionata-flow",
         version: 1,
         storage: createJSONStorage(() => safeLocalStorage),
-        partialize: (state) => ({
-          viewport: state.viewport,
-          manualPositions: state.manualPositions,
-        } as FlowState & FlowActions),
+        partialize: (state) =>
+          ({
+            viewport: state.viewport,
+            manualPositions: state.manualPositions,
+          }) as FlowState & FlowActions,
         merge: (persisted, current) => {
           const p = persisted as Partial<FlowState> | undefined;
           const vp = p?.viewport;

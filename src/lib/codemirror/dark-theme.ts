@@ -91,5 +91,6 @@ const visionataHighlightStyle = HighlightStyle.define([
   { tag: tags.propertyName, color: "#79c0ff" },
 ]);
 
-export const visionataSyntaxHighlighting =
-  syntaxHighlighting(visionataHighlightStyle);
+export const visionataSyntaxHighlighting = syntaxHighlighting(
+  visionataHighlightStyle,
+);

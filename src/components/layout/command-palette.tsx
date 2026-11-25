@@ -115,7 +115,7 @@ export function CommandPalette({
 
       {/* Dialog */}
       <div
-        className="fixed left-1/2 top-[20%] w-full max-w-lg -translate-x-1/2 rounded-xl shadow-lg"
+        className="fixed top-[20%] left-1/2 w-full max-w-lg -translate-x-1/2 rounded-xl shadow-lg"
         style={{
           backgroundColor: "var(--bg-surface)",
           border: "1px solid var(--border-default)",

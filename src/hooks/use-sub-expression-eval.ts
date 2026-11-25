@@ -27,51 +27,49 @@ export function useSubExpressionEval() {
       if (!nodeId || nodeId === prevNodeIdRef.current) return;
       prevNodeIdRef.current = nodeId;
 
-        const node = useFlowStore
-          .getState()
-          .nodes.find((n) => n.id === nodeId);
-        if (!node) return;
+      const node = useFlowStore.getState().nodes.find((n) => n.id === nodeId);
+      if (!node) return;
 
-        const astNode = node.data.astNode as ExprNode;
-        let subExpr: string;
-        try {
-          subExpr = serialize(astNode);
-        } catch {
-          return;
-        }
+      const astNode = node.data.astNode as ExprNode;
+      let subExpr: string;
+      try {
+        subExpr = serialize(astNode);
+      } catch {
+        return;
+      }
 
-        const inputJson = useEditorStore.getState().inputJson;
-        const cacheKey = `${subExpr}::${inputJson}`;
+      const inputJson = useEditorStore.getState().inputJson;
+      const cacheKey = `${subExpr}::${inputJson}`;
 
-        // Check cache first
-        const cached = previewCache.get(cacheKey);
-        if (cached !== undefined) {
-          updateNodePreview(nodeId, cached);
-          return;
-        }
+      // Check cache first
+      const cached = previewCache.get(cacheKey);
+      if (cached !== undefined) {
+        updateNodePreview(nodeId, cached);
+        return;
+      }
 
-        // Evaluate in worker
-        evaluate(subExpr, inputJson, 3000).then((response) => {
-          let preview: string;
-          if (response.error) {
-            preview = `Error: ${response.error.message}`;
-          } else {
-            try {
-              preview =
-                response.result === undefined
-                  ? "undefined"
-                  : JSON.stringify(response.result, null, 2);
-            } catch {
-              preview = String(response.result);
-            }
+      // Evaluate in worker
+      evaluate(subExpr, inputJson, 3000).then((response) => {
+        let preview: string;
+        if (response.error) {
+          preview = `Error: ${response.error.message}`;
+        } else {
+          try {
+            preview =
+              response.result === undefined
+                ? "undefined"
+                : JSON.stringify(response.result, null, 2);
+          } catch {
+            preview = String(response.result);
           }
-          // Truncate for display
-          if (preview.length > 200) {
-            preview = preview.slice(0, 197) + "...";
-          }
-          previewCache.set(cacheKey, preview);
-          updateNodePreview(nodeId, preview);
-        });
+        }
+        // Truncate for display
+        if (preview.length > 200) {
+          preview = preview.slice(0, 197) + "...";
+        }
+        previewCache.set(cacheKey, preview);
+        updateNodePreview(nodeId, preview);
+      });
     });
 
     return unsub;

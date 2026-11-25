@@ -63,7 +63,7 @@ const KNOWN_PARSE_FAILURES = new Set([
   "()", // empty block — may not parse
   // function-signatures: unsupported type parameters with lambda unicode
   "λ($arg)<n<n>>{$arg}(5)",
-  'λ($arr)<(sa<n>)>>{$arr}([[1]])',
+  "λ($arr)<(sa<n>)>>{$arr}([[1]])",
   // literals: out-of-range and invalid escapes
   "10e1000",
   '"\\y"',
@@ -348,9 +348,8 @@ test.describe("Corpus Visual Audit", () => {
     console.log("==================================================\n");
 
     const crashes = tested.filter((r) => r.crashed);
-    expect(
-      crashes.length,
-      `${crashes.length} expressions caused crashes`,
-    ).toBe(0);
+    expect(crashes.length, `${crashes.length} expressions caused crashes`).toBe(
+      0,
+    );
   });
 });

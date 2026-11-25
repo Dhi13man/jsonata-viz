@@ -43,7 +43,9 @@ export function importFile(): Promise<VisionataFile | null> {
             version: data.version ?? 1,
             expression: data.expression,
             inputJson: data.inputJson ?? "{}",
-            testCases: Array.isArray(data.testCases) ? data.testCases : undefined,
+            testCases: Array.isArray(data.testCases)
+              ? data.testCases
+              : undefined,
           });
         } else if (typeof data === "string") {
           // Plain .jsonata text file

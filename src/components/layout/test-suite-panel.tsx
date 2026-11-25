@@ -86,7 +86,9 @@ export function TestSuitePanel() {
         if (Array.isArray(cases)) {
           importTestCases(cases);
         }
-      } catch { /* invalid file */ }
+      } catch {
+        /* invalid file */
+      }
     };
     input.click();
   }, [importTestCases]);
@@ -121,9 +123,21 @@ export function TestSuitePanel() {
           )}
         </div>
         <div className="flex items-center gap-1">
-          <PanelButton icon={<Upload size={12} />} label="Import" onClick={handleImport} />
-          <PanelButton icon={<Download size={12} />} label="Export" onClick={handleExport} />
-          <PanelButton icon={<Plus size={12} />} label="Add test" onClick={handleAddTest} />
+          <PanelButton
+            icon={<Upload size={12} />}
+            label="Import"
+            onClick={handleImport}
+          />
+          <PanelButton
+            icon={<Download size={12} />}
+            label="Export"
+            onClick={handleExport}
+          />
+          <PanelButton
+            icon={<Plus size={12} />}
+            label="Add test"
+            onClick={handleAddTest}
+          />
           <PanelButton
             icon={<Play size={12} />}
             label={isRunning ? "Running..." : "Run all"}

@@ -72,8 +72,7 @@ export function Workspace() {
   const handleShare = useCallback(() => {
     const { expression, inputJson } = useEditorStore.getState();
     const { testCases } = useTestSuiteStore.getState();
-    const tests =
-      testCases.length > 0 ? JSON.stringify(testCases) : undefined;
+    const tests = testCases.length > 0 ? JSON.stringify(testCases) : undefined;
     const url = encodeShareUrl({ expression, input: inputJson, tests });
     if (!url) return;
     navigator.clipboard.writeText(url).catch(() => {
@@ -256,12 +255,8 @@ export function Workspace() {
     <div className="flex h-screen flex-col">
       <Toolbar
         onToggleCommandPalette={toggleCommandPalette}
-        onToggleLeftSidebar={() =>
-          useUIStore.getState().toggleLeftSidebar()
-        }
-        onToggleRightSidebar={() =>
-          useUIStore.getState().toggleRightSidebar()
-        }
+        onToggleLeftSidebar={() => useUIStore.getState().toggleLeftSidebar()}
+        onToggleRightSidebar={() => useUIStore.getState().toggleRightSidebar()}
         bottomTab={bottomTab}
         onBottomTabChange={setBottomTab}
       />

@@ -12,7 +12,10 @@ interface DiffToken {
 }
 
 /** Simple word-level diff using LCS algorithm */
-function computeDiff(a: string, b: string): { left: DiffToken[]; right: DiffToken[] } {
+function computeDiff(
+  a: string,
+  b: string,
+): { left: DiffToken[]; right: DiffToken[] } {
   const wordsA = a.split(/(\s+|[(){}[\].,;:~><=!&|+\-*/^?$@#`"']+)/);
   const wordsB = b.split(/(\s+|[(){}[\].,;:~><=!&|+\-*/^?$@#`"']+)/);
 
@@ -90,7 +93,10 @@ export function ExpressionDiff() {
         Expression Diff
       </div>
 
-      <div className="grid min-h-0 flex-1 grid-cols-2 gap-px" style={{ backgroundColor: "var(--border-default)" }}>
+      <div
+        className="grid min-h-0 flex-1 grid-cols-2 gap-px"
+        style={{ backgroundColor: "var(--border-default)" }}
+      >
         {/* Current expression (left) */}
         <div
           className="flex flex-col overflow-hidden"
@@ -102,7 +108,10 @@ export function ExpressionDiff() {
           >
             Current
           </div>
-          <div className="flex-1 overflow-auto p-3 font-mono text-xs" style={{ color: "var(--text-primary)" }}>
+          <div
+            className="flex-1 overflow-auto p-3 font-mono text-xs"
+            style={{ color: "var(--text-primary)" }}
+          >
             {diff.left.map((token, idx) => (
               <span
                 key={idx}
@@ -144,7 +153,10 @@ export function ExpressionDiff() {
             }}
             spellCheck={false}
           />
-          <div className="flex-1 overflow-auto p-3 font-mono text-xs" style={{ color: "var(--text-primary)" }}>
+          <div
+            className="flex-1 overflow-auto p-3 font-mono text-xs"
+            style={{ color: "var(--text-primary)" }}
+          >
             {diff.right.map((token, idx) => (
               <span
                 key={idx}

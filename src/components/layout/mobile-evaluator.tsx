@@ -49,7 +49,13 @@ export function MobileEvaluator() {
         }}
       >
         <div className="flex items-center gap-2">
-          <img src="/visionata.svg" alt="" className="h-5 w-5" width={20} height={20} />
+          <img
+            src="/visionata.svg"
+            alt=""
+            className="h-5 w-5"
+            width={20}
+            height={20}
+          />
           <span
             className="text-sm font-semibold"
             style={{ color: "var(--text-primary)" }}
@@ -108,7 +114,9 @@ export function MobileEvaluator() {
           className="h-full w-full overflow-auto p-3 font-mono text-xs"
           style={{
             backgroundColor: "var(--bg-surface)",
-            color: output.isError ? "var(--color-error)" : "var(--text-primary)",
+            color: output.isError
+              ? "var(--color-error)"
+              : "var(--text-primary)",
           }}
           aria-label="Evaluation Output"
           aria-live="polite"

@@ -221,7 +221,7 @@ export function Toolbar({
           />
           {templateOpen && (
             <div
-              className="absolute right-0 top-full z-50 mt-1 w-64 overflow-hidden rounded-lg border"
+              className="absolute top-full right-0 z-50 mt-1 w-64 overflow-hidden rounded-lg border"
               style={{
                 backgroundColor: "var(--bg-elevated)",
                 borderColor: "var(--border-default)",

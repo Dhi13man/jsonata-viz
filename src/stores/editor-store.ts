@@ -99,10 +99,11 @@ export const useEditorStore = create<EditorState & EditorActions>()(
         name: "visionata-editor",
         version: 1,
         storage: createJSONStorage(() => safeLocalStorage),
-        partialize: (state) => ({
-          expression: state.expression,
-          inputJson: state.inputJson,
-        } as EditorState & EditorActions),
+        partialize: (state) =>
+          ({
+            expression: state.expression,
+            inputJson: state.inputJson,
+          }) as EditorState & EditorActions,
         merge: (persisted, current) => {
           const p = persisted as Partial<EditorState> | undefined;
           return {

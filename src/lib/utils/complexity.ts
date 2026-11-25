@@ -48,7 +48,14 @@ const WEIGHTS: Record<string, number> = {
 
 export function calculateComplexity(ast: ExprNode | null): ComplexityScore {
   if (!ast) {
-    return { score: 0, label: "Simple", nodeCount: 0, maxDepth: 0, lambdaCount: 0, bindCount: 0 };
+    return {
+      score: 0,
+      label: "Simple",
+      nodeCount: 0,
+      maxDepth: 0,
+      lambdaCount: 0,
+      bindCount: 0,
+    };
   }
 
   let nodeCount = 0;
@@ -73,10 +80,18 @@ export function calculateComplexity(ast: ExprNode | null): ComplexityScore {
     if (n.rhs && typeof n.rhs === "object" && "type" in (n.rhs as object)) {
       walk(n.rhs as ExprNode, depth + 1);
     }
-    if (n.expression && typeof n.expression === "object" && "type" in (n.expression as object)) {
+    if (
+      n.expression &&
+      typeof n.expression === "object" &&
+      "type" in (n.expression as object)
+    ) {
       walk(n.expression as ExprNode, depth + 1);
     }
-    if (n.condition && typeof n.condition === "object" && "type" in (n.condition as object)) {
+    if (
+      n.condition &&
+      typeof n.condition === "object" &&
+      "type" in (n.condition as object)
+    ) {
       walk(n.condition as ExprNode, depth + 1);
     }
     if (n.then && typeof n.then === "object" && "type" in (n.then as object)) {
@@ -88,16 +103,32 @@ export function calculateComplexity(ast: ExprNode | null): ComplexityScore {
     if (n.body && typeof n.body === "object" && "type" in (n.body as object)) {
       walk(n.body as ExprNode, depth + 1);
     }
-    if (n.procedure && typeof n.procedure === "object" && "type" in (n.procedure as object)) {
+    if (
+      n.procedure &&
+      typeof n.procedure === "object" &&
+      "type" in (n.procedure as object)
+    ) {
       walk(n.procedure as ExprNode, depth + 1);
     }
-    if (n.pattern && typeof n.pattern === "object" && "type" in (n.pattern as object)) {
+    if (
+      n.pattern &&
+      typeof n.pattern === "object" &&
+      "type" in (n.pattern as object)
+    ) {
       walk(n.pattern as ExprNode, depth + 1);
     }
-    if (n.update && typeof n.update === "object" && "type" in (n.update as object)) {
+    if (
+      n.update &&
+      typeof n.update === "object" &&
+      "type" in (n.update as object)
+    ) {
       walk(n.update as ExprNode, depth + 1);
     }
-    if (n.delete && typeof n.delete === "object" && "type" in (n.delete as object)) {
+    if (
+      n.delete &&
+      typeof n.delete === "object" &&
+      "type" in (n.delete as object)
+    ) {
       walk(n.delete as ExprNode, depth + 1);
     }
     if (n.expr && typeof n.expr === "object" && "type" in (n.expr as object)) {
@@ -166,7 +197,11 @@ export function calculateComplexity(ast: ExprNode | null): ComplexityScore {
     // Sort terms
     if (Array.isArray(n.terms)) {
       for (const term of n.terms as Array<{ expression?: ExprNode }>) {
-        if (term.expression && typeof term.expression === "object" && "type" in term.expression) {
+        if (
+          term.expression &&
+          typeof term.expression === "object" &&
+          "type" in term.expression
+        ) {
           walk(term.expression, depth + 1);
         }
       }

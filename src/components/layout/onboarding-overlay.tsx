@@ -20,7 +20,9 @@ function isOnboardingComplete(): boolean {
 function markComplete(): void {
   try {
     localStorage.setItem(STORAGE_KEY, "true");
-  } catch { /* storage unavailable */ }
+  } catch {
+    /* storage unavailable */
+  }
 }
 
 interface Step {
@@ -92,7 +94,7 @@ export function OnboardingOverlay() {
         {/* Close button */}
         <button
           onClick={dismiss}
-          className="absolute right-3 top-3 cursor-pointer rounded-md border-none bg-transparent p-1 transition-colors hover:bg-[var(--bg-elevated)]"
+          className="absolute top-3 right-3 cursor-pointer rounded-md border-none bg-transparent p-1 transition-colors hover:bg-[var(--bg-elevated)]"
           style={{ color: "var(--text-tertiary)" }}
           aria-label="Skip onboarding"
         >
