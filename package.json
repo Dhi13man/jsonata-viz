@@ -33,7 +33,7 @@
     "@xyflow/react": "^12.4.4",
     "idb": "^8.0.3",
     "immer": "^10.1.1",
-    "jsonata": "^2.0.5",
+    "jsonata": "2.2.2",
     "lucide-react": "^0.474.0",
     "lz-string": "^1.5.0",
     "react": "^19.0.0",

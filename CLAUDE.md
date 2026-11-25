@@ -20,7 +20,7 @@ The project is in planning phase — no application code exists yet. Tech stack 
 |---|---|
 | Framework | React 19 + Vite 6 (pure SPA, no SSR) |
 | Node Graph | @xyflow/react 12.x (React Flow) |
-| JSONata Engine | `jsonata` 2.1.x |
+| JSONata Engine | `jsonata` 2.2.2 |
 | State | Zustand 5 + zundo 2 + Immer 10 |
 | Styling | Tailwind CSS v4 + shadcn/ui |
 | Code Editor | CodeMirror 6 |
