@@ -1,4 +1,4 @@
-# Security Policy
+# Security policy
 
 ## Architecture
 
@@ -6,21 +6,26 @@ Visionata processes all data locally in your browser. No user data is transmitte
 
 This architecture may simplify compliance with data residency requirements — consult your compliance team for specific guidance.
 
-## Supported Versions
+## Supported versions
 
-| Version | Supported |
-| ------- | --------- |
-| Latest  | Yes       |
+Security fixes target the latest release of jsonata-viz. Older tags are not
+routinely patched unless a fix is trivial to backport.
 
-## Reporting a Vulnerability
+## Reporting a vulnerability
 
-If you discover a security vulnerability, please report it responsibly:
+Use [GitHub private vulnerability reporting](https://github.com/Dhi13man/jsonata-viz/security/advisories/new)
+when it is enabled. Otherwise email <furyx.ds@gmail.com>.
 
-1. **Do not** open a public GitHub issue
-2. Email: <security@visionata.dev> (or use GitHub's private vulnerability reporting)
-3. Include a description of the vulnerability and steps to reproduce
-4. We will acknowledge receipt within 48 hours
-5. We will provide an initial assessment within 7 days
+Do not disclose suspected vulnerabilities in public issues, discussions, or
+pull requests.
+
+Include the affected version or commit, impact, reproduction steps, and any
+suggested mitigation. Remove credentials, tokens, account identifiers, and
+personal data from the report.
+
+You should receive an acknowledgement within 7 days. Confirmed critical and
+high severity issues are prioritized for remediation within 30 days; lower
+severity issues are scheduled according to risk.
 
 ## Scope
 
